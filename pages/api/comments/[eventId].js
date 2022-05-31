@@ -1,7 +1,7 @@
 import { connectDatabase, insertDocument, getAllDocuments } from "../../../healpers/db-util";
 
 async function handler(req, res) {
-  const eventId = req.query.eventId;
+  const spotId = req.query.spotId;
 
   let client;
 
@@ -31,7 +31,7 @@ async function handler(req, res) {
       email,
       name,
       text,
-      eventId,
+      spotId,
     };
 
     let result;

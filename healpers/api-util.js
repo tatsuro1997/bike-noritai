@@ -1,42 +1,43 @@
-export async function getAllEvents() {
+export async function getAllSpots() {
   const response = await fetch(
     "https://nextjs-course-dd497-default-rtdb.firebaseio.com/events.json"
+    // 投稿データはmongoDBまたはスプシに置き換え要検討
   );
   const data = await response.json();
 
-  const events = [];
+  const spots = [];
 
   for (const key in data) {
-    events.push({
+    spots.push({
       id: key,
       ...data[key],
     });
   }
 
-  return events;
+  return spots;
 }
 
-export async function getFeaturedEvents() {
-  const allEvents = await getAllEvents();
-  return allEvents.filter((event) => event.isFeatured);
+export async function getFeaturedSpots() {
+  const allSpots = await getAllSpots();
+  return allSpots.filter((spot) => spot.isFeatured);
 }
 
-export async function getEventById(id) {
-  const allEvents = await getAllEvents();
-  return allEvents.find((event) => event.id === id);
+export async function getSpotById(id) {
+  const allSpots = await getAllSpots();
+  return allSpots.find((spot) => spot.id === id);
 }
 
-export async function getFilteredEvents(dateFilter) {
+export async function getFilteredSpots(dateFilter) {
   const { year, month } = dateFilter;
 
-  const allEvents = await getAllEvents();
+  const allSpots = await getAllSpots();
 
-  let filteredEvents = allEvents.filter((event) => {
-    const eventDate = new Date(event.date);
+  let filteredSpots = allSpots.filter((spot) => {
+    const spotDate = new Date(spot.date);
     return (
-      eventDate.getFullYear() === year && eventDate.getMonth() === month - 1
+      spotDate.getFullYear() === year && spotDate.getMonth() === month - 1
     );
   });
 
-  return filteredEvents;
+  return filteredSpots;
 }

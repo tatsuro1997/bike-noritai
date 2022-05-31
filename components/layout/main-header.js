@@ -6,12 +6,12 @@ function MainHeader() {
   return (
     <header className={classes.header}>
       <div className={classes.logo}>
-        <Link href="/">NextEvents</Link>
+        <Link href="/">NextSpots</Link>
       </div>
       <nav className={classes.navigation}>
         <ul>
           <li>
-            <Link href="/events">Brwose All Events</Link>
+            <Link href="/spots">Brwose All Spots</Link>
           </li>
         </ul>
       </nav>

@@ -1,31 +1,31 @@
 import Head from "next/head";
 
-import { getFeaturedEvents } from "../healpers/api-util";
-import EventList from "../components/events/event-list";
+import { getFeaturedSpots } from "../healpers/api-util";
+import SpotList from "../components/spots/spot-list";
 import NewsletterRegistration from "../components/input/newsletter-registration";
 
 function HomePage(props) {
   return (
     <div>
       <Head>
-        <title>NextJS Events</title>
+        <title>NextJS Spots</title>
         <meta
           name="description"
-          constent="Find a lot of great events that allow you to evolve..."
+          constent="Find a lot of great spots that allow you to evolve..."
         />
       </Head>
       <NewsletterRegistration />
-      <EventList items={props.events} />
+      <SpotList items={props.spots} />
     </div>
   );
 }
 
 export async function getStaticProps() {
-  const featuredEvents = await getFeaturedEvents();
+  const featuredSpots = await getFeaturedSpots();
 
   return {
     props: {
-      events: featuredEvents,
+      spots: featuredSpots,
     },
     revalidate: 1800,
   };

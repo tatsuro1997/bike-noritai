@@ -3,9 +3,9 @@ import Image from 'next/image';
 import AddressIcon from '../icons/address-icon';
 import DateIcon from '../icons/date-icon';
 import LogisticsItem from './logistics-item';
-import classes from './event-logistics.module.css';
+import classes from './spot-logistics.module.css';
 
-function EventLogistics(props) {
+function SpotLogistics(props) {
   const { date, address, image, imageAlt } = props;
 
   const humanReadableDate = new Date(date).toLocaleDateString('en-US', {
@@ -32,4 +32,4 @@ function EventLogistics(props) {
   );
 }
 
-export default EventLogistics;
+export default SpotLogistics;

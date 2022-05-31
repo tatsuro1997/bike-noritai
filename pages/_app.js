@@ -9,8 +9,8 @@ function MyApp({ Component, pageProps }) {
     <NotificationContextProvider>
       <Layout>
         <Head>
-          <title>Next Events</title>
-          <meta name="description" content="Next Events" />
+          <title>Next Spots</title>
+          <meta name="description" content="Next Stops" />
           <meta
             name="viewport"
             content="initial-scale=1.0, width=device-width"

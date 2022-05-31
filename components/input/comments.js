@@ -6,7 +6,7 @@ import classes from "./comments.module.css";
 import NotificationContext from "../../store/notification-context";
 
 function Comments(props) {
-  const { eventId } = props;
+  const { spotId } = props;
 
   const notificationCtx = useContext(NotificationContext);
 
@@ -17,7 +17,7 @@ function Comments(props) {
   useEffect(() => {
     if (showComments) {
       setIsFetchingCommnts(true);
-      fetch("/api/comments/" + eventId)
+      fetch("/api/comments/" + spotId)
         .then((response) => response.json())
         .then((data) => {
           setComments(data.comments);
@@ -37,7 +37,7 @@ function Comments(props) {
       status: "pending",
     });
 
-    fetch("/api/comments/" + eventId, {
+    fetch("/api/comments/" + spotId, {
       method: "POST",
       body: JSON.stringify(commentData),
       headers: {

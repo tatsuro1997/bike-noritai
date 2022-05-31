@@ -1,6 +1,6 @@
-import classes from './event-summary.module.css';
+import classes from './spot-summary.module.css';
 
-function EventSummary(props) {
+function SpotSummary(props) {
   const { title } = props;
 
   return (
@@ -10,4 +10,4 @@ function EventSummary(props) {
   );
 }
 
-export default EventSummary;
+export default SpotSummary;

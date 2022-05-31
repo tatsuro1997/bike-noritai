@@ -3,36 +3,36 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import useSWR from "swr";
 
-import EventList from "../../components/events/event-list";
-import ResultsTitle from "../../components/events/results-title";
+import SpotList from "../../components/spots/spot-list";
+import ResultsTitle from "../../components/spots/results-title";
 import Button from "../../components/ui/button";
 import ErrorAlert from "../../components/ui/error-alert";
-import { getFilteredEvents } from "../../healpers/api-util";
+import { getFilteredSpots } from "../../healpers/api-util";
 
-function FilteredEventsPage(props) {
-  const [loadedEvents, setLoadedEvents] = useState();
+function FilteredSpotsPage(props) {
+  const [loadedSpots, setLoadedSpots] = useState();
   const router = useRouter();
 
   const filterData = router.query.slug;
 
   const fetcher = (url) => fetch(url).then((res) => res.json());
   const { data, error } = useSWR(
-    "https://nextjs-course-dd497-default-rtdb.firebaseio.com/events.json",
+    "https://nextjs-course-dd497-default-rtdb.firebaseio.com/spots.json",
     fetcher
   );
 
   useEffect(() => {
     if (data) {
-      const events = [];
+      const spots = [];
 
       for (const key in data) {
-        events.push({
+        spots.push({
           id: key,
           ...data[key],
         });
       }
 
-      setLoadedEvents(events);
+      setLoadedSpots(spots);
     }
   }, [data]);
 
@@ -44,15 +44,15 @@ function FilteredEventsPage(props) {
 
   const pageHeadData = (
     <Head>
-      <title>Filtered Events</title>
+      <title>Filtered Spots</title>
       <meta
         name="description"
-        constent={`All events for ${numMonth}/${numYear}.`}
+        constent={`All spots for ${numMonth}/${numYear}.`}
       />
     </Head>
   );
 
-  if (!loadedEvents) {
+  if (!loadedSpots) {
     return (
       <>
         {pageHeadData}
@@ -77,29 +77,29 @@ function FilteredEventsPage(props) {
           <p>Invaild filter. Please adjust your values.</p>
         </ErrorAlert>
         <div className="center">
-          <Button link="/events">Show All Events</Button>
+          <Button link="/spots">Show All Spots</Button>
         </div>
       </>
     );
   }
 
-  const filteredEvents = loadedEvents.filter((event) => {
-    const eventDate = new Date(event.date);
+  const filteredSpots = loadedSpots.filter((spot) => {
+    const spotDate = new Date(spot.date);
     return (
-      eventDate.getFullYear() === numYear &&
-      eventDate.getMonth() === numMonth - 1
+      spotDate.getFullYear() === numYear &&
+      spotDate.getMonth() === numMonth - 1
     );
   });
 
-  if (!filteredEvents || filteredEvents.length === 0) {
+  if (!filteredSpots || filteredSpots.length === 0) {
     return (
       <>
         {pageHeadData}
         <ErrorAlert>
-          <p>No events found for chosen filter!</p>
+          <p>No spots found for chosen filter!</p>
         </ErrorAlert>
         <div className="center">
-          <Button link="/events">Show All Events</Button>
+          <Button link="/spots">Show All Spots</Button>
         </div>
       </>
     );
@@ -111,7 +111,7 @@ function FilteredEventsPage(props) {
     <>
       {pageHeadData}
       <ResultsTitle date={date} />
-      <EventList items={filteredEvents} />
+      <SpotList items={filteredSpots} />
     </>
   );
 }
@@ -156,4 +156,4 @@ function FilteredEventsPage(props) {
 //   };
 // }
 
-export default FilteredEventsPage;
+export default FilteredSpotsPage;
