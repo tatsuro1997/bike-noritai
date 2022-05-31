@@ -12,16 +12,16 @@ function Comments(props) {
 
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
-  const [isFetchingCommnts, setIsFetchingCommnts] = useState(false);
+  const [isFetchingComments, setIsFetchingComments] = useState(false);
 
   useEffect(() => {
     if (showComments) {
-      setIsFetchingCommnts(true);
+      setIsFetchingComments(true);
       fetch("/api/comments/" + spotId)
         .then((response) => response.json())
         .then((data) => {
           setComments(data.comments);
-          setIsFetchingCommnts(false);
+          setIsFetchingComments(false);
         });
     }
   }, [showComments]);
@@ -75,8 +75,8 @@ function Comments(props) {
         {showComments ? "Hide" : "Show"} Comments
       </button>
       {showComments && <NewComment onAddComment={addCommentHandler} />}
-      {showComments && !isFetchingCommnts && <CommentList items={comments} />}
-      {isFetchingCommnts && <p>Loading...</p>}
+      {showComments && !isFetchingComments && <CommentList items={comments} />}
+      {isFetchingComments && <p>Loading...</p>}
     </section>
   );
 }
