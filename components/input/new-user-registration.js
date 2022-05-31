@@ -1,9 +1,9 @@
 import { useRef, useContext } from "react";
 
 import NotificationContext from "../../store/notification-context";
-import classes from "./newsletter-registration.module.css";
+import classes from "./new-user-registration.module.css";
 
-function NewsletterRegistration() {
+function NewUserRegistration() {
   const emailInputRef = useRef();
   const notificationCtx = useContext(NotificationContext);
 
@@ -14,11 +14,11 @@ function NewsletterRegistration() {
 
     notificationCtx.showNotification({
       title: "Signing up...",
-      message: "Registering for newsletter.",
+      message: "Registering for user.",
       status: "pending",
     });
 
-    fetch("/api/newsletter", {
+    fetch("/api/users", {
       method: "POST",
       body: JSON.stringify({ email: enteredEmail }),
       headers: {
@@ -37,7 +37,7 @@ function NewsletterRegistration() {
       .then((data) => {
         notificationCtx.showNotification({
           title: "Success!",
-          message: "Successfully registered for newsletter.",
+          message: "Successfully registered for user.",
           status: "success",
         });
       })
@@ -51,7 +51,7 @@ function NewsletterRegistration() {
   }
 
   return (
-    <section className={classes.newsletter}>
+    <section className={classes.user}>
       <h2>Sign up to stay updated!</h2>
       <form onSubmit={registrationHandler}>
         <div className={classes.control}>
@@ -69,4 +69,4 @@ function NewsletterRegistration() {
   );
 }
 
-export default NewsletterRegistration;
+export default NewUserRegistration;

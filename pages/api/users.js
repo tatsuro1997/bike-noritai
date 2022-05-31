@@ -11,8 +11,6 @@ async function handler(req, res) {
 
     let client;
 
-    console.log('========================');
-
     try {
       client = await connectDatabase();
     } catch (error) {
@@ -22,11 +20,8 @@ async function handler(req, res) {
       return;
     }
 
-    console.log("++++++++++++++++++++++++++++++");
-
-
     try {
-      await insertDocument(client, 'newsletter', { email: userEmail });
+      await insertDocument(client, "users", { email: userEmail });
       client.close();
     } catch (error) {
       res.status(500).json({
@@ -34,8 +29,6 @@ async function handler(req, res) {
       });
       return;
     }
-
-    console.log("Done");
 
     res.status(201).json({ message: "Signed up!" });
   }

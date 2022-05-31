@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import SpotList from "../../components/spots/spot-list";
 import SpotsSearch from "../../components/spots/spots-search";
-import { getAllSpots } from "../../healpers/api-util";
+import { getAllSpots } from "../../healpers/spot-api-util";
 
 function AllSpotsPage(props) {
   const router = useRouter();

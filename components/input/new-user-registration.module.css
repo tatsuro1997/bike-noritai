@@ -1,10 +1,10 @@
-.newsletter {
+.user {
   margin: 3rem auto;
   width: 90%;
   max-width: 20rem;
 }
 
-.newsletter h2 {
+.user h2 {
   text-align: center;
 }
 
@@ -17,7 +17,7 @@
   border: 1px solid #ccc;
 }
 
-.newsletter button {
+.user button {
   background-color: #03be9f;
   border: 1px solid #03be9f;
   border-radius: 6px;
@@ -28,8 +28,8 @@
   cursor: pointer;
 }
 
-.newsletter button:hover,
-.newsletter button:active {
+.user button:hover,
+.user button:active {
   background-color: #02afa1;
   border-color: #02afa1;
 }

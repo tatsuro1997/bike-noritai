@@ -7,7 +7,7 @@ import SpotList from "../../components/spots/spot-list";
 import ResultsTitle from "../../components/spots/results-title";
 import Button from "../../components/ui/button";
 import ErrorAlert from "../../components/ui/error-alert";
-import { getFilteredSpots } from "../../healpers/api-util";
+import { getFilteredSpots } from "../../healpers/spot-api-util";
 
 function FilteredSpotsPage(props) {
   const [loadedSpots, setLoadedSpots] = useState();
