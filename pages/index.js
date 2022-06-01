@@ -16,9 +16,7 @@ function HomePage(props) {
         />
       </Head>
       <NewUserRegistration />
-      <Link href="/spots/create">
-        スポット登録
-      </Link>
+      <Link href="/spots/create">スポット登録</Link>
       <SpotList items={props.spots} />
     </div>
   );

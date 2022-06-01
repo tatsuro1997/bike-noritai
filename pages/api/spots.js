@@ -1,31 +1,28 @@
-import {
-  connectDatabase,
-  insertDocument,
-  getAllDocuments,
-} from "../../healpers/db-util";
+import { connectDatabase, insertDocument, getAllDocuments } from "../../healpers/db-util";
 
 async function handler(req, res) {
-  // if (req.method === "GET") {
-  //   let client;
+  if (req.method === "GET") {
+    let client;
 
-  //   try {
-  //     client = await connectDatabase();
-  //   } catch (error) {
-  //     res.status(500).json({
-  //       message: "Connecting to the database failed!",
-  //     });
-  //     return;
-  //   }
+    try {
+      client = await connectDatabase();
+    } catch (error) {
+      res.status(500).json({
+        message: "Connecting to the database failed!",
+      });
+      return;
+    }
 
-  //   try {
-  //     const userss = await getAllDocuments(client, "users", { _id: -1 });
-  //     res.status(200).json({ users: userss });
-  //   } catch (error) {
-  //     res.status(500).json({ message: "Getting users failed." });
-  //   }
+    try {
+      const spots = await getAllDocuments(client, "spots", { _id: -1 });
+      res.status(200).json({ spots: spots });
+      console.log('@getAPI', spots);
+    } catch (error) {
+      res.status(500).json({ message: "Getting spots failed." });
+    }
 
-  //   client.close();
-  // }
+    client.close();
+  }
 
   if (req.method === "POST") {
     const spotName = req.body.name;

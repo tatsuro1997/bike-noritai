@@ -25,6 +25,7 @@
   margin: 0.5rem 0;
 }
 
+.type,
 .date,
 .address {
   display: flex;
@@ -32,6 +33,7 @@
   align-items: center;
 }
 
+.type svg,
 .date svg,
 .address svg {
   width: 1.25rem;

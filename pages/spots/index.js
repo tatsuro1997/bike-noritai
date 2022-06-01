@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import SpotList from "../../components/spots/spot-list";
 import SpotsSearch from "../../components/spots/spots-search";
@@ -24,6 +25,7 @@ function AllSpotsPage(props) {
         />
       </Head>
       <SpotsSearch onSearch={findSpotsHandler} />
+      <Link href="/spots/create">スポット登録</Link>
       <SpotList items={spots} />
     </>
   );
