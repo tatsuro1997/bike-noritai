@@ -4,8 +4,7 @@ import AddressIcon from "../icons/address-icon";
 import ArrowRightIcon from "../icons/arrow-right-icon";
 import DateIcon from "../icons/date-icon";
 import Button from "../ui/button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import HouseIcon from "../icons/house-icon";
 
 import classes from "./spot-item.module.css";
 
@@ -22,7 +21,7 @@ function SpotItem(props) {
           <h2>{name}</h2>
         </div>
         <div className={classes.type}>
-          <FontAwesomeIcon icon={faHouse} />
+          <HouseIcon />
           <h3>{type}</h3>
         </div>
         <div className={classes.date}>

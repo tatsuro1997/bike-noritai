@@ -1,7 +1,6 @@
 import Image from "next/image";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import HouseIcon from "../icons/house-icon";
 import ArrowRightIcon from "../icons/arrow-right-icon";
 import Button from "../ui/button";
 
@@ -20,7 +19,7 @@ function UserItem(props) {
           <h2>名前</h2>
         </div>
         <div className={classes.address}>
-          <FontAwesomeIcon icon={faEnvelope} />
+          <HouseIcon/>
           <p>{email}</p>
         </div>
         <div className={classes.actions}>
