@@ -9,13 +9,28 @@ import HouseIcon from "../icons/house-icon";
 import classes from "./spot-item.module.css";
 
 function SpotItem(props) {
-  const { id, name, type, prefecture, address1, open_time } = props;
+  const { id, image, name, type, prefecture, address1, open_time } = props;
 
   const exploreLink = `/spots/${id}`;
 
   return (
     <li className={classes.item}>
-      {/* <Image src={"/" + image} alt={title} width={250} height={160} /> */}
+      {image && (
+        <Image
+          src={`/uploads/spots/${image}`}
+          alt={name}
+          width={400}
+          height={250}
+        />
+      )}
+      {!image && (
+        <Image
+          src={"/images/no_image.webp"}
+          alt={name}
+          width={400}
+          height={250}
+        />
+      )}
       <div className={classes.content}>
         <div className={classes.summary}>
           <h2>{name}</h2>

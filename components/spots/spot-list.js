@@ -15,7 +15,7 @@ function SpotList(props) {
           prefecture={spot.prefecture}
           address1={spot.address1}
           open_time={spot.open_time}
-          // image={spot.image}
+          image={spot.image}
         />
       ))}
     </ul>

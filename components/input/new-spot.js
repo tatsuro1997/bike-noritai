@@ -4,10 +4,9 @@ import NotificationContext from "../../store/notification-context";
 
 import classes from "./new-spot.module.css";
 
-function NewSpot() {
+function NewSpot(props) {
   const [isInvalid, setIsInvalid] = useState(false);
   const nameInputRef = useRef();
-  // const imageInputRef = useRef();
   const typeInputRef = useRef();
   const prefectureInputRef = useRef();
   const address1InputRef = useRef();
@@ -21,19 +20,30 @@ function NewSpot() {
 
   const [image, setImage] = useState(null);
   const [createObjectURL, setCreateObjectURL] = useState(null);
+  const [imageName, setImageName] = useState(null);
 
   function previewImageHandler(event) {
     const enteredImage = event.target.files[0];
 
     setImage(enteredImage);
     setCreateObjectURL(URL.createObjectURL(enteredImage));
+    setImageName(event.target.files[0].name);
   }
 
-  function sendSpotHandler(event) {
+  const uploadToPublicFolder = async () => {
+    const body = new FormData();
+    body.append("file", image);
+    const response = await fetch("/api/upload", {
+      method: "POST",
+      body,
+      // body: body,
+    });
+  };
+
+  async function sendSpotHandler(event) {
     event.preventDefault();
 
     const enteredName = nameInputRef.current.value;
-    const enteredImage = imageInputRef.current.file[0];
     const enteredType = typeInputRef.current.value;
     const enteredPrefecture = prefectureInputRef.current.value;
     const enteredAddress1 = address1InputRef.current.value;
@@ -70,7 +80,7 @@ function NewSpot() {
       method: "POST",
       body: JSON.stringify({
         name: enteredName,
-        // image: enteredImage,
+        image: imageName,
         type: enteredType,
         prefecture: enteredPrefecture,
         address1: enteredAddress1,
@@ -108,6 +118,8 @@ function NewSpot() {
           status: "error",
         });
       });
+
+    uploadToPublicFolder();
   }
 
   return (
@@ -132,7 +144,6 @@ function NewSpot() {
           <input
             type="file"
             id="image"
-            // ref={imageInputRef}
             onChange={previewImageHandler}
           />
         </div>
