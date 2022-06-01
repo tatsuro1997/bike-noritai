@@ -16,7 +16,6 @@ async function handler(req, res) {
     try {
       const spots = await getAllDocuments(client, "spots", { _id: -1 });
       res.status(200).json({ spots: spots });
-      console.log('@getAPI', spots);
     } catch (error) {
       res.status(500).json({ message: "Getting spots failed." });
     }

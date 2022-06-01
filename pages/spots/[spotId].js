@@ -51,8 +51,6 @@ function SpotDetailPage(props) {
 export async function getStaticProps(context) {
   const spotId = context.params.spotId;
 
-  console.log('spotId', spotId);
-
   const spot = await getSpotById(spotId);
 
   return {
