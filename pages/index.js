@@ -8,7 +8,7 @@ function HomePage(props) {
   return (
     <div>
       <Head>
-        <title>NextJS Spots</title>
+        <title>バイクノリタイ - ツーリングスポット検索サイト</title>
         <meta
           name="description"
           constent="Find a lot of great spots that allow you to evolve..."
