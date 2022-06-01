@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
     <NotificationContextProvider>
       <Layout>
         <Head>
-          <title>Next Spots</title>
+          <title>バイクノリタイ - ツーリングスポット検索サイト</title>
           <meta name="description" content="Next Stops" />
           <meta
             name="viewport"
