@@ -37,8 +37,8 @@ function SpotDetailPage(props) {
         off_day={spot.off_day}
         parking={spot.parking}
         hp_url={spot.hp_url}
-        // image={spot.image}
-        // imageAlt={spot.title}
+        image={spot.image}
+        imageAlt={spot.name}
       />
       <SpotContent>
         <p>{spot.description}</p>

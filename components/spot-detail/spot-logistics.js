@@ -22,9 +22,24 @@ function SpotLogistics(props) {
 
   return (
     <section className={classes.logistics}>
-      {/* <div className={classes.image}>
-        <Image src={`/${image}`} alt={imageAlt} width={320} height={320} />
-      </div> */}
+      <div className={classes.image}>
+        {image && (
+          <Image
+            src={`/uploads/spots/${image}`}
+            alt={imageAlt}
+            width={320}
+            height={200}
+          />
+        )}
+        {!image && (
+          <Image
+            src={"/images/no_image.webp"}
+            alt={imageAlt}
+            width={320}
+            height={200}
+          />
+        )}
+      </div>
       <ul className={classes.list}>
         <LogisticsItem icon={HouseIcon}>
           <p>{type}</p>
