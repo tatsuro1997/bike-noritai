@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useRef, useState, useContext } from "react";
 import NotificationContext from "../../store/notification-context";
 
@@ -6,6 +7,7 @@ import classes from "./new-spot.module.css";
 function NewSpot() {
   const [isInvalid, setIsInvalid] = useState(false);
   const nameInputRef = useRef();
+  // const imageInputRef = useRef();
   const typeInputRef = useRef();
   const prefectureInputRef = useRef();
   const address1InputRef = useRef();
@@ -17,10 +19,21 @@ function NewSpot() {
   const descriptionInputRef = useRef();
   const notificationCtx = useContext(NotificationContext);
 
+  const [image, setImage] = useState(null);
+  const [createObjectURL, setCreateObjectURL] = useState(null);
+
+  function previewImageHandler(event) {
+    const enteredImage = event.target.files[0];
+
+    setImage(enteredImage);
+    setCreateObjectURL(URL.createObjectURL(enteredImage));
+  }
+
   function sendSpotHandler(event) {
     event.preventDefault();
 
     const enteredName = nameInputRef.current.value;
+    const enteredImage = imageInputRef.current.file[0];
     const enteredType = typeInputRef.current.value;
     const enteredPrefecture = prefectureInputRef.current.value;
     const enteredAddress1 = address1InputRef.current.value;
@@ -57,6 +70,7 @@ function NewSpot() {
       method: "POST",
       body: JSON.stringify({
         name: enteredName,
+        // image: enteredImage,
         type: enteredType,
         prefecture: enteredPrefecture,
         address1: enteredAddress1,
@@ -102,6 +116,25 @@ function NewSpot() {
         <div className={classes.control}>
           <label htmlFor="name">スポット名</label>
           <input type="text" id="name" ref={nameInputRef} />
+        </div>
+      </div>
+      {createObjectURL && (
+        <Image
+          src={createObjectURL}
+          alt="プレビュー画像"
+          width={250}
+          height={160}
+        />
+      )}
+      <div className={classes.row}>
+        <div className={classes.control}>
+          <label htmlFor="image">スポット画像</label>
+          <input
+            type="file"
+            id="image"
+            // ref={imageInputRef}
+            onChange={previewImageHandler}
+          />
         </div>
       </div>
       <div className={classes.control}>
