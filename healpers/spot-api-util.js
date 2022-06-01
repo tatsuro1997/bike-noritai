@@ -12,12 +12,15 @@ export async function getAllSpots() {
 
 export async function getFeaturedSpots() {
   const allSpots = await getAllSpots();
+  console.log('@spotApi getFeaturedSpots', allSpots);
   return allSpots.filter((spot) => spot.isFeatured);
 }
 
 export async function getSpotById(id) {
   const allSpots = await getAllSpots();
-  return allSpots.find((spot) => spot.id === id);
+  console.log("@spotApi getSpotById", allSpots);
+  console.log("@spotApi getSpotById id", id);
+  return allSpots.find((spot) => spot._id === id);
 }
 
 export async function getFilteredSpots(dateFilter) {
