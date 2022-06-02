@@ -3,7 +3,7 @@ import Head from "next/head";
 import { getFeaturedSpots } from "../healpers/spot-api-util";
 import SpotList from "../components/spots/spot-list";
 import NewUserRegistration from "../components/input/new-user-registration";
-import Link from "next/link";
+import SpotRegistration from "../components/spots/spot-registration";
 
 function HomePage(props) {
   return (
@@ -15,8 +15,8 @@ function HomePage(props) {
           constent="Find a lot of great spots that allow you to evolve..."
         />
       </Head>
+      <SpotRegistration />
       <NewUserRegistration />
-      <Link href="/spots/create">スポット登録</Link>
       <SpotList items={props.spots} />
     </div>
   );

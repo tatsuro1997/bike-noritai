@@ -188,8 +188,8 @@ function NewSpot(props) {
           ref={descriptionInputRef}
         ></textarea>
       </div>
-      {isInvalid && <p>正しい情報を入力してください。</p>}
-      <button>Submit</button>
+      {isInvalid && <p className={classes.error}>※ 正しい情報を入力してください。</p>}
+      <button>スポットを保存</button>
     </form>
   );
 }

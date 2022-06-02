@@ -1,7 +1,8 @@
 import Head from "next/head";
-import Link from "next/link";
 import { useRouter } from "next/router";
+
 import SpotList from "../../components/spots/spot-list";
+import SpotRegistration from "../../components/spots/spot-registration";
 import SpotsSearch from "../../components/spots/spots-search";
 import { getAllSpots } from "../../healpers/spot-api-util";
 
@@ -24,8 +25,8 @@ function AllSpotsPage(props) {
           constent="Find a lot of great spots that allow you to evolve..."
         />
       </Head>
+      <SpotRegistration />
       <SpotsSearch onSearch={findSpotsHandler} />
-      <Link href="/spots/create">スポット登録</Link>
       <SpotList items={spots} />
     </>
   );
