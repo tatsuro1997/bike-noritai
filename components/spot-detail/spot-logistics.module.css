@@ -3,7 +3,7 @@
   border-radius: 6px;
   background-color: #2b2b2b;
   padding: 2rem;
-  max-width: 50rem;
+  max-width: 70rem;
   width: 80%;
   margin: -3rem auto;
   color: #d5eeeb;
@@ -15,15 +15,15 @@
 }
 
 .image {
-  width: 10rem;
-  height: 10rem;
-  border-radius: 50%;
+  width: 15rem;
+  height: 9rem;
+  /* border-radius: 50%; */
   overflow: hidden;
   border: 5px solid white;
 }
 
 .image img {
-  width: 10rem;
+  width: 15rem;
   height: 10rem;
   object-fit: cover;
 }
@@ -52,7 +52,7 @@
 
   .image {
     width: 20rem;
-    height: 20rem;
+    height: 12.5rem;
   }
 
   .image img {

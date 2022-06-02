@@ -1,18 +1,11 @@
 export async function getAllSpots() {
-  const response = await fetch(
-    "https://nextjs-course-dd497-default-rtdb.firebaseio.com/events.json"
-    // 投稿データはmongoDBまたはスプシに置き換え要検討
-  );
-  const data = await response.json();
+  let spots;
 
-  const spots = [];
-
-  for (const key in data) {
-    spots.push({
-      id: key,
-      ...data[key],
+  await fetch("http://localhost:3000/api/spots/")
+    .then((response) => response.json())
+    .then((data) => {
+      spots = data.spots;
     });
-  }
 
   return spots;
 }
@@ -24,7 +17,7 @@ export async function getFeaturedSpots() {
 
 export async function getSpotById(id) {
   const allSpots = await getAllSpots();
-  return allSpots.find((spot) => spot.id === id);
+  return allSpots.find((spot) => spot._id === id);
 }
 
 export async function getFilteredSpots(dateFilter) {
@@ -34,9 +27,7 @@ export async function getFilteredSpots(dateFilter) {
 
   let filteredSpots = allSpots.filter((spot) => {
     const spotDate = new Date(spot.date);
-    return (
-      spotDate.getFullYear() === year && spotDate.getMonth() === month - 1
-    );
+    return spotDate.getFullYear() === year && spotDate.getMonth() === month - 1;
   });
 
   return filteredSpots;

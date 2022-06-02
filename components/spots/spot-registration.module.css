@@ -1,0 +1,11 @@
+.control {
+  display: inline-block;
+  width: 80%;
+  margin: 0 auto;
+  text-align: right;
+}
+
+.link{
+  border-bottom: solid;
+  text-align: right;
+}

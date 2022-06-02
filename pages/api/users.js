@@ -14,8 +14,8 @@ async function handler(req, res) {
     }
 
     try {
-      const userss = await getAllDocuments(client, "users", { _id: -1 });
-      res.status(200).json({ users: userss });
+      const users = await getAllDocuments(client, "users", { _id: -1 });
+      res.status(200).json({ users: users });
     } catch (error) {
       res.status(500).json({ message: "Getting users failed." });
     }

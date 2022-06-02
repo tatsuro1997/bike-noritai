@@ -21,15 +21,24 @@ function SpotDetailPage(props) {
   return (
     <>
       <Head>
-        <title>{spot.title}</title>
+        <title>{spot.name}</title>
         <meta name="description" constent={spot.description} />
       </Head>
-      <SpotSummary title={spot.title} />
+      <SpotSummary name={spot.name} />
       <SpotLogistics
-        date={spot.date}
-        address={spot.location}
+        key={spot._id}
+        id={spot._id}
+        name={spot.name}
+        type={spot.type}
+        prefecture={spot.prefecture}
+        address1={spot.address1}
+        address2={spot.address2}
+        open_time={spot.open_time}
+        off_day={spot.off_day}
+        parking={spot.parking}
+        hp_url={spot.hp_url}
         image={spot.image}
-        imageAlt={spot.title}
+        imageAlt={spot.name}
       />
       <SpotContent>
         <p>{spot.description}</p>
