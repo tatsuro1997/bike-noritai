@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { getFeaturedSpots } from "../healpers/spot-api-util";
+import { getFeaturedSpots } from "../helpers/spot-api-util";
 import SpotList from "../components/spots/spot-list";
 import SpotRegistration from "../components/spots/spot-registration";
 

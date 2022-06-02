@@ -1,4 +1,4 @@
-import { connectDatabase, insertDocument, getAllDocuments } from "../../../healpers/db-util";
+import { connectDatabase, insertDocument, getAllDocuments } from "../../../helpers/db-util";
 
 async function handler(req, res) {
   const spotId = req.query.spotId;

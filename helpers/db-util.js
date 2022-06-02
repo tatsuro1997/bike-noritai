@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 
 export async function connectDatabase() {
   const client = await MongoClient.connect(
-    // "mongodb+srv://tatz:n1fl3cI3Ifhp8jSo@cluster0.smxrn.mongodb.net/events?retryWrites=true&w=majority"
+    // TODO: DB名をbike-noritaiに修正する
     "mongodb://tatz:n1fl3cI3Ifhp8jSo@cluster0-shard-00-00.smxrn.mongodb.net:27017,cluster0-shard-00-01.smxrn.mongodb.net:27017,cluster0-shard-00-02.smxrn.mongodb.net:27017/spots?ssl=true&replicaSet=atlas-8gitpc-shard-0&authSource=admin&retryWrites=true&w=majority"
   );
 
