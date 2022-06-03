@@ -3,6 +3,8 @@ import { useRef } from "react";
 import classes from "./profile-form.module.css";
 
 function ProfileForm(props) {
+  const { experience, url, area, prefecture, bike_name } = props;
+
   const experienceRef = useRef();
   const urlRef = useRef();
   const areaRef = useRef();
@@ -31,23 +33,38 @@ function ProfileForm(props) {
     <form className={classes.form} onSubmit={submitHanlder}>
       <div className={classes.control}>
         <label htmlFor="new-experience">バイク歴</label>
-        <input type="number" id="experience" ref={experienceRef} />
+        <input
+          type="number"
+          id="experience"
+          ref={experienceRef}
+          defaultValue={experience}
+        />
       </div>
       <div className={classes.control}>
         <label htmlFor="url">リンク</label>
-        <input type="url" id="url" ref={urlRef} />
+        <input type="url" id="url" ref={urlRef} defaultValue={url} />
       </div>
       <div className={classes.control}>
         <label htmlFor="area">主な活動エリア</label>
-        <input type="area" id="area" ref={areaRef} />
+        <input type="area" id="area" ref={areaRef} defaultValue={area} />
       </div>
       <div className={classes.control}>
         <label htmlFor="prefecture">都道府県</label>
-        <input type="text" id="prefecture" ref={prefectureRef} />
+        <input
+          type="text"
+          id="prefecture"
+          ref={prefectureRef}
+          defaultValue={prefecture}
+        />
       </div>
       <div className={classes.control}>
-        <label htmlFor="bike_name">バイクタイプ</label>
-        <input type="text" id="bike_name" ref={bikeNameRef} />
+        <label htmlFor="bike_name">バイク名</label>
+        <input
+          type="text"
+          id="bike_name"
+          ref={bikeNameRef}
+          defaultValue={bike_name}
+        />
       </div>
       <div className={classes.action}>
         <button>プロフィールを更新</button>
