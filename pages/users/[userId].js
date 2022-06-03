@@ -1,5 +1,58 @@
-function UserDetailPage() {
-  return <h1>User Detail Page</h1>;
+import Head from "next/head";
+
+import UserProfile from "../../components/users/user-profile";
+import { getAllUsers, getUserById } from "../../helpers/user-api-util";
+
+function UserDetailPage(props) {
+  const user = props.selectedUser;
+
+  if (!user) {
+    return (
+      <div className="center">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <Head>
+        <title>〇〇さんのマイページ</title>
+        <meta
+          name="description"
+          constent="〇〇さんのマイページ。イキタイスポットを見つけましょう！"
+        />
+      </Head>
+      <UserProfile
+        id={user.uid}
+      />
+      <h2>登録スポット</h2>
+    </>
+  );
+}
+
+export async function getStaticProps(context) {
+  const userId = context.params.userId;
+
+  const user = await getUserById(userId);
+
+  return {
+    props: {
+      selectedUser: user,
+    },
+    revalidate: 30,
+  };
+}
+
+export async function getStaticPaths() {
+  const users = await getAllUsers();
+
+  const paths = users.map((user) => ({ params: { userId: user.uid.toString() } }));
+
+  return {
+    paths: paths,
+    fallback: "blocking",
+  };
 }
 
 export default UserDetailPage;
