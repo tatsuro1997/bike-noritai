@@ -14,6 +14,15 @@ function UserDetailPage(props) {
     );
   }
 
+  const humanReadableDate = new Date(user.created_at).toLocaleDateString(
+    "ko-KR",
+    {
+      day: "numeric",
+      month: "numeric",
+      year: "numeric",
+    }
+  );
+
   return (
     <>
       <Head>
@@ -30,6 +39,7 @@ function UserDetailPage(props) {
         experience={user.experience}
         bike_name={user.bike_name}
         url={user.url}
+        created_at={humanReadableDate}
       />
       <h2>登録スポット</h2>
     </>
