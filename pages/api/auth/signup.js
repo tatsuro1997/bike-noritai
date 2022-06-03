@@ -36,11 +36,13 @@ async function handler(req, res) {
   }
 
   const hashedPassword = await hashPassword(password);
+  const now = new Date();
 
   const result = await db.collection("users").insertOne({
     email: email,
     password: hashedPassword,
-    uid: uid
+    uid: uid,
+    created_at: now,
   });
 
   res.status(201).json({

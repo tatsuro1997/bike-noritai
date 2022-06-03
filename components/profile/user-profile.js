@@ -15,11 +15,11 @@ function UserProfile(props) {
           <p>{prefecture}</p>
           <p>{experience}</p>
           <p>{bike_name}</p>
-          <Link href={url}>
+          {url && <Link href={url}>
             <a target="_blank" rel="noopener noreferrer">
               {url}
             </a>
-          </Link>
+          </Link>}
           <Link href={`/users/${id}/setting`}>
             <a>setting</a>
           </Link>
