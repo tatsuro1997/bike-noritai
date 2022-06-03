@@ -27,6 +27,7 @@ function UserSetting(props) {
       <ProfileForm
         onUpdateProfile={updateProfileHandler}
         id={user.uid}
+        name={user.name}
         area={user.area}
         prefecture={user.prefecture}
         experience={user.experience}

@@ -4,7 +4,7 @@ import Link from "next/link";
 import classes from "./user-profile.module.css";
 
 function UserProfile(props) {
-  const { id, area, prefecture, experience, bike_name, url, created_at } = props;
+  const { id, name, area, prefecture, experience, bike_name, url, created_at } = props;
 
   return (
     <>
@@ -27,7 +27,7 @@ function UserProfile(props) {
                 height={200}
               />
             </div>
-            <p>{id}さんのプロフ</p>
+            <p>{name}さんのプロフ</p>
           </div>
           <div className={classes.profileInfo}>
             <p>主なツーリングエリア：{area}</p>

@@ -28,6 +28,7 @@ async function handler(req, res) {
     return;
   }
 
+  const userName = req.body.name;
   const userExperience = req.body.experience;
   const userUrl = req.body.url;
   const userArea = req.body.area;
@@ -40,6 +41,7 @@ async function handler(req, res) {
     },
     {
       $set: {
+        name: userName,
         experience: userExperience,
         url: userUrl,
         area: userArea,
