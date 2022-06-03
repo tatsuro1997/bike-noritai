@@ -46,8 +46,8 @@ function ProfileForm(props) {
         <input type="text" id="prefecture" ref={prefectureRef} />
       </div>
       <div className={classes.control}>
-        <label htmlFor="bike_type">バイクタイプ</label>
-        <input type="text" id="bike_type" ref={bikeNameRef} />
+        <label htmlFor="bike_name">バイクタイプ</label>
+        <input type="text" id="bike_name" ref={bikeNameRef} />
       </div>
       <div className={classes.action}>
         <button>プロフィールを更新</button>

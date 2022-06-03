@@ -23,7 +23,14 @@ function UserDetailPage(props) {
           constent="〇〇さんのマイページ。イキタイスポットを見つけましょう！"
         />
       </Head>
-      <UserProfile id={user.uid} />
+      <UserProfile
+        id={user.uid}
+        area={user.area}
+        prefecture={user.prefecture}
+        experience={user.experience}
+        bike_name={user.bike_name}
+        url={user.url}
+      />
       <h2>登録スポット</h2>
     </>
   );
