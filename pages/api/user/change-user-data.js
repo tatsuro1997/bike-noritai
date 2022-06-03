@@ -34,8 +34,6 @@ async function handler(req, res) {
   const usePrefecturer = req.body.prefecture;
   const userBikeName = req.body.bike_name;
 
-  console.log(userExperience);
-
   const result = await userCollection.updateOne(
     {
       _id: user._id,

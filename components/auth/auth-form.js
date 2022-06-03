@@ -66,7 +66,6 @@ function AuthForm() {
           enteredPassword,
           uid
         );
-        console.log(result);
       } catch (error) {
         console.log(error);
       }

@@ -1,8 +1,11 @@
+import { useRouter } from "next/router";
+
 import ProfileForm from "../../../components/profile/profile-form";
 import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
 
 function UserSetting(props) {
   const user = props.selectedUser;
+  const route = useRouter();
 
   async function updateProfileHandler(userData) {
     const response = await fetch("/api/user/change-user-data", {
@@ -15,7 +18,7 @@ function UserSetting(props) {
 
     const data = await response.json();
 
-    console.log(data);
+    route.back();
   }
 
   return (
