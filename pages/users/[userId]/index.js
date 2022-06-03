@@ -1,7 +1,7 @@
 import Head from "next/head";
 
-import UserProfile from "../../components/users/user-profile";
-import { getAllUsers, getUserById } from "../../helpers/user-api-util";
+import UserProfile from "../../../components/profile/user-profile";
+import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
 
 function UserDetailPage(props) {
   const user = props.selectedUser;
@@ -23,9 +23,7 @@ function UserDetailPage(props) {
           constent="〇〇さんのマイページ。イキタイスポットを見つけましょう！"
         />
       </Head>
-      <UserProfile
-        id={user.uid}
-      />
+      <UserProfile id={user.uid} />
       <h2>登録スポット</h2>
     </>
   );
@@ -47,7 +45,9 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   const users = await getAllUsers();
 
-  const paths = users.map((user) => ({ params: { userId: user.uid.toString() } }));
+  const paths = users.map((user) => ({
+    params: { userId: user.uid.toString() },
+  }));
 
   return {
     paths: paths,
