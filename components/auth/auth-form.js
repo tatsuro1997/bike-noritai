@@ -1,13 +1,13 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 
 import classes from "./auth-form.module.css";
 
-async function createUser(email, password) {
+async function createUser(email, password, uid) {
   const response = await fetch("/api/auth/signup", {
     method: "POST",
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ email, password, uid }),
     headers: {
       "Content-Type": "application/json",
     },
@@ -25,9 +25,19 @@ async function createUser(email, password) {
 function AuthForm() {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
-
+  const [users, setUsers] = useState([]);
   const [isLogin, setIsLogin] = useState(true);
   const router = useRouter();
+
+  useEffect(() => {
+    fetch("/api/users")
+      .then((response) => response.json())
+      .then((data) => {
+        setUsers(data.users);
+      });
+  }, []);
+
+  const uid = users.length + 1;
 
   function switchAuthModeHandler() {
     setIsLogin((prevState) => !prevState);
@@ -47,11 +57,15 @@ function AuthForm() {
       });
 
       if (!result.error) {
-        router.replace('/profile')
+        router.replace("/");
       }
     } else {
       try {
-        const result = await createUser(enteredEmail, enteredPassword);
+        const result = await createUser(
+          enteredEmail,
+          enteredPassword,
+          uid
+        );
         console.log(result);
       } catch (error) {
         console.log(error);
@@ -85,6 +99,9 @@ function AuthForm() {
           >
             {isLogin ? "Create new account" : "Login with existing account"}
           </button>
+        </div>
+        <div className={classes.control}>
+          <input type="hidden" id="uid" required value={uid} />
         </div>
       </form>
     </section>

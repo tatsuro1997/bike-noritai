@@ -5,7 +5,7 @@ import { connectDatabase } from "../../../helpers/db-util";
 import { verifyPassword } from "../../../helpers/auth-util";
 
 export default NextAuth({
-  settion: {
+  session: {
     jwt: true,
   },
   providers: [
@@ -39,4 +39,15 @@ export default NextAuth({
       },
     }),
   ],
+  callbacks: {
+    async session({ session, user, token }) {
+      const client = await connectDatabase();
+      const usersCollection = client.db().collection("users");
+      user = await usersCollection.findOne({
+        email: token.email,
+      });
+      session.user.id = user.uid;
+      return session;
+    },
+  },
 });
