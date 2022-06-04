@@ -21,12 +21,94 @@
   height: 10rem;
 }
 
-.content {
-  width: 100%;
-  padding: 0 1rem;
-  text-align: center;
+/* profileHeader */
+.profileHeader {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 0.8rem;
+  color: #222;
 }
 
-.content h2 {
-  margin: 0.5rem 0;
+.profileHeader_header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+.setting {
+  display: flex;
+  margin: 0.8rem 0;
+}
+
+.created_at {
+  color: #888;
+}
+
+/* profileHeader_content */
+.profileHeader_content {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.profileHeader_content img {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.name {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-left: 2rem;
+}
+
+/* profileInfo */
+.profileInfo {
+  width: 80%;
+  margin: 0 auto;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.profileInfo li {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.profileInfo li a {
+  border-bottom: solid #111111;
+}
+
+.key {
+  display: block;
+  width: 200px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.value {
+  color: #111111;
+}
+
+/* 共通 */
+.icon {
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    width: 100%;
+  }
+  .name {
+    font-size: 1.5rem;
+  }
+
+  .key {
+    font-size: 0.7rem;
+  }
+
+  .value {
+    font-size: 0.8rem;
+  }
 }
