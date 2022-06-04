@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import SpotList from "../../components/spots/spot-list";
 import SpotRegistration from "../../components/spots/spot-registration";
 import SpotsSearch from "../../components/spots/spots-search";
-import { getAllSpots } from "../../healpers/spot-api-util";
+import { getAllSpots } from "../../helpers/spot-api-util";
 
 function AllSpotsPage(props) {
   const router = useRouter();

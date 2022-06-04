@@ -1,8 +1,7 @@
 import Head from "next/head";
 
-import { getFeaturedSpots } from "../healpers/spot-api-util";
+import { getFeaturedSpots } from "../helpers/spot-api-util";
 import SpotList from "../components/spots/spot-list";
-import NewUserRegistration from "../components/input/new-user-registration";
 import SpotRegistration from "../components/spots/spot-registration";
 
 function HomePage(props) {
@@ -16,7 +15,6 @@ function HomePage(props) {
         />
       </Head>
       <SpotRegistration />
-      <NewUserRegistration />
       <SpotList items={props.spots} />
     </div>
   );
