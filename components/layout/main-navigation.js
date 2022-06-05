@@ -32,17 +32,24 @@ function MainNavigation() {
         </div>
         <div className={classes.navigations}>
           <nav className={classes.navigation}>
-            <Image
-              src={"/images/no_image.webp"}
-              alt={"プロフィール画像"}
-              width={30}
-              height={30}
-              onClick={nemuToggleHandler}
-            />
+            {session && (
+              <Image
+                src={"/images/no_image.webp"}
+                alt={"プロフィール画像"}
+                width={30}
+                height={30}
+                onClick={nemuToggleHandler}
+              />
+            )}
+            {!session && !loading && (
+              <Link href="/auth">
+                <a>ログイン</a>
+              </Link>
+            )}
           </nav>
         </div>
       </header>
-      {isShowMenu && (
+      {isShowMenu && session && (
         <div className={classes.menu_content} onClick={nemuToggleHandler}>
           <div className={classes.menu_nav}>
             <ul className={classes.profile}>

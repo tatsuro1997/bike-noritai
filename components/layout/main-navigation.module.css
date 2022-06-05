@@ -72,12 +72,7 @@
 }
 
 .header a:hover {
-  color: #c291e2;
-}
-
-.header button:hover {
-  background-color: #c291e2;
-  color: #38015c;
+  color: #deffcc;
 }
 
 /* menu_content */
@@ -110,6 +105,13 @@
   line-height: 1;
   padding: 10px;
   cursor: pointer;
+}
+
+.profile a:hover,
+.profile span:hover,
+.links a:hover,
+.logout li:hover{
+  color: #aaa;
 }
 
 .profile span {
