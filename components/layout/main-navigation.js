@@ -1,13 +1,20 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
+import { useState } from "react";
 
 import classes from "./main-navigation.module.css";
 
 function MainNavigation() {
   const { data: session, loading } = useSession();
+  const [isShowMenu, setIsShowMenu] = useState(false);
 
   function logoutHandler() {
     signOut();
+  }
+
+  function nemuToggleHandler() {
+    setIsShowMenu((prevState) => !prevState);
   }
 
   let exploreLink;
@@ -18,43 +25,57 @@ function MainNavigation() {
   }
 
   return (
-    <header className={classes.header}>
-      <div className={classes.logo}>
-        <Link href="/">バイクノリタイ</Link>
-      </div>
-      <div className={classes.navigations}>
-        <nav>
-          <ul>
-            {!session && !loading && (
+    <>
+      <header className={classes.header}>
+        <div className={classes.logo}>
+          <Link href="/">バイクノリタイ</Link>
+        </div>
+        <div className={classes.navigations}>
+          <nav className={classes.navigation}>
+            <Image
+              src={"/images/no_image.webp"}
+              alt={"プロフィール画像"}
+              width={30}
+              height={30}
+              onClick={nemuToggleHandler}
+            />
+          </nav>
+        </div>
+      </header>
+      {isShowMenu && (
+        <div className={classes.menu_content} onClick={nemuToggleHandler}>
+          <div className={classes.menu_nav}>
+            <ul className={classes.profile}>
+              {session && exploreLink && (
+                <li>
+                  <Link href={exploreLink}>
+                    <a>{session.user.name}</a>
+                  </Link>
+                  <span>マイページを表示</span>
+                </li>
+              )}
+            </ul>
+            <ul className={classes.links}>
               <li>
-                <Link href="/auth">Login</Link>
+                <Link href="/spots">
+                  <a>スポット一覧</a>
+                </Link>
               </li>
-            )}
-            {!session && (
               <li>
-                <Link href="/spots">スポット一覧</Link>
+                <Link href="/users">
+                  <a>ユーザー一覧</a>
+                </Link>
               </li>
-            )}
-
-            {session && exploreLink && (
+            </ul>
+            <ul className={classes.logout}>
               <li>
-                <Link href={exploreLink}>{session.user.email}</Link>
+                <a onClick={logoutHandler}>ログアウト</a>
               </li>
-            )}
-            {session && (
-              <li>
-                <Link href="/users">ユーザー一覧</Link>
-              </li>
-            )}
-            {session && (
-              <li>
-                <button onClick={logoutHandler}>Logout</button>
-              </li>
-            )}
-          </ul>
-        </nav>
-      </div>
-    </header>
+            </ul>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

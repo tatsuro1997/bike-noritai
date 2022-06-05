@@ -5,13 +5,13 @@
   align-items: baseline;
   padding: 0 10%;
   height: 3rem;
-  background-color: #007A00;
+  background-color: #007a00;
 }
 
 .logo {
   font-size: 1.5rem;
   color: white;
-  font-family: 'Fira', sans-serif;
+  font-family: "Fira", sans-serif;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -28,10 +28,18 @@
   display: flex;
 }
 
+.navigation {
+  margin-top: 0.5rem;
+}
+
 .navigation a {
   text-decoration: none;
   color: #fff;
   font-size: 1rem;
+}
+
+.navigation img {
+  border-radius: 50%;
 }
 
 .header ul {
@@ -70,6 +78,59 @@
 .header button:hover {
   background-color: #c291e2;
   color: #38015c;
+}
+
+/* menu_content */
+.menu_content {
+  background-color: white;
+  width: 15rem;
+  height: auto;
+  border-radius: 1rem;
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  margin-right: 1rem;
+  right: 0;
+  z-index: 10;
+  position: fixed;
+}
+
+.menu_nav {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.menu_nav ul {
+  padding: 0;
+}
+
+.menu_nav a {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.profile span {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #888;
+  margin-top: 5px;
+}
+
+.links {
+  border-top: solid #eee;
+  border-bottom: solid #eee;
+}
+
+.links li {
+  padding: 0.5rem 0;
+}
+
+.logout a {
+  padding-bottom: 1rem;
 }
 
 @media (min-width: 768px) {
