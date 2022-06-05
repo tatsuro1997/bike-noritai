@@ -37,23 +37,23 @@ function UserProfile(props) {
           </div>
           <ul className={classes.profileInfo}>
             <li>
-              <sapn className={classes.key}>主なツーリングエリア</sapn>
+              <span className={classes.key}>主なツーリングエリア</span>
               <span className={classes.value}>{area}</span>
             </li>
             <li>
-              <sapn className={classes.key}>都道府県</sapn>
+              <span className={classes.key}>都道府県</span>
               <span className={classes.value}>{prefecture}</span>
             </li>
             <li>
-              <sapn className={classes.key}>バイク歴</sapn>
+              <span className={classes.key}>バイク歴</span>
               <span className={classes.value}>{experience}年</span>
             </li>
             <li>
-              <sapn className={classes.key}>車種</sapn>
+              <span className={classes.key}>車種</span>
               <span className={classes.value}>{bike_name}</span>
             </li>
             <li>
-              <sapn className={classes.key}>URL</sapn>
+              <span className={classes.key}>URL</span>
               {url && (
                 <Link href={url}>
                   <a target="_blank" rel="noopener noreferrer">

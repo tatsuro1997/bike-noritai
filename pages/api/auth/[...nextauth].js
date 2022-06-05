@@ -47,6 +47,7 @@ export default NextAuth({
         email: token.email,
       });
       session.user.id = user.uid;
+      session.user.name = user.name;
       return session;
     },
   },
