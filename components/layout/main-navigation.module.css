@@ -42,6 +42,10 @@
   border-radius: 50%;
 }
 
+.navigation img:hover {
+  cursor: pointer;
+}
+
 .header ul {
   list-style: none;
   margin: 0;
