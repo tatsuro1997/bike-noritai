@@ -1,8 +1,9 @@
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useContext } from "react";
 
 import NotificationContext from "../../store/notification-context";
 import Notification from "../ui/notification";
+import Footer from "./footer";
 import MainNavigation from "./main-navigation";
 import TopMainNavigation from "./top-main-navigation";
 
@@ -31,6 +32,7 @@ function Layout(props) {
           status={activeNotification.status}
         />
       )}
+      <Footer />
     </>
   );
 }
