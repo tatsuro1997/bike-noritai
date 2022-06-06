@@ -1,0 +1,27 @@
+.control {
+  width: 100%;
+  height: 90vh;
+  background-color: #007A00;
+  display: inline-block;
+}
+
+.background_image {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  display: block;
+  opacity: 0.4;
+}
+
+.contents {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.contents h2 {
+  color: white;
+}

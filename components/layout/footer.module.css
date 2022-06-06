@@ -1,0 +1,37 @@
+.footer {
+  background-color: #007a00;
+  height: 20rem;
+  color: white;
+}
+
+.footer a {
+  color: white;
+}
+
+/* .fooder a:hover {
+  border-bottom: 1px solid #fff;
+} */
+
+.sitemap {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.links {
+  list-style-type: "- ";
+  padding: 1rem 0;
+}
+
+.links p {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.links li {
+  font-size: 0.9rem;
+  margin-left: 1.2rem;
+}
+
+.foot {
+  padding: 5rem 0;
+}
