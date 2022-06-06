@@ -3,9 +3,9 @@ import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
 import { useState } from "react";
 
-import classes from "./main-navigation.module.css";
+import classes from "./top-main-navigation.module.css";
 
-function MainNavigation() {
+function TopMainNavigation() {
   const { data: session, loading } = useSession();
   const [isShowMenu, setIsShowMenu] = useState(false);
 
@@ -86,4 +86,4 @@ function MainNavigation() {
   );
 }
 
-export default MainNavigation;
+export default TopMainNavigation;
