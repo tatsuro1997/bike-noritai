@@ -1,10 +1,19 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import SpotsSearch from "../spots/spots-search";
 
 import classes from "./top-main.module.css";
 
 function TopMain() {
+  const router = useRouter();
+
+  function findSpotsHandler(year, month) {
+    const fullPath = `/spots/${year}/${month}`;
+
+    router.push(fullPath);
+  }
+
   return (
     <>
       <div className={classes.control}>
@@ -24,7 +33,7 @@ function TopMain() {
             width={550}
             height={300}
           />
-          <SpotsSearch />
+          <SpotsSearch onSearch={findSpotsHandler} />
         </div>
       </div>
     </>
