@@ -1,10 +1,13 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import SpotsSearch from "../spots/spots-search";
 
 import classes from "./top-main.module.css";
 
 function TopMain() {
+  const router = useRouter();
+
   return (
     <>
       <div className={classes.control}>
