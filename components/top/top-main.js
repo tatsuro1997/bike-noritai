@@ -8,18 +8,6 @@ import classes from "./top-main.module.css";
 function TopMain() {
   const router = useRouter();
 
-  function findSpotsHandler(searchKeyword) {
-    let fullPath;
-
-    if (searchKeyword) {
-      fullPath = `/spots/search/${searchKeyword}`;
-    } else {
-      fullPath = '/spots';
-    }
-
-    router.push(fullPath);
-  }
-
   return (
     <>
       <div className={classes.control}>
@@ -39,7 +27,7 @@ function TopMain() {
             width={550}
             height={300}
           />
-          <SpotsSearch onSearch={findSpotsHandler} />
+          <SpotsSearch />
         </div>
       </div>
     </>

@@ -1,4 +1,5 @@
-import Button from '../ui/button';
+import SpotsSearch from './spots-search';
+
 import classes from './results-title.module.css';
 
 function ResultsTitle(props) {
@@ -7,7 +8,7 @@ function ResultsTitle(props) {
   return (
     <section className={classes.title}>
       <h1>{searchKeyword} スポット一覧</h1>
-      <Button link="/spots">Show all spots</Button>
+      <SpotsSearch />
     </section>
   );
 }

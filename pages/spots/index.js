@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
 
 import SpotList from "../../components/spots/spot-list";
 import SpotRegistration from "../../components/spots/spot-registration";
@@ -7,14 +6,7 @@ import SpotsSearch from "../../components/spots/spots-search";
 import { getAllSpots } from "../../helpers/spot-api-util";
 
 function AllSpotsPage(props) {
-  const router = useRouter();
   const { spots } = props;
-
-  function findSpotsHandler(year, month) {
-    const fullPath = `/spots/${year}/${month}`;
-
-    router.push(fullPath);
-  }
 
   return (
     <>
@@ -26,7 +18,7 @@ function AllSpotsPage(props) {
         />
       </Head>
       <SpotRegistration />
-      <SpotsSearch onSearch={findSpotsHandler} />
+      <SpotsSearch />
       <SpotList items={spots} />
     </>
   );

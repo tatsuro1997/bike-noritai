@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useRef } from "react";
 
 import Button from "../ui/button";
@@ -6,12 +7,22 @@ import classes from "./spots-search.module.css";
 
 function SpotsSearch(props) {
   const keywordInputRef = useRef();
+  const router = useRouter();
 
   function submitHandler(event) {
     event.preventDefault();
-    const selectedKeyword = keywordInputRef.current.value;
 
-    props.onSearch(selectedKeyword);
+    const searchKeyword = keywordInputRef.current.value;
+
+    let fullPath;
+
+    if (searchKeyword) {
+      fullPath = `/spots/search/${searchKeyword}`;
+    } else {
+      fullPath = "/spots";
+    }
+
+    router.push(fullPath);
   }
 
   return (
