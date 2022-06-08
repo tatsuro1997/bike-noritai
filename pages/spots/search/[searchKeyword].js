@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 
 import SpotList from "../../../components/spots/spot-list";
 import ResultsTitle from "../../../components/spots/results-title";
-import Button from "../../../components/ui/button";
 import ErrorAlert from "../../../components/ui/error-alert";
+import SpotsSearch from "../../../components/spots/spots-search";
 
 function FilteredSpotsPage() {
   const [loadedSpots, setLoadedSpots] = useState();
@@ -42,11 +42,9 @@ function FilteredSpotsPage() {
       <>
         {pageHeadData}
         <ErrorAlert>
-          <p>検索をし直してください。</p>
+          <p>もう一度、検索をしてください...</p>
         </ErrorAlert>
-        <div className="center">
-          <Button link="/spots">全てのスポットを見る</Button>
-        </div>
+        <SpotsSearch />
       </>
     );
   }
@@ -72,11 +70,9 @@ function FilteredSpotsPage() {
       <>
         {pageHeadData}
         <ErrorAlert>
-          <p>検索スポットが見つかりませんでした。</p>
+          <p>この検索条件ではスポットが見つかりませんでした...</p>
         </ErrorAlert>
-        <div className="center">
-          <Button link="/spots">全てのスポットを見る</Button>
-        </div>
+        <SpotsSearch />
       </>
     );
   }
