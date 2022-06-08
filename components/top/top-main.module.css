@@ -24,4 +24,12 @@
 
 .contents h2 {
   color: white;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .contents {
+    width: 90%;
+    margin: 0 auto;
+  }
 }
