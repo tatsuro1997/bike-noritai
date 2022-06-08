@@ -8,8 +8,14 @@ import classes from "./top-main.module.css";
 function TopMain() {
   const router = useRouter();
 
-  function findSpotsHandler(year, month) {
-    const fullPath = `/spots/${year}/${month}`;
+  function findSpotsHandler(searchKeyword) {
+    let fullPath;
+
+    if (searchKeyword) {
+      fullPath = `/spots/search/${searchKeyword}`;
+    } else {
+      fullPath = '/spots';
+    }
 
     router.push(fullPath);
   }
