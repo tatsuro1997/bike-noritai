@@ -28,7 +28,7 @@ export async function getAllDocuments(client, collection, sort) {
 export async function removeDocument(client, collection, document) {
   const db = client.db();
 
-  const result = await db.collection(collection).remove(document);
+  const result = await db.collection(collection).deleteOne(document);
 
   return result;
 }
