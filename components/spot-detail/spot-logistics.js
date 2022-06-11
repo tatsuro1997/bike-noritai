@@ -34,9 +34,6 @@ function SpotLogistics(props) {
       const userId = JSON.stringify(session.user.id);
       const spotId = id.toString();
 
-      console.log(spotId);
-      console.log(userId);
-
       await fetch("/api/bookmarks", {
         method: "POST",
         body: JSON.stringify({ userId, spotId }),
