@@ -4,7 +4,6 @@ import SpotContent from "../../components/spot-detail/spot-content";
 import SpotLogistics from "../../components/spot-detail/spot-logistics";
 import SpotSummary from "../../components/spot-detail/spot-summary";
 import Comments from "../../components/input/comments";
-import ErrorAlert from "../../components/ui/error-alert";
 import { getSpotById, getFeaturedSpots } from "../../helpers/spot-api-util";
 
 function SpotDetailPage(props) {

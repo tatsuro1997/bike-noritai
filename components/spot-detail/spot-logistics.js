@@ -1,16 +1,12 @@
 import Image from "next/image";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 
 import AddressIcon from "../icons/address-icon";
 import HouseIcon from "../icons/house-icon";
 import LogisticsItem from "./logistics-item";
 import classes from "./spot-logistics.module.css";
+import BookmarkButton from "../ui/bookmark-button";
 
 function SpotLogistics(props) {
-  const { data: session } = useSession();
-  const router = useRouter();
-
   const {
     id,
     type,
@@ -25,31 +21,9 @@ function SpotLogistics(props) {
     imageAlt,
   } = props;
 
-  async function bookmarkHandler() {
-    if (!session) {
-      router.replace("/auth");
-    }
-
-    if (session) {
-      const userId = JSON.stringify(session.user.id);
-      const spotId = id.toString();
-
-      await fetch("/api/bookmarks", {
-        method: "POST",
-        body: JSON.stringify({ userId, spotId }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then((response) => {})
-        .catch((error) => {
-        console.log(error);
-        });
-    }
-  }
-
   return (
     <>
-      <button onClick={bookmarkHandler}>イキタイ</button>
+      <BookmarkButton spotId={id} />
       <section className={classes.logistics}>
         <div className={classes.image}>
           {image && (
