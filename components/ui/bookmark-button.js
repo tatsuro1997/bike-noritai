@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 
 import { getBookmarkById } from "../../helpers/bookmark-api-util";
 import BookmarkIcon from "../icons/bookmark-icon";
+import BookmarkedIcon from "../icons/bookmarked-icon";
 
 import classes from "./bookmark-button.module.css";
 
@@ -74,7 +75,8 @@ function BookmarkButton(props) {
   } else {
     bookmarkButton = (
       <button className={classes.is_not_booked} onClick={bookmarkHandler}>
-        <p>なしイキタイ</p>
+        <BookmarkedIcon />
+        <p>イキタイ</p>
       </button>
     );
   }

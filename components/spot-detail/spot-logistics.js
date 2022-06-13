@@ -23,7 +23,6 @@ function SpotLogistics(props) {
 
   return (
     <>
-      <BookmarkButton spotId={id} />
       <section className={classes.logistics}>
         <div className={classes.image}>
           {image && (
@@ -43,22 +42,25 @@ function SpotLogistics(props) {
             />
           )}
         </div>
-        <ul className={classes.list}>
-          <LogisticsItem icon={HouseIcon}>
-            <p>{type}</p>
-          </LogisticsItem>
-          <LogisticsItem icon={AddressIcon}>
-            <address>{prefecture + " " + address1 + " " + address2}</address>
-          </LogisticsItem>
-          <li>
-            <a href={hp_url} target="_blank" rel="noopener noreferrer">
-              HP : {hp_url}
-            </a>
-          </li>
-          <li>駐車場 : {parking}</li>
-          <li>営業時間 : {open_time}</li>
-          <li>定休日 : {off_day}</li>
-        </ul>
+        <div>
+          <BookmarkButton spotId={id} />
+          <ul className={classes.list}>
+            <LogisticsItem icon={HouseIcon}>
+              <p>{type}</p>
+            </LogisticsItem>
+            <LogisticsItem icon={AddressIcon}>
+              <address>{prefecture + " " + address1 + " " + address2}</address>
+            </LogisticsItem>
+            <li>
+              <a href={hp_url} target="_blank" rel="noopener noreferrer">
+                HP : {hp_url}
+              </a>
+            </li>
+            <li>駐車場 : {parking}</li>
+            <li>営業時間 : {open_time}</li>
+            <li>定休日 : {off_day}</li>
+          </ul>
+        </div>
       </section>
     </>
   );
