@@ -13,7 +13,7 @@
 }
 
 .is_booked p {
-  margin: auto;
+  margin: auto 0.3rem;
 }
 
 .is_booked svg {
@@ -38,7 +38,7 @@
 }
 
 .is_not_booked p {
-  margin: auto;
+  margin: auto 0.3rem;
 }
 
 .is_not_booked svg {

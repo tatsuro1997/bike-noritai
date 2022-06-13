@@ -19,6 +19,7 @@ function SpotLogistics(props) {
     off_day,
     image,
     imageAlt,
+    count,
   } = props;
 
   return (
@@ -43,7 +44,7 @@ function SpotLogistics(props) {
           )}
         </div>
         <div>
-          <BookmarkButton spotId={id} />
+          <BookmarkButton spotId={id} count={count} />
           <ul className={classes.list}>
             <LogisticsItem icon={HouseIcon}>
               <p>{type}</p>

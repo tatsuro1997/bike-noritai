@@ -11,7 +11,7 @@ import classes from "./bookmark-button.module.css";
 function BookmarkButton(props) {
   const router = useRouter();
   const [isBookmarkd, setIsBookmarkd] = useState(false);
-  const { spotId } = props;
+  const { spotId, count } = props;
   const { data: session } = useSession();
 
   async function getBookmarkData(uid) {
@@ -70,6 +70,7 @@ function BookmarkButton(props) {
       <button className={classes.is_booked} onClick={bookmarkHandler}>
         <BookmarkIcon />
         <p>イキタイ</p>
+        <p>{count}</p>
       </button>
     );
   } else {
@@ -77,6 +78,7 @@ function BookmarkButton(props) {
       <button className={classes.is_not_booked} onClick={bookmarkHandler}>
         <BookmarkedIcon />
         <p>イキタイ</p>
+        <p>{count}</p>
       </button>
     );
   }

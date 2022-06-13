@@ -19,3 +19,10 @@ export async function getBookmarkById(userId, spotId) {
     return bookmark.user_id === userId && bookmark.spot_id === spotId;
   });
 }
+
+export async function getBookmarkCount(spotId) {
+  const allBookmarks = await getAllBookmarks();
+  return allBookmarks.filter((bookmark) => {
+    return bookmark.spot_id === spotId;
+  }).length;
+}
