@@ -1,17 +1,15 @@
 .is_booked {
   display: flex;
   height: 2rem;
-  color: #007a00;
+  color: #fff;
   border: solid #007a00;
-  background-color: #fff;
+  background-color: #007a00;
   font-weight: bold;
   border-radius: 0.5rem;
 }
 
 .is_booked:hover {
-  color: #fff;
-  border: solid #007a00;
-  background-color: #007a00;
+  background-color: #00ad00;
 }
 
 .is_booked p {
@@ -26,15 +24,17 @@
 .is_not_booked {
   display: flex;
   height: 2rem;
-  color: #fff;
+  color: #007a00;
   border: solid #007a00;
-  background-color: #007a00;
+  background-color: #fff;
   font-weight: bold;
   border-radius: 0.5rem;
 }
 
 .is_not_booked:hover {
-  background-color: #00ad00;
+  color: #fff;
+  border: solid #007a00;
+  background-color: #007a00;
 }
 
 .is_not_booked p {
