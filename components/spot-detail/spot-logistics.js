@@ -1,13 +1,14 @@
 import Image from "next/image";
-import Link from "next/link";
 
 import AddressIcon from "../icons/address-icon";
 import HouseIcon from "../icons/house-icon";
 import LogisticsItem from "./logistics-item";
 import classes from "./spot-logistics.module.css";
+import BookmarkButton from "../ui/bookmark-button";
 
 function SpotLogistics(props) {
   const {
+    id,
     type,
     prefecture,
     address1,
@@ -18,45 +19,51 @@ function SpotLogistics(props) {
     off_day,
     image,
     imageAlt,
+    count,
   } = props;
 
   return (
-    <section className={classes.logistics}>
-      <div className={classes.image}>
-        {image && (
-          <Image
-            src={`/uploads/spots/${image}`}
-            alt={imageAlt}
-            width={320}
-            height={200}
-          />
-        )}
-        {!image && (
-          <Image
-            src={"/images/no_image.webp"}
-            alt={imageAlt}
-            width={320}
-            height={200}
-          />
-        )}
-      </div>
-      <ul className={classes.list}>
-        <LogisticsItem icon={HouseIcon}>
-          <p>{type}</p>
-        </LogisticsItem>
-        <LogisticsItem icon={AddressIcon}>
-          <address>{prefecture + " " + address1 + " " + address2}</address>
-        </LogisticsItem>
-        <li>
-          <a href={hp_url} target="_blank" rel="noopener noreferrer">
-            HP : {hp_url}
-          </a>
-        </li>
-        <li>駐車場 : {parking}</li>
-        <li>営業時間 : {open_time}</li>
-        <li>定休日 : {off_day}</li>
-      </ul>
-    </section>
+    <>
+      <section className={classes.logistics}>
+        <div className={classes.image}>
+          {image && (
+            <Image
+              src={`/uploads/spots/${image}`}
+              alt={imageAlt}
+              width={320}
+              height={200}
+            />
+          )}
+          {!image && (
+            <Image
+              src={"/images/no_image.webp"}
+              alt={imageAlt}
+              width={320}
+              height={200}
+            />
+          )}
+        </div>
+        <div>
+          <BookmarkButton spotId={id} count={count} />
+          <ul className={classes.list}>
+            <LogisticsItem icon={HouseIcon}>
+              <p>{type}</p>
+            </LogisticsItem>
+            <LogisticsItem icon={AddressIcon}>
+              <address>{prefecture + " " + address1 + " " + address2}</address>
+            </LogisticsItem>
+            <li>
+              <a href={hp_url} target="_blank" rel="noopener noreferrer">
+                HP : {hp_url}
+              </a>
+            </li>
+            <li>駐車場 : {parking}</li>
+            <li>営業時間 : {open_time}</li>
+            <li>定休日 : {off_day}</li>
+          </ul>
+        </div>
+      </section>
+    </>
   );
 }
 

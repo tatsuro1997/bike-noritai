@@ -4,11 +4,12 @@ import SpotContent from "../../components/spot-detail/spot-content";
 import SpotLogistics from "../../components/spot-detail/spot-logistics";
 import SpotSummary from "../../components/spot-detail/spot-summary";
 import Comments from "../../components/input/comments";
-import ErrorAlert from "../../components/ui/error-alert";
 import { getSpotById, getFeaturedSpots } from "../../helpers/spot-api-util";
+import { getBookmarkCount } from "../../helpers/bookmark-api-util";
 
 function SpotDetailPage(props) {
   const spot = props.selectedSpot;
+  const spotCount = props.countedSpot;
 
   if (!spot) {
     return (
@@ -39,6 +40,7 @@ function SpotDetailPage(props) {
         hp_url={spot.hp_url}
         image={spot.image}
         imageAlt={spot.name}
+        count={spotCount}
       />
       <SpotContent>
         <p>{spot.description}</p>
@@ -53,9 +55,12 @@ export async function getStaticProps(context) {
 
   const spot = await getSpotById(spotId);
 
+  const spotCount = await getBookmarkCount(spotId);
+
   return {
     props: {
       selectedSpot: spot,
+      countedSpot: spotCount,
     },
     revalidate: 30,
   };
