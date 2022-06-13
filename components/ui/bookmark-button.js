@@ -9,18 +9,19 @@ import BookmarkedIcon from "../icons/bookmarked-icon";
 import classes from "./bookmark-button.module.css";
 
 function BookmarkButton(props) {
-  const router = useRouter();
-  const [isBookmarkd, setIsBookmarkd] = useState(false);
   const { spotId, count } = props;
+  const router = useRouter();
+  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [countBookmark, setCountBookmark] = useState(count);
   const { data: session } = useSession();
 
   async function getBookmarkData(uid) {
     try {
       const bookmarkData = await getBookmarkById(uid, spotId);
       if (bookmarkData.length !== 0) {
-        setIsBookmarkd(true);
+        setIsBookmarked(true);
       } else {
-        setIsBookmarkd(false);
+        setIsBookmarked(false);
       }
     } catch {
       res.status(500).json({
@@ -40,7 +41,13 @@ function BookmarkButton(props) {
   }, []);
 
   async function bookmarkHandler() {
-    setIsBookmarkd((prevState) => !prevState);
+    setIsBookmarked((prevState) => !prevState);
+
+    if (isBookmarked) {
+      setCountBookmark(prevCount => prevCount - 1);
+    } else {
+      setCountBookmark((prevCount) => prevCount + 1);
+    }
 
     if (!session) {
       router.replace("/auth");
@@ -65,20 +72,20 @@ function BookmarkButton(props) {
 
   let bookmarkButton;
 
-  if (isBookmarkd) {
+  if (isBookmarked) {
     bookmarkButton = (
       <button className={classes.is_booked} onClick={bookmarkHandler}>
-        <BookmarkIcon />
+        <BookmarkedIcon />
         <p>イキタイ</p>
-        <p>{count}</p>
+        <p>{countBookmark}</p>
       </button>
     );
   } else {
     bookmarkButton = (
       <button className={classes.is_not_booked} onClick={bookmarkHandler}>
-        <BookmarkedIcon />
+        <BookmarkIcon />
         <p>イキタイ</p>
-        <p>{count}</p>
+        <p>{countBookmark}</p>
       </button>
     );
   }
