@@ -1,3 +1,8 @@
+.bookmark_btn{
+  display: flex;
+  justify-content: end;
+}
+
 .is_booked {
   display: flex;
   height: 2rem;

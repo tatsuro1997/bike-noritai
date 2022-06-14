@@ -5,6 +5,7 @@ import HouseIcon from "../icons/house-icon";
 import LogisticsItem from "./logistics-item";
 import classes from "./spot-logistics.module.css";
 import BookmarkButton from "../ui/bookmark-button";
+import Map from "../map/map";
 
 function SpotLogistics(props) {
   const {
@@ -20,30 +21,44 @@ function SpotLogistics(props) {
     image,
     imageAlt,
     count,
+    lat,
+    lng
   } = props;
 
   return (
     <>
       <section className={classes.logistics}>
-        <div className={classes.image}>
-          {image && (
-            <Image
-              src={`/uploads/spots/${image}`}
-              alt={imageAlt}
-              width={320}
-              height={200}
+        <div className={classes.side_content}>
+          <div className={classes.image}>
+            {image && (
+              <Image
+                src={`/uploads/spots/${image}`}
+                alt={imageAlt}
+                width={320}
+                height={200}
+              />
+            )}
+            {!image && (
+              <Image
+                src={"/images/no_image.webp"}
+                alt={imageAlt}
+                width={320}
+                height={200}
+              />
+            )}
+          </div>
+          {!lat && !lng && <p>まだ地図が登録されていません。</p>}
+          <div className={classes.map}>
+            <Map
+              lat={lat}
+              lng={lng}
+              prefecture={prefecture}
+              address1={address1}
+              address2={address2}
             />
-          )}
-          {!image && (
-            <Image
-              src={"/images/no_image.webp"}
-              alt={imageAlt}
-              width={320}
-              height={200}
-            />
-          )}
+          </div>
         </div>
-        <div>
+        <div className={classes.main}>
           <BookmarkButton spotId={id} count={count} />
           <ul className={classes.list}>
             <LogisticsItem icon={HouseIcon}>

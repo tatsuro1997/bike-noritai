@@ -44,7 +44,7 @@ function BookmarkButton(props) {
     setIsBookmarked((prevState) => !prevState);
 
     if (isBookmarked) {
-      setCountBookmark(prevCount => prevCount - 1);
+      setCountBookmark((prevCount) => prevCount - 1);
     } else {
       setCountBookmark((prevCount) => prevCount + 1);
     }
@@ -90,7 +90,7 @@ function BookmarkButton(props) {
     );
   }
 
-  return <>{bookmarkButton}</>;
+  return <div className={classes.bookmark_btn}>{bookmarkButton}</div>;
 }
 
 export default BookmarkButton;

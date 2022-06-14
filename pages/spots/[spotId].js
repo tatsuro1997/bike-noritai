@@ -41,6 +41,8 @@ function SpotDetailPage(props) {
         image={spot.image}
         imageAlt={spot.name}
         count={spotCount}
+        lat={spot.lat}
+        lng={spot.lng}
       />
       <SpotContent>
         <p>{spot.description}</p>

@@ -1,11 +1,15 @@
 import Image from "next/image";
+import GoogleMapReact from "google-map-react";
 import { useRef, useState, useContext } from "react";
+
 import NotificationContext from "../../store/notification-context";
 
 import classes from "./new-spot.module.css";
 
-function NewSpot(props) {
+function NewSpot() {
   const [isInvalid, setIsInvalid] = useState(false);
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
   const nameInputRef = useRef();
   const typeInputRef = useRef();
   const prefectureInputRef = useRef();
@@ -21,6 +25,23 @@ function NewSpot(props) {
   const [image, setImage] = useState(null);
   const [createObjectURL, setCreateObjectURL] = useState(null);
   const [imageName, setImageName] = useState(null);
+
+  const [map, setMap] = useState(null);
+  const [maps, setMaps] = useState(null);
+  const [geocoder, setGeocoder] = useState(null);
+  const [address, setAddress] = useState(null);
+  const [marker, setMarker] = useState(null);
+
+  const defaultLatLng = {
+    lat: 35.7022589,
+    lng: 139.7744733,
+  };
+
+  function handleApiLoaded(obj) {
+    setMap(obj.map);
+    setMaps(obj.maps);
+    setGeocoder(new obj.maps.Geocoder());
+  }
 
   function previewImageHandler(event) {
     const enteredImage = event.target.files[0];
@@ -69,13 +90,41 @@ function NewSpot(props) {
       return;
     }
 
+    const address = enteredPrefecture + enteredAddress1 + enteredAddress2;
+
+    if (address) {
+      geocoder.geocode(
+        {
+          address,
+        },
+        (results, status) => {
+          if (status === maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            if (marker) {
+              marker.setMap(null);
+            }
+            setMarker(
+              new maps.Marker({
+                map,
+                position: results[0].geometry.location,
+              })
+            );
+            setLat(results[0].geometry.location.lat());
+            setLng(results[0].geometry.location.lng());
+            console.log(results[0].geometry.location.lat());
+            console.log(results[0].geometry.location.lng());
+          }
+        }
+      );
+    }
+
     notificationCtx.showNotification({
       title: "投稿中...",
       message: "投稿中です。",
       status: "pending",
     });
 
-    fetch("/api/spots", {
+    await fetch("/api/spots", {
       method: "POST",
       body: JSON.stringify({
         name: enteredName,
@@ -89,6 +138,8 @@ function NewSpot(props) {
         off_day: enteredOffDay,
         parking: enteredParking,
         description: enteredDescription,
+        lat: lat,
+        lng: lng,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -140,11 +191,7 @@ function NewSpot(props) {
       <div className={classes.row}>
         <div className={classes.control}>
           <label htmlFor="image">スポット画像</label>
-          <input
-            type="file"
-            id="image"
-            onChange={previewImageHandler}
-          />
+          <input type="file" id="image" onChange={previewImageHandler} />
         </div>
       </div>
       <div className={classes.control}>
@@ -162,6 +209,14 @@ function NewSpot(props) {
       <div className={classes.control}>
         <label htmlFor="address2">住所2</label>
         <input type="text" id="address2" ref={address2InputRef} />
+      </div>
+      <div style={{ height: "300px", width: "300px" }}>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY }}
+          defaultCenter={defaultLatLng}
+          defaultZoom={16}
+          onGoogleApiLoaded={handleApiLoaded}
+        />
       </div>
       <div className={classes.control}>
         <label htmlFor="hp">HP</label>
@@ -187,7 +242,9 @@ function NewSpot(props) {
           ref={descriptionInputRef}
         ></textarea>
       </div>
-      {isInvalid && <p className={classes.error}>※ 正しい情報を入力してください。</p>}
+      {isInvalid && (
+        <p className={classes.error}>※ 正しい情報を入力してください。</p>
+      )}
       <button>スポットを保存</button>
     </form>
   );
