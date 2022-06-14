@@ -5,6 +5,7 @@
   background-image: linear-gradient(to top, #008b79, #007a00);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   padding: 1rem;
+  margin-top: 5rem;
 }
 
 .row {

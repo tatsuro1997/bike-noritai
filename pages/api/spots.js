@@ -35,6 +35,8 @@ async function handler(req, res) {
     const spotOffDay = req.body.off_day;
     const spotParking = req.body.parking;
     const spotDescription = req.body.description;
+    const spotLat = req.body.lat;
+    const spotLng = req.body.lng;
 
     if (
       !spotName ||
@@ -76,6 +78,8 @@ async function handler(req, res) {
         off_day: spotOffDay,
         parking: spotParking,
         description: spotDescription,
+        lat: spotLat,
+        lng: spotLng,
       });
       client.close();
     } catch (error) {
