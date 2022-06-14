@@ -5,6 +5,7 @@ import HouseIcon from "../icons/house-icon";
 import LogisticsItem from "./logistics-item";
 import classes from "./spot-logistics.module.css";
 import BookmarkButton from "../ui/bookmark-button";
+import Map from "../map/map";
 
 function SpotLogistics(props) {
   const {
@@ -25,23 +26,28 @@ function SpotLogistics(props) {
   return (
     <>
       <section className={classes.logistics}>
-        <div className={classes.image}>
-          {image && (
-            <Image
-              src={`/uploads/spots/${image}`}
-              alt={imageAlt}
-              width={320}
-              height={200}
-            />
-          )}
-          {!image && (
-            <Image
-              src={"/images/no_image.webp"}
-              alt={imageAlt}
-              width={320}
-              height={200}
-            />
-          )}
+        <div className={classes.side_content}>
+          <div className={classes.image}>
+            {image && (
+              <Image
+                src={`/uploads/spots/${image}`}
+                alt={imageAlt}
+                width={320}
+                height={200}
+              />
+            )}
+            {!image && (
+              <Image
+                src={"/images/no_image.webp"}
+                alt={imageAlt}
+                width={320}
+                height={200}
+              />
+            )}
+          </div>
+          <div className={classes.map}>
+            <Map />
+          </div>
         </div>
         <div>
           <BookmarkButton spotId={id} count={count} />
