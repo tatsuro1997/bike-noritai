@@ -1,10 +1,8 @@
 .item {
   display: flex;
-  font-size: 1.5rem;
-  align-items: center;
-  flex-direction: column;
+  font-size: 1rem;
   text-align: center;
-  color: #aefff8;
+  color: #111111;
 }
 
 .item span {
@@ -12,18 +10,27 @@
 }
 
 .icon {
+  margin-top: 0.1rem;
   margin-right: 1rem;
-  color: #18e0d0;
+  color: #111111;
 }
 
 .icon svg {
-  width: 2rem;
-  height: 2rem;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.content p {
+  margin: 0;
 }
 
 @media (min-width: 768px) {
   .item {
-    align-items: flex-start;
-    text-align: left;
+  font-size: 1.5rem;
   }
+
+  .icon svg {
+  width: 2rem;
+  height: 2rem;
+}
 }

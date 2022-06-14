@@ -58,7 +58,7 @@ function SpotLogistics(props) {
             />
           </div>
         </div>
-        <div>
+        <div className={classes.main}>
           <BookmarkButton spotId={id} count={count} />
           <ul className={classes.list}>
             <LogisticsItem icon={HouseIcon}>

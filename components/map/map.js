@@ -1,6 +1,8 @@
 import GoogleMapReact from "google-map-react";
 import Link from "next/link";
 
+import classes from './map.module.css';
+
 export default function Map(props) {
   const { lat, lng, prefecture, address1, address2 } = props;
 
@@ -22,7 +24,7 @@ export default function Map(props) {
   };
 
   return (
-    <>
+    <div className={classes.map}>
       <div style={{ height: "300px", width: "300px" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY }}
@@ -40,6 +42,6 @@ export default function Map(props) {
           google mapでみる
         </a>
       </Link>
-    </>
+    </div>
   );
 }
