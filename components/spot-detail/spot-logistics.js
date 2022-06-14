@@ -21,6 +21,8 @@ function SpotLogistics(props) {
     image,
     imageAlt,
     count,
+    lat,
+    lng
   } = props;
 
   return (
@@ -45,8 +47,15 @@ function SpotLogistics(props) {
               />
             )}
           </div>
+          {!lat && !lng && <p>まだ地図が登録されていません。</p>}
           <div className={classes.map}>
-            <Map />
+            <Map
+              lat={lat}
+              lng={lng}
+              prefecture={prefecture}
+              address1={address1}
+              address2={address2}
+            />
           </div>
         </div>
         <div>
