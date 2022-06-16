@@ -13,10 +13,10 @@ async function handler(req, res) {
   }
 
   if (req.method === "POST") {
-    const { email, name, text } = req.body;
+    const { uid, name, text } = req.body;
 
     if (
-      !email.includes("@") ||
+      !uid||
       !name ||
       name.trim() === "" ||
       !text ||
@@ -28,7 +28,7 @@ async function handler(req, res) {
     }
 
     const newComment = {
-      email,
+      uid,
       name,
       text,
       spotId,

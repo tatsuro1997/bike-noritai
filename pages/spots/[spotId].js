@@ -47,7 +47,7 @@ function SpotDetailPage(props) {
       <SpotContent>
         <p>{spot.description}</p>
       </SpotContent>
-      <Comments spotId={spot.id} />
+      <Comments spotId={spot._id} />
     </>
   );
 }

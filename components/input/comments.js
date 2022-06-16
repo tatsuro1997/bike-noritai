@@ -72,7 +72,7 @@ function Comments(props) {
   return (
     <section className={classes.comments}>
       <button onClick={toggleCommentsHandler}>
-        {showComments ? "Hide" : "Show"} Comments
+        コメントを{showComments ? "閉じる" : "見る"}
       </button>
       {showComments && <NewComment onAddComment={addCommentHandler} />}
       {showComments && !isFetchingComments && <CommentList items={comments} />}
