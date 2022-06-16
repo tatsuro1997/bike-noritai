@@ -1,14 +1,26 @@
 import { useRef, useState } from "react";
-import { useSession } from "next-auth/react"
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 import classes from "./new-comment.module.css";
 
 function NewComment(props) {
   const [isInvalid, setIsInvalid] = useState(false);
   const { data: session } = useSession();
+  const router = useRouter();
 
-  const userId = session.user.id;
-  const userName = session.user.name;
+  if (!session) {
+    router.replace("/auth");
+  }
+
+  let userId;
+  let userName;
+
+  if (session) {
+    userId = session.user.id;
+    userName = session.user.name;
+  }
+
   const commentInputRef = useRef();
 
   function sendCommentHandler(event) {
