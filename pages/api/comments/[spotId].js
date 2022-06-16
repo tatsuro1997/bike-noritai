@@ -1,4 +1,4 @@
-import { connectDatabase, insertDocument, getAllDocuments } from "../../../helpers/db-util";
+import { connectDatabase, insertDocument } from "../../../helpers/db-util";
 
 async function handler(req, res) {
   const spotId = req.query.spotId;
@@ -44,18 +44,6 @@ async function handler(req, res) {
       res.status(500).json({ message: "Inserting comment faild!" });
     }
   }
-
-  if (req.method === "GET") {
-
-    try {
-      const documents = await getAllDocuments(client, 'comments', {_id: -1})
-      res.status(200).json({ comments: documents });
-    } catch (error) {
-      res.status(500).json({message: 'Getting comments failed.'})
-    }
-  }
-
-  client.close();
 }
 
 export default handler;

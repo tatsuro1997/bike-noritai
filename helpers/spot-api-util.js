@@ -32,3 +32,25 @@ export async function getFilteredSpots(dateFilter) {
 
   return filteredSpots;
 }
+
+export async function getAllComments() {
+  let comments;
+
+  await fetch("http://localhost:3000/api/comments/")
+    .then((response) => response.json())
+    .then((data) => {
+      comments = data.comments;
+    });
+
+  return comments;
+}
+
+export async function getCommentsBySpotId(spotId) {
+  const allComments = await getAllComments();
+
+  let filteredComments = allComments.filter((comment) => {
+    return comment.spotId === spotId;
+  })
+
+  return filteredComments;
+}

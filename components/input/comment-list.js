@@ -14,6 +14,7 @@ function CommentList(props) {
             </div>
           </li>
         ))}
+      {items.length === 0 && <p>まだコメントがありません。</p>}
     </ul>
   );
 }
