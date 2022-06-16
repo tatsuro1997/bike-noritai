@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { useRouter } from "next/router";
 
 import CommentList from "./comment-list";
 import NewComment from "./new-comment";
@@ -7,6 +8,7 @@ import NotificationContext from "../../store/notification-context";
 
 function Comments(props) {
   const { spotId } = props;
+  const router = useRouter();
 
   const notificationCtx = useContext(NotificationContext);
 
@@ -31,6 +33,7 @@ function Comments(props) {
   }
 
   function addCommentHandler(commentData) {
+    const { uid } = commentData;
     notificationCtx.showNotification({
       title: "Sending coments...",
       message: "Your comment is currently being stored into a database.",
@@ -59,6 +62,7 @@ function Comments(props) {
           message: "Your comment was saved!",
           status: "success",
         });
+        router.replace(`/users/${uid}`)
       })
       .catch((error) => {
         notificationCtx.showNotification({
