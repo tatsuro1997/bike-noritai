@@ -1,36 +1,26 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
+import { useRouter } from "next/router";
 
 import CommentList from "./comment-list";
 import NewComment from "./new-comment";
-import classes from "./comments.module.css";
 import NotificationContext from "../../store/notification-context";
 
+import classes from "./comments.module.css";
+
 function Comments(props) {
-  const { spotId } = props;
+  const { spotId, comments } = props;
+  const router = useRouter();
 
   const notificationCtx = useContext(NotificationContext);
 
   const [showComments, setShowComments] = useState(false);
-  const [comments, setComments] = useState([]);
-  const [isFetchingComments, setIsFetchingComments] = useState(false);
-
-  useEffect(() => {
-    if (showComments) {
-      setIsFetchingComments(true);
-      fetch("/api/comments/" + spotId)
-        .then((response) => response.json())
-        .then((data) => {
-          setComments(data.comments);
-          setIsFetchingComments(false);
-        });
-    }
-  }, [showComments]);
 
   function toggleCommentsHandler() {
     setShowComments((prevStatus) => !prevStatus);
   }
 
   function addCommentHandler(commentData) {
+    const { uid } = commentData;
     notificationCtx.showNotification({
       title: "Sending coments...",
       message: "Your comment is currently being stored into a database.",
@@ -59,6 +49,7 @@ function Comments(props) {
           message: "Your comment was saved!",
           status: "success",
         });
+        router.replace(`/users/${uid}`)
       })
       .catch((error) => {
         notificationCtx.showNotification({
@@ -72,11 +63,10 @@ function Comments(props) {
   return (
     <section className={classes.comments}>
       <button onClick={toggleCommentsHandler}>
-        {showComments ? "Hide" : "Show"} Comments
+        コメントを{showComments ? "閉じる" : "見る"}
       </button>
       {showComments && <NewComment onAddComment={addCommentHandler} />}
-      {showComments && !isFetchingComments && <CommentList items={comments} />}
-      {isFetchingComments && <p>Loading...</p>}
+      {showComments && <CommentList items={comments} />}
     </section>
   );
 }

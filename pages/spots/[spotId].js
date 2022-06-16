@@ -4,12 +4,13 @@ import SpotContent from "../../components/spot-detail/spot-content";
 import SpotLogistics from "../../components/spot-detail/spot-logistics";
 import SpotSummary from "../../components/spot-detail/spot-summary";
 import Comments from "../../components/input/comments";
-import { getSpotById, getFeaturedSpots } from "../../helpers/spot-api-util";
+import { getSpotById, getFeaturedSpots, getCommentsBySpotId } from "../../helpers/spot-api-util";
 import { getBookmarkCount } from "../../helpers/bookmark-api-util";
 
 function SpotDetailPage(props) {
   const spot = props.selectedSpot;
   const spotCount = props.countedSpot;
+  const comments = props.selectedComments;
 
   if (!spot) {
     return (
@@ -47,7 +48,7 @@ function SpotDetailPage(props) {
       <SpotContent>
         <p>{spot.description}</p>
       </SpotContent>
-      <Comments spotId={spot.id} />
+      <Comments spotId={spot._id} comments={comments} />
     </>
   );
 }
@@ -59,10 +60,13 @@ export async function getStaticProps(context) {
 
   const spotCount = await getBookmarkCount(spotId);
 
+  const comments = await getCommentsBySpotId(spotId);
+
   return {
     props: {
       selectedSpot: spot,
       countedSpot: spotCount,
+      selectedComments: comments,
     },
     revalidate: 30,
   };
