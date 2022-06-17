@@ -10,7 +10,7 @@ function NewRecord() {
   const dateInputRef = useRef();
   const weatherInputRef = useRef();
   const temperatureInputRef = useRef();
-  const spendTimeInputRef = useRef();
+  const runningTimeInputRef = useRef();
   const distanceInputRef = useRef();
   const descriptionInputRef = useRef();
   const notificationCtx = useContext(NotificationContext);
@@ -42,8 +42,8 @@ function NewRecord() {
     const enteredDate = dateInputRef.current.value;
     const enteredWeather = weatherInputRef.current.value;
     const enteredTemperature = temperatureInputRef.current.value;
-    const enteredSpendTime = spendTime.current.value;
-    const enteredDistance = distance.current.value;
+    const enteredRunningTime = runningTimeInputRef.current.value;
+    const enteredDistance = distanceInputRef.current.value;
     const enteredDescription = descriptionInputRef.current.value;
 
     if (
@@ -51,8 +51,8 @@ function NewRecord() {
       !enteredWeather ||
       !enteredTemperature ||
       enteredTemperature.trim() === "" ||
-      !enteredSpendTime ||
-      enteredSpendTime.trim() === "" ||
+      !enteredRunningTime ||
+      enteredRunningTime.trim() === "" ||
       !enteredDistance ||
       enteredDistance.trim() === ""
     ) {
@@ -72,7 +72,7 @@ function NewRecord() {
         date: enteredDate,
         weather: enteredWeather,
         temperature: enteredTemperature,
-        spend_time: enteredSpendTime,
+        running_time: enteredRunningTime,
         distance: enteredDistance,
         description: enteredDescription,
         image: imageName,
@@ -116,7 +116,12 @@ function NewRecord() {
       <div className={classes.row}>
         <div className={classes.control}>
           <label htmlFor="date">訪問日</label>
-          <input className={classes.date} type="date" id="date" ref={dateInputRef} />
+          <input
+            className={classes.date}
+            type="date"
+            id="date"
+            ref={dateInputRef}
+          />
         </div>
         <div className={classes.control}>
           <label htmlFor="weather">天気</label>
@@ -138,11 +143,11 @@ function NewRecord() {
       </div>
       <div className={classes.row}>
         <div className={classes.control}>
-          <label htmlFor="spend_time">滞在時間</label>
+          <label htmlFor="running_time">走行時間</label>
           <input
             type="number"
-            id="spend_time"
-            ref={spendTimeInputRef}
+            id="running_time"
+            ref={runningTimeInputRef}
             placeholder="時間"
           />
         </div>
