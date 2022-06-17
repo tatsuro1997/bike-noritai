@@ -32,6 +32,11 @@
   width: 100%;
 }
 
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .list {
   flex: 3;
   display: flex;

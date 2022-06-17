@@ -110,8 +110,8 @@ function NewRecord() {
 
   return (
     <form className={classes.form} onSubmit={sendSpotHandler}>
-      <div>
-        <label>スポット名</label>
+      <div className={classes.title}>
+        <label>ツーリング記録</label>
       </div>
       <div className={classes.row}>
         <div className={classes.control}>
@@ -187,7 +187,7 @@ function NewRecord() {
         </div>
       </div>
       <div>
-        <label>スポット追加</label>
+        <label>スポットを選択</label>
       </div>
       <button>記録する</button>
     </form>

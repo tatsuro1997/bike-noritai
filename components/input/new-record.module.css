@@ -8,6 +8,14 @@
   margin-top: 5rem;
 }
 
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  margin-bottom: 1rem;
+}
+
 .row {
   display: flex;
   gap: 1rem;
@@ -47,7 +55,7 @@
   text-decoration: none;
   cursor: pointer;
   font: inherit;
-  background-color: #F56018;
+  background-color: #f56018;
   color: #fff;
   border: 1px solid #007a00;
   border-radius: 6px;
@@ -61,13 +69,13 @@
 .form button:hover,
 .form button:active {
   background-color: #fff;
-  color: #F56018;
+  color: #f56018;
 }
 
 .error {
   color: #fff;
   font-weight: bold;
-  border-bottom: solid #F56018;
+  border-bottom: solid #f56018;
 }
 
 @media (max-width: 768px) {

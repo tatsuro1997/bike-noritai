@@ -90,7 +90,7 @@ function BookmarkButton(props) {
     );
   }
 
-  return <div className={classes.bookmark_btn}>{bookmarkButton}</div>;
+  return <>{bookmarkButton}</>;
 }
 
 export default BookmarkButton;
