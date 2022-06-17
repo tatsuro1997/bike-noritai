@@ -29,6 +29,7 @@
 }
 
 .control input,
+.control select,
 .control textarea {
   font: inherit;
   padding: 0.25rem;
@@ -38,11 +39,15 @@
   background-color: #dcfff9;
 }
 
+.control textarea {
+  margin-top: 1rem;
+}
+
 .form button {
   text-decoration: none;
   cursor: pointer;
   font: inherit;
-  background-color: #f56018;
+  background-color: #F56018;
   color: #fff;
   border: 1px solid #007a00;
   border-radius: 6px;
@@ -56,13 +61,13 @@
 .form button:hover,
 .form button:active {
   background-color: #fff;
-  color: #f56018;
+  color: #F56018;
 }
 
 .error {
   color: #fff;
   font-weight: bold;
-  border-bottom: solid #f56018;
+  border-bottom: solid #F56018;
 }
 
 @media (max-width: 768px) {

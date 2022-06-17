@@ -6,6 +6,7 @@ import LogisticsItem from "./logistics-item";
 import classes from "./spot-logistics.module.css";
 import BookmarkButton from "../ui/bookmark-button";
 import Map from "../map/map";
+import RecordButton from "../ui/record-button";
 
 function SpotLogistics(props) {
   const {
@@ -22,7 +23,7 @@ function SpotLogistics(props) {
     imageAlt,
     count,
     lat,
-    lng
+    lng,
   } = props;
 
   return (
@@ -59,7 +60,10 @@ function SpotLogistics(props) {
           </div>
         </div>
         <div className={classes.main}>
-          <BookmarkButton spotId={id} count={count} />
+          {/* <div> */}
+            <BookmarkButton spotId={id} count={count} />
+            <RecordButton />
+          {/* </div> */}
           <ul className={classes.list}>
             <LogisticsItem icon={HouseIcon}>
               <p>{type}</p>
