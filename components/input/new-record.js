@@ -1,5 +1,7 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useRef, useState, useContext } from "react";
+import { useSession } from "next-auth/react";
 
 import NotificationContext from "../../store/notification-context";
 
@@ -14,10 +16,16 @@ function NewRecord() {
   const distanceInputRef = useRef();
   const descriptionInputRef = useRef();
   const notificationCtx = useContext(NotificationContext);
+  const { data: session } = useSession();
+  const router = useRouter();
 
   const [image, setImage] = useState(null);
   const [createObjectURL, setCreateObjectURL] = useState(null);
   const [imageName, setImageName] = useState(null);
+
+    if (!session) {
+      router.replace("/auth");
+    }
 
   function previewImageHandler(event) {
     const enteredImage = event.target.files[0];
@@ -96,6 +104,7 @@ function NewRecord() {
           message: "新たに記録していただきありがとうございます！",
           status: "success",
         });
+        router.replace(`/users/${session.user.id}`)
       })
       .catch((error) => {
         notificationCtx.showNotification({
