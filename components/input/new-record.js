@@ -7,7 +7,8 @@ import NotificationContext from "../../store/notification-context";
 
 import classes from "./new-record.module.css";
 
-function NewRecord() {
+function NewRecord(props) {
+  const { spotId } = props;
   const [isInvalid, setIsInvalid] = useState(false);
   const dateInputRef = useRef();
   const weatherInputRef = useRef();
@@ -23,9 +24,15 @@ function NewRecord() {
   const [createObjectURL, setCreateObjectURL] = useState(null);
   const [imageName, setImageName] = useState(null);
 
-    if (!session) {
-      router.replace("/auth");
-    }
+  if (!session) {
+    router.replace("/auth");
+  }
+
+  let userId;
+
+  if (session) {
+    userId = session.user.id;
+  }
 
   function previewImageHandler(event) {
     const enteredImage = event.target.files[0];
@@ -74,7 +81,7 @@ function NewRecord() {
       status: "pending",
     });
 
-    await fetch("/api/records", {
+    await fetch("/api/records" + spotId, {
       method: "POST",
       body: JSON.stringify({
         date: enteredDate,
@@ -84,6 +91,7 @@ function NewRecord() {
         distance: enteredDistance,
         description: enteredDescription,
         image: imageName,
+        uid: userId,
       }),
       headers: {
         "Content-Type": "application/json",

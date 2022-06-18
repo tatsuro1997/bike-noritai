@@ -29,7 +29,6 @@ function NewSpot() {
   const [map, setMap] = useState(null);
   const [maps, setMaps] = useState(null);
   const [geocoder, setGeocoder] = useState(null);
-  const [address, setAddress] = useState(null);
   const [marker, setMarker] = useState(null);
 
   const defaultLatLng = {

@@ -4,11 +4,15 @@ import RecordIcon from "../icons/record-icon";
 
 import classes from "./record-button.module.css";
 
-function RecordButton() {
+function RecordButton(props) {
+  const { spotId } = props;
+
+  const exploreLink = `/spots/${spotId}/create_record`;
+
   return (
     <button className={classes.record_btn}>
-      <RecordIcon/>
-      <Link href="/record/create">記録する</Link>
+      <RecordIcon />
+      <Link href={exploreLink}>記録する</Link>
     </button>
   );
 }

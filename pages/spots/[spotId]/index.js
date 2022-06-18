@@ -1,11 +1,11 @@
 import Head from "next/head";
 
-import SpotContent from "../../components/spot-detail/spot-content";
-import SpotLogistics from "../../components/spot-detail/spot-logistics";
-import SpotSummary from "../../components/spot-detail/spot-summary";
-import Comments from "../../components/input/comments";
-import { getSpotById, getFeaturedSpots, getCommentsBySpotId } from "../../helpers/spot-api-util";
-import { getBookmarkCount } from "../../helpers/bookmark-api-util";
+import SpotContent from "../../../components/spot-detail/spot-content";
+import SpotLogistics from "../../../components/spot-detail/spot-logistics";
+import SpotSummary from "../../../components/spot-detail/spot-summary";
+import Comments from "../../../components/input/comments";
+import { getSpotById, getFeaturedSpots, getCommentsBySpotId } from "../../../helpers/spot-api-util";
+import { getBookmarkCount } from "../../../helpers/bookmark-api-util";
 
 function SpotDetailPage(props) {
   const spot = props.selectedSpot;
