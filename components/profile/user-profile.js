@@ -1,7 +1,3 @@
-import Image from "next/image";
-import Link from "next/link";
-
-import EditIcon from "../icons/edit-icon";
 import ProfileHeader from "./profile-header";
 
 import classes from "./user-profile.module.css";
