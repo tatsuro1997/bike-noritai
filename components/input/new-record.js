@@ -81,7 +81,7 @@ function NewRecord(props) {
       status: "pending",
     });
 
-    await fetch("/api/records" + spotId, {
+    await fetch("/api/records/" + spotId, {
       method: "POST",
       body: JSON.stringify({
         date: enteredDate,

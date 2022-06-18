@@ -4,7 +4,6 @@ export async function getAllRecords() {
   await fetch("http://localhost:3000/api/records/")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       records = data.records;
     });
 

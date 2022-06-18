@@ -1,27 +1,7 @@
-import { getAllDocuments, connectDatabase, insertDocument } from "../../helpers/db-util";
+import { connectDatabase, insertDocument } from "../../../helpers/db-util";
 
 async function handler(req, res) {
-  if (req.method === "GET") {
-    let client;
-
-    try {
-      client = await connectDatabase();
-    } catch (error) {
-      res.status(500).json({
-        message: "Connecting to the database failed!",
-      });
-      return;
-    }
-
-    try {
-      const records = await getAllDocuments(client, "records", { _id: -1 });
-      res.status(200).json({ records: records });
-    } catch (error) {
-      res.status(500).json({ message: "Getting records failed." });
-    }
-
-    client.close();
-  }
+  const spotId = req.query.spotId;
 
   if (req.method === "POST") {
     const recordDate = req.body.date;
@@ -30,6 +10,7 @@ async function handler(req, res) {
     const recordRunningTime = req.body.running_time;
     const recordDistance = req.body.distance;
     const recordDescription = req.body.description;
+    const userId = req.body.uid
 
     if (
       !recordDate ||
@@ -58,6 +39,8 @@ async function handler(req, res) {
       return;
     }
 
+    console.log(userId, spotId);
+
     try {
       await insertDocument(client, "records", {
         date: recordDate,
@@ -66,6 +49,8 @@ async function handler(req, res) {
         running_time: recordRunningTime,
         distance: recordDistance,
         description: recordDescription,
+        uid: userId,
+        spotId: spotId,
       });
       client.close();
     } catch (error) {
