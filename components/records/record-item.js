@@ -8,7 +8,16 @@ import HouseIcon from "../icons/house-icon";
 import classes from "./record-item.module.css";
 
 function RecordItem(props) {
-  const { id, image, date, type, prefecture, address1, open_time } = props;
+  const {
+    id,
+    image,
+    date,
+    weather,
+    temperature,
+    running_time,
+    distance,
+    description,
+  } = props;
 
   const exploreLink = `/records/${id}`;
 
@@ -34,20 +43,27 @@ function RecordItem(props) {
           )} */}
           <div className={classes.content}>
             <div className={classes.summary}>
-              <h2>{date}</h2>
-            </div>
-            {/* <div className={classes.type}>
-              <HouseIcon />
-              <h3>{type}</h3>
+              <h2>スポット名</h2>
             </div>
             <div className={classes.date}>
               <DateIcon />
-              <time>{open_time}</time>
+              <time>{date}</time>
             </div>
-            <div className={classes.address}>
-              <AddressIcon />
-              <address>{prefecture + address1}</address>
-            </div> */}
+            <div className={classes.type}>
+              <span>天気：{weather}</span>
+            </div>
+            <div className={classes.type}>
+              <span>気温：{temperature}度</span>
+            </div>
+            <div className={classes.type}>
+              <span>走行時間：{running_time}時間</span>
+            </div>
+            <div className={classes.type}>
+              <span>走行距離：{distance}km</span>
+            </div>
+            <div className={classes.type}>
+              <span>{description}</span>
+            </div>
           </div>
         </li>
       </a>

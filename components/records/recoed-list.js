@@ -11,10 +11,11 @@ function RecordList(props) {
           key={record._id}
           id={record._id}
           date={record.date}
-          // type={record.type}
-          // prefecture={record.prefecture}
-          // address1={record.address1}
-          // open_time={record.open_time}
+          weather={record.weather}
+          temperature={record.temperature}
+          running_time={record.running_time}
+          distance={record.distance}
+          description={record.description}
           // image={record.image}
         />
       ))}
