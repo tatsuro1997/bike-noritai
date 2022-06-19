@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 import AddressIcon from "../icons/address-icon";
 import DateIcon from "../icons/date-icon";
@@ -19,6 +20,16 @@ function RecordItem(props) {
     description,
     spotId,
   } = props;
+
+  const [title, setTitle] = useState("");
+
+  useEffect(() => {
+    fetch("/api/spots/" + spotId)
+      .then((response) => response.json())
+      .then((data) => {
+        setTitle(data.spot.name);
+      });
+  }, [])
 
   const exploreLink = `/spots/${spotId}`;
 
@@ -44,7 +55,7 @@ function RecordItem(props) {
           )} */}
           <div className={classes.content}>
             <div className={classes.summary}>
-              <h2>スポット名</h2>
+              <h2>{title}</h2>
             </div>
             <div className={classes.date}>
               <DateIcon />
