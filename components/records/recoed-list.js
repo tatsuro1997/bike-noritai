@@ -6,19 +6,21 @@ function RecordList(props) {
 
   return (
     <ul className={classes.list}>
-      {items.map((record) => (
-        <RecordItem
-          key={record._id}
-          id={record._id}
-          date={record.date}
-          weather={record.weather}
-          temperature={record.temperature}
-          running_time={record.running_time}
-          distance={record.distance}
-          description={record.description}
-          // image={record.image}
-        />
-      ))}
+      {items.length === 0 && <p>まだ記録はありません。</p>}
+      {items.length >= 1 &&
+        items.map((record) => (
+          <RecordItem
+            key={record._id}
+            id={record._id}
+            date={record.date}
+            weather={record.weather}
+            temperature={record.temperature}
+            running_time={record.running_time}
+            distance={record.distance}
+            description={record.description}
+            // image={record.image}
+          />
+        ))}
     </ul>
   );
 }

@@ -10,7 +10,7 @@ export async function getAllRecords() {
   return records;
 }
 
-export async function getRecordById(id) {
-  const allSpots = await getAllRecords();
-  return allSpots.find((record) => record._id === id);
+export async function getRecordsByUid(uid) {
+  const allRecords = await getAllRecords();
+  return allRecords.filter((record) => record.uid === Number(uid));
 }

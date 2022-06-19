@@ -2,7 +2,7 @@ import Head from "next/head";
 
 import UserProfile from "../../../components/profile/user-profile";
 import RecordList from "../../../components/records/recoed-list";
-import { getAllRecords } from "../../../helpers/record-api-util";
+import { getRecordsByUid } from "../../../helpers/record-api-util";
 import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
 
 function UserDetailPage(props) {
@@ -56,12 +56,12 @@ export async function getStaticProps(context) {
 
   const user = await getUserById(userId);
 
-  const records = await getAllRecords();
+  const myRecords = await getRecordsByUid(userId);
 
   return {
     props: {
       selectedUser: user,
-      records: records
+      records: myRecords,
     },
     revalidate: 30,
   };
