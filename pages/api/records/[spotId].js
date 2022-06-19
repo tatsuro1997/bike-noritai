@@ -39,8 +39,6 @@ async function handler(req, res) {
       return;
     }
 
-    console.log(userId, spotId);
-
     try {
       await insertDocument(client, "records", {
         date: recordDate,

@@ -4,11 +4,15 @@
   background-color: white;
   max-width: 70rem;
   width: 80%;
-  margin: -3rem auto;
   color: #111111;
+  padding: 2rem;
+  margin: -5rem auto;
+  gap: 3rem;
+}
+
+.logistics_top {
   display: flex;
   gap: 1rem;
-  flex-direction: column;
   align-items: center;
 }
 
@@ -17,15 +21,13 @@
 }
 
 .image {
-  width: auto;
-  height: auto;
-  overflow: hidden;
+  width: 20rem;
+  height: 12.5rem;
 }
 
 .image img {
-  width: 15rem;
-  height: 10rem;
-  object-fit: cover;
+  width: 20rem;
+  height: 20rem;
 }
 
 .main {
@@ -52,22 +54,27 @@
   white-space: pre;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .logistics {
-    padding: 2rem;
-    margin: -5rem auto;
-    gap: 3rem;
-    flex-direction: row;
-    align-items: stretch;
+    padding: 0;
+  }
+
+  .logistics_top {
+    display: block;
   }
 
   .image {
-    width: 20rem;
-    height: 12.5rem;
+    width: auto;
+    height: auto;
   }
 
   .image img {
-    width: 20rem;
-    height: 20rem;
+    width: 15rem;
+    height: 10rem;
+  }
+
+  .buttons {
+    margin-top: 1rem;
+    margin-right: 0.5rem;
   }
 }

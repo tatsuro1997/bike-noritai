@@ -14,3 +14,8 @@ export async function getRecordsByUid(uid) {
   const allRecords = await getAllRecords();
   return allRecords.filter((record) => record.uid === Number(uid));
 }
+
+export async function getRecordsBySpotId(spotId) {
+  const allRecords = await getAllRecords();
+  return allRecords.filter((record) => record.spotId === spotId);
+}
