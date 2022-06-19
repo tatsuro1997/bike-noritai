@@ -1,10 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import BikeIcon from "../icons/bike";
+import CloudSunIcon from "../icons/cloud-sun";
 
-import AddressIcon from "../icons/address-icon";
 import DateIcon from "../icons/date-icon";
-import HouseIcon from "../icons/house-icon";
+import StopWatchIcon from "../icons/spot-watch";
+import ThermometerIcon from "../icons/thermometer";
 
 import classes from "./record-item.module.css";
 
@@ -62,16 +64,20 @@ function RecordItem(props) {
               <time>{date}</time>
             </div>
             <div className={classes.type}>
-              <span>天気：{weather}</span>
+              <CloudSunIcon />
+              <span>{weather}</span>
             </div>
             <div className={classes.type}>
-              <span>気温：{temperature}度</span>
+              <ThermometerIcon />
+              <span>{temperature}度</span>
             </div>
             <div className={classes.type}>
-              <span>走行時間：{running_time}時間</span>
+              <StopWatchIcon />
+              <span>{running_time}時間</span>
             </div>
             <div className={classes.type}>
-              <span>走行距離：{distance}km</span>
+              <BikeIcon />
+              <span>{distance}km</span>
             </div>
             <div className={classes.type}>
               <span>{description}</span>
