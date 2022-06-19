@@ -64,8 +64,6 @@ export async function getStaticProps(context) {
 
   const records = await getRecordsBySpotId(spotId);
 
-  console.log(records);
-
   return {
     props: {
       selectedSpot: spot,

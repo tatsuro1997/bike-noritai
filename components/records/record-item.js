@@ -17,9 +17,10 @@ function RecordItem(props) {
     running_time,
     distance,
     description,
+    spotId,
   } = props;
 
-  const exploreLink = `/records/${id}`;
+  const exploreLink = `/spots/${spotId}`;
 
   return (
     <Link href={exploreLink}>
