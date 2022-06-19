@@ -48,7 +48,7 @@ async function handler(req, res) {
         distance: recordDistance,
         description: recordDescription,
         uid: userId,
-        spotId: spotId,
+        spot_id: spotId,
       });
       client.close();
     } catch (error) {

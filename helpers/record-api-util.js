@@ -17,5 +17,5 @@ export async function getRecordsByUid(uid) {
 
 export async function getRecordsBySpotId(spotId) {
   const allRecords = await getAllRecords();
-  return allRecords.filter((record) => record.spotId === spotId);
+  return allRecords.filter((record) => record.spot_id === spotId);
 }

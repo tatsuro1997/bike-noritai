@@ -20,20 +20,20 @@ function RecordItem(props) {
     running_time,
     distance,
     description,
-    spotId,
+    spot_id,
   } = props;
 
   const [title, setTitle] = useState("");
 
   useEffect(() => {
-    fetch("/api/spots/" + spotId)
+    fetch("/api/spots/" + spot_id)
       .then((response) => response.json())
       .then((data) => {
         setTitle(data.spot.name);
       });
   }, [])
 
-  const exploreLink = `/spots/${spotId}`;
+  const exploreLink = `/spots/${spot_id}`;
 
   return (
     <Link href={exploreLink}>
