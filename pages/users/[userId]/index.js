@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 import UserProfile from "../../../components/profile/user-profile";
-import RecordList from "../../../components/records/recoed-list";
+import RecordList from "../../../components/records/record-list";
 import { getRecordsByUid } from "../../../helpers/record-api-util";
 import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
 

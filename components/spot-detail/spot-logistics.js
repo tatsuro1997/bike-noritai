@@ -7,7 +7,7 @@ import classes from "./spot-logistics.module.css";
 import BookmarkButton from "../ui/bookmark-button";
 import Map from "../map/map";
 import RecordButton from "../ui/record-button";
-import RecordList from "../records/recoed-list";
+import RecordList from "../records/record-list";
 
 function SpotLogistics(props) {
   const {
