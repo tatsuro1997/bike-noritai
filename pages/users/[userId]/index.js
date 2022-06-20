@@ -46,7 +46,6 @@ function UserDetailPage(props) {
         created_at={humanReadableDate}
       />
       <RecordList items={records} />
-      <h2>登録スポット</h2>
     </>
   );
 }

@@ -43,20 +43,25 @@ function RecordItem(props) {
   }, []);
 
   const exploreLink = `/spots/${spot_id}`;
+  const userLink = `/users/${uid}`;
 
   return (
     <Link href={exploreLink}>
       <a>
         <li className={classes.item}>
           <div className={classes.user_contents}>
-            <Image
-              src={"/images/no_image.webp"}
-              alt={"プロフィール画像"}
-              width={40}
-              height={40}
-            />
+            <Link href={userLink}>
+              <Image
+                src={"/images/no_image.webp"}
+                alt={"プロフィール画像"}
+                width={40}
+                height={40}
+              />
+            </Link>
             <div className={classes.user_content}>
-              <div className={classes.user_name}>{userName}</div>
+              <Link href={userLink}>
+                <div className={classes.user_name}>{userName}</div>
+              </Link>
               <div className={classes.date}>
                 <div>{date}にツーリング</div>
               </div>
