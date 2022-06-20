@@ -25,7 +25,7 @@ export default function Map(props) {
 
   return (
     <div className={classes.map}>
-      <div style={{ height: "300px", width: "300px" }}>
+      <div className={classes.map_size}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY }}
           defaultCenter={position || defaultLatLng}

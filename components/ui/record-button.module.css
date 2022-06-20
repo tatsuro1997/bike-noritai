@@ -1,0 +1,24 @@
+.record_btn {
+  display: flex;
+  height: 2rem;
+  color: #fff;
+  border: solid #F56018;
+  background-color: #F56018;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.record_btn:hover {
+  background-color: #f78249;
+  border: solid #f78249;
+}
+
+.record_btn a {
+  margin: auto 0.3rem;
+}
+
+.record_btn svg {
+  margin-top: 0.3rem;
+  margin-right: 0.3rem;
+}

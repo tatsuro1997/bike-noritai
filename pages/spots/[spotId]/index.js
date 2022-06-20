@@ -1,16 +1,17 @@
 import Head from "next/head";
 
-import SpotContent from "../../components/spot-detail/spot-content";
-import SpotLogistics from "../../components/spot-detail/spot-logistics";
-import SpotSummary from "../../components/spot-detail/spot-summary";
-import Comments from "../../components/input/comments";
-import { getSpotById, getFeaturedSpots, getCommentsBySpotId } from "../../helpers/spot-api-util";
-import { getBookmarkCount } from "../../helpers/bookmark-api-util";
+import SpotLogistics from "../../../components/spot-detail/spot-logistics";
+import SpotSummary from "../../../components/spot-detail/spot-summary";
+import Comments from "../../../components/input/comments";
+import { getSpotById, getFeaturedSpots, getCommentsBySpotId } from "../../../helpers/spot-api-util";
+import { getBookmarkCount } from "../../../helpers/bookmark-api-util";
+import { getRecordsBySpotId } from "../../../helpers/record-api-util";
 
 function SpotDetailPage(props) {
   const spot = props.selectedSpot;
   const spotCount = props.countedSpot;
   const comments = props.selectedComments;
+  const records = props.selectedRecords;
 
   if (!spot) {
     return (
@@ -39,15 +40,14 @@ function SpotDetailPage(props) {
         off_day={spot.off_day}
         parking={spot.parking}
         hp_url={spot.hp_url}
+        description={spot.description}
         image={spot.image}
         imageAlt={spot.name}
         count={spotCount}
         lat={spot.lat}
         lng={spot.lng}
+        records={records}
       />
-      <SpotContent>
-        <p>{spot.description}</p>
-      </SpotContent>
       <Comments spotId={spot._id} comments={comments} />
     </>
   );
@@ -62,11 +62,14 @@ export async function getStaticProps(context) {
 
   const comments = await getCommentsBySpotId(spotId);
 
+  const records = await getRecordsBySpotId(spotId);
+
   return {
     props: {
       selectedSpot: spot,
       countedSpot: spotCount,
       selectedComments: comments,
+      selectedRecords: records,
     },
     revalidate: 30,
   };

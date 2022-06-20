@@ -1,8 +1,3 @@
-.bookmark_btn{
-  display: flex;
-  justify-content: flex-end;
-}
-
 .is_booked {
   display: flex;
   height: 2rem;
@@ -15,6 +10,7 @@
 
 .is_booked:hover {
   background-color: #00ad00;
+  border: solid #00ad00;
 }
 
 .is_booked p {

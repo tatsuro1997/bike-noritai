@@ -1,10 +1,13 @@
 import Head from "next/head";
 
 import UserProfile from "../../../components/profile/user-profile";
+import RecordList from "../../../components/records/record-list";
+import { getRecordsByUid } from "../../../helpers/record-api-util";
 import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
 
 function UserDetailPage(props) {
   const user = props.selectedUser;
+  const records = props.records;
 
   if (!user) {
     return (
@@ -42,7 +45,7 @@ function UserDetailPage(props) {
         url={user.url}
         created_at={humanReadableDate}
       />
-      <h2>登録スポット</h2>
+      <RecordList items={records} />
     </>
   );
 }
@@ -52,9 +55,12 @@ export async function getStaticProps(context) {
 
   const user = await getUserById(userId);
 
+  const myRecords = await getRecordsByUid(userId);
+
   return {
     props: {
       selectedUser: user,
+      records: myRecords,
     },
     revalidate: 30,
   };

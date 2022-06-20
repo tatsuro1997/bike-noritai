@@ -49,7 +49,7 @@ export async function getCommentsBySpotId(spotId) {
   const allComments = await getAllComments();
 
   let filteredComments = allComments.filter((comment) => {
-    return comment.spotId === spotId;
+    return comment.spot_id === spotId;
   })
 
   return filteredComments;

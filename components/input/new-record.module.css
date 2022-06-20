@@ -8,6 +8,14 @@
   margin-top: 5rem;
 }
 
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  margin-bottom: 1rem;
+}
+
 .row {
   display: flex;
   gap: 1rem;
@@ -29,6 +37,7 @@
 }
 
 .control input,
+.control select,
 .control textarea {
   font: inherit;
   padding: 0.25rem;
@@ -36,6 +45,10 @@
   border: 1px solid #ccc;
   width: 100%;
   background-color: #dcfff9;
+}
+
+.control textarea {
+  margin-top: 1rem;
 }
 
 .form button {
