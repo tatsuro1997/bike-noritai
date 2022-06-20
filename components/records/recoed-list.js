@@ -19,6 +19,7 @@ function RecordList(props) {
             distance={record.distance}
             description={record.description}
             spot_id={record.spot_id}
+            uid={record.uid}
             // image={record.image}
           />
         ))}
