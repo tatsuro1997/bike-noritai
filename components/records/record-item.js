@@ -1,10 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+
 import BikeIcon from "../icons/bike";
 import CloudSunIcon from "../icons/cloud-sun";
-
-import DateIcon from "../icons/date-icon";
 import StopWatchIcon from "../icons/spot-watch";
 import ThermometerIcon from "../icons/thermometer";
 
@@ -53,38 +52,39 @@ function RecordItem(props) {
             <Image
               src={"/images/no_image.webp"}
               alt={"プロフィール画像"}
-              width={30}
-              height={30}
+              width={40}
+              height={40}
             />
             <div className={classes.user_content}>
               <div className={classes.user_name}>{userName}</div>
+              <div className={classes.date}>
+                <div>{date}にツーリング</div>
+              </div>
             </div>
           </div>
           <div className={classes.content}>
-            <div className={classes.summary}>
-              <h2>{title}</h2>
+            <div className={classes.title}>
+              <div>{title}</div>
             </div>
-            <div className={classes.date}>
-              <DateIcon />
-              <time>{date}</time>
+            <div className={classes.data}>
+              <div className={classes.type}>
+                <CloudSunIcon />
+                <span>{weather}</span>
+              </div>
+              <div className={classes.type}>
+                <ThermometerIcon />
+                <span>{temperature}度</span>
+              </div>
+              <div className={classes.type}>
+                <StopWatchIcon />
+                <span>{running_time}時間</span>
+              </div>
+              <div className={classes.type}>
+                <BikeIcon />
+                <span>{distance}km</span>
+              </div>
             </div>
-            <div className={classes.type}>
-              <CloudSunIcon />
-              <span>{weather}</span>
-            </div>
-            <div className={classes.type}>
-              <ThermometerIcon />
-              <span>{temperature}度</span>
-            </div>
-            <div className={classes.type}>
-              <StopWatchIcon />
-              <span>{running_time}時間</span>
-            </div>
-            <div className={classes.type}>
-              <BikeIcon />
-              <span>{distance}km</span>
-            </div>
-            <div className={classes.type}>
+            <div className={classes.description}>
               <span>{description}</span>
             </div>
           </div>

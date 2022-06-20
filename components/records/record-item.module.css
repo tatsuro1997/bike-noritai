@@ -4,102 +4,83 @@
   overflow: hidden;
   background-color: white;
   margin: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  padding: 1rem;
 }
 
-.item img {
-  width: 100%;
-  object-fit: cover;
-  height: 10rem;
+.user_contents {
+  display: flex;
+}
+
+.user_contents img {
+  border-radius: 50%;
+}
+
+.user_contents img:hover {
+  cursor: pointer;
+}
+
+.user_content {
+  margin-left: 1rem;
+}
+
+.user_name {
+  font-weight: bold;
+}
+
+.date {
+  font-size: 0.8rem;
+  color: #888888;
 }
 
 .content {
   width: 100%;
-  padding: 0 1rem;
-  text-align: center;
+  margin: 0.5rem 3rem 0 3.3rem;
+  text-align: left;
 }
 
-.content h2 {
-  margin: 0.5rem 0;
-}
-
-.type,
-.date,
-.address {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.type svg,
-.date svg,
-.address svg {
-  width: 1.25rem;
-  height: 1.25rem;
-  color: #666666;
-}
-
-.content time {
-  color: #666666;
+.title {
+  font-size: 1.2rem;
   font-weight: bold;
+  color: #007a00;
 }
 
-.content address {
-  margin: 0.5rem 0;
-  color: #666666;
-  white-space: pre;
-}
-
-.actions {
+.data {
   display: flex;
-  flex-direction: column;
-  padding: 1rem;
+  margin: 0.5rem 0;
 }
 
-.actions a {
-  display: block;
-}
-
-.actions a span {
-  vertical-align: middle;
-}
-
-.icon {
-  margin-left: 0.5rem;
-  display: inline-flex;
-  justify-content: center;
+.type {
+  display: flex;
+  gap: 0.2rem;
   align-items: center;
+  margin-right: 0.8rem;
 }
 
-.icon svg {
+.type svg {
   width: 1.25rem;
   height: 1.25rem;
+  color: #666666;
 }
 
-@media (min-width: 768px) {
+.description {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
   .item {
-    flex-direction: row;
+    width: 100%;
+    margin: 0.5rem 0;
   }
 
-  .item img {
-    width: 40%;
-    height: 14rem;
+  .data {
+    flex-wrap: wrap;
+  }
+  .type {
+    gap: 0.5rem;
+    width: 30%;
   }
 
-  .content {
-    width: 60%;
-    padding: 0;
-    text-align: left;
-  }
-
-  .content h2 {
-    margin: 1rem 0;
-  }
-
-  .actions {
-    flex-direction: row;
-    justify-content: flex-end;
+  .description {
+    width: 80%;
   }
 }
