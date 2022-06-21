@@ -69,11 +69,14 @@ async function handler(req, res) {
       }
     }
 
+    const now = new Date();
+
     if (findBookmarkData.length === 0) {
       try {
         await insertDocument(client, "bookmarks", {
           user_id: userId,
           spot_id: spotId,
+          created_at: now,
         });
         client.close();
       } catch (error) {

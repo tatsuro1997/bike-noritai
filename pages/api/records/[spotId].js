@@ -39,6 +39,8 @@ async function handler(req, res) {
       return;
     }
 
+    const now = new Date();
+
     try {
       await insertDocument(client, "records", {
         date: recordDate,
@@ -49,6 +51,7 @@ async function handler(req, res) {
         description: recordDescription,
         uid: userId,
         spot_id: spotId,
+        created_at: now,
       });
       client.close();
     } catch (error) {
