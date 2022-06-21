@@ -20,7 +20,7 @@ export async function getRecordsBySpotId(spotId) {
   return allRecords.filter((record) => record.spot_id === spotId);
 }
 
-export async function getRecordsThisMonth(uid, month) {
+export async function getRecordsByMonth(uid, month) {
   const filteredRecords = await getRecordsByUid(uid);
   return filteredRecords.filter(
     (record) => new Date(record.created_at).getMonth() + 1 === month

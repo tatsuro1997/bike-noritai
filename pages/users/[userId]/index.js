@@ -2,7 +2,7 @@ import Head from "next/head";
 
 import UserProfile from "../../../components/profile/user-profile";
 import RecordList from "../../../components/records/record-list";
-import { getRecordsByUid, getRecordsThisMonth } from "../../../helpers/record-api-util";
+import { getRecordsByUid, getRecordsByMonth } from "../../../helpers/record-api-util";
 import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
 
 function UserDetailPage(props) {
@@ -60,7 +60,7 @@ export async function getStaticProps(context) {
 
   const myRecords = await getRecordsByUid(userId);
 
-  const thisMonthRecords = await getRecordsThisMonth(userId, month);
+  const thisMonthRecords = await getRecordsByMonth(userId, month);
 
   return {
     props: {
