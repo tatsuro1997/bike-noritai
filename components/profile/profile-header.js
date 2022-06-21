@@ -4,10 +4,20 @@ import Link from "next/link";
 import EditIcon from "../icons/edit-icon";
 
 import classes from "./profile-header.module.css";
+import Report from "./report";
 
 function ProfileHeader(props) {
-  const { id, name, area, prefecture, experience, bike_name, url, created_at } =
-    props;
+  const {
+    id,
+    name,
+    area,
+    prefecture,
+    experience,
+    bike_name,
+    url,
+    created_at,
+    thisMonthRecords,
+  } = props;
 
   return (
     <div className={classes.card}>
@@ -31,7 +41,8 @@ function ProfileHeader(props) {
           width={100}
           height={100}
         />
-        <div className={classes.name}>{name}さんのプロフ</div>
+        <div className={classes.name}>{name}</div>
+        <Report thisMonthRecords={thisMonthRecords} />
       </div>
       <ul className={classes.profileInfo}>
         <li>

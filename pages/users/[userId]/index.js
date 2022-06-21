@@ -2,12 +2,13 @@ import Head from "next/head";
 
 import UserProfile from "../../../components/profile/user-profile";
 import RecordList from "../../../components/records/record-list";
-import { getRecordsByUid } from "../../../helpers/record-api-util";
+import { getRecordsByUid, getRecordsThisMonth } from "../../../helpers/record-api-util";
 import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
 
 function UserDetailPage(props) {
   const user = props.selectedUser;
   const records = props.records;
+  const thisMonthRecords = props.thisMonthRecords;
 
   if (!user) {
     return (
@@ -44,6 +45,7 @@ function UserDetailPage(props) {
         bike_name={user.bike_name}
         url={user.url}
         created_at={humanReadableDate}
+        thisMonthRecords={thisMonthRecords}
       />
       <RecordList items={records} />
     </>
@@ -52,15 +54,19 @@ function UserDetailPage(props) {
 
 export async function getStaticProps(context) {
   const userId = context.params.userId;
+  const month = new Date().getMonth() + 1;
 
   const user = await getUserById(userId);
 
   const myRecords = await getRecordsByUid(userId);
 
+  const thisMonthRecords = await getRecordsThisMonth(userId, month);
+
   return {
     props: {
       selectedUser: user,
       records: myRecords,
+      thisMonthRecords,
     },
     revalidate: 30,
   };
