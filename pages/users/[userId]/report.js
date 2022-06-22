@@ -6,9 +6,6 @@ import { getAllUsers } from "../../../helpers/user-api-util";
 function ReportsPage(props) {
   const { thisMonthRecords, lastMonthRecords } = props;
 
-  console.log("thisMonthRecords", thisMonthRecords);
-  console.log("lastMonthRecords", lastMonthRecords);
-
   return (
     <>
       <Head>

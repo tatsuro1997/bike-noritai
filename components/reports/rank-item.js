@@ -11,7 +11,6 @@ function RankItem(props) {
     fetch("/api/spots/" + spotId)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setTitle(data.spot.name);
       });
   }, []);
