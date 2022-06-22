@@ -42,7 +42,7 @@ function ProfileHeader(props) {
           height={100}
         />
         <div className={classes.name}>{name}</div>
-        <Report thisMonthRecords={thisMonthRecords} />
+        <Report thisMonthRecords={thisMonthRecords} uid={id} />
       </div>
       <ul className={classes.profileInfo}>
         <li>
