@@ -35,13 +35,15 @@ function ProfileHeader(props) {
         </div>
       </div>
       <div className={classes.profileHeader_content}>
-        <Image
-          src={"/images/no_image.webp"}
-          alt={"プロフィール画像"}
-          width={100}
-          height={100}
-        />
-        <div className={classes.name}>{name}</div>
+        <div className={classes.profileHeader_content_left}>
+          <Image
+            src={"/images/no_image.webp"}
+            alt={"プロフィール画像"}
+            width={100}
+            height={100}
+          />
+          <div className={classes.name}>{name}</div>
+        </div>
         <Report thisMonthRecords={thisMonthRecords} uid={id} />
       </div>
       <ul className={classes.profileInfo}>

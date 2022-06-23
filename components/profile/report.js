@@ -16,18 +16,21 @@ function Report(props) {
   return (
     <Link href={exploreLink}>
       <div className={classes.card}>
-        <div className={classes.constent}>
-          <div className={classes.title}>今月のツーリング</div>
+        <div className={classes.content}>
+          <div className={classes.content_top}>
+            <div className={classes.title}>今月のツーリング</div>
+            <div className={classes.guide}>レポート ＞</div>
+          </div>
           <div className={classes.data}>
             <dl className={classes.data_item}>
-              <dt className={classes.handle_name}>ツーリング</dt>
+              <dt className={classes.handle_name}>ツー</dt>
               <dd className={classes.data_count}>
                 <span className={classes.number}>{touringTimes}</span>
                 <span className={classes.unit}>回</span>
               </dd>
             </dl>
             <dl className={classes.data_item}>
-              <dt className={classes.handle_name}>総走行距離</dt>
+              <dt className={classes.handle_name}>走行距離</dt>
               <dd className={classes.data_count}>
                 <span className={classes.number}>{totalDistance}</span>
                 <span className={classes.unit}>km</span>
