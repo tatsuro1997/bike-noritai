@@ -1,5 +1,6 @@
 import Link from "next/link";
 import RankList from "./rank-list";
+import ReportData from "./report-data";
 
 import classes from "./report-item.module.css";
 
@@ -22,33 +23,13 @@ function ReportItem(props) {
   return (
     <li className={classes.item}>
       <div className={classes.card}>
-        <div className={classes.title}>
-          <div className={classes.title}>{month}月のツーリング</div>
-        </div>
-        <div className={classes.constent}>
-          <div className={classes.data}>
-            <dl className={classes.data_item}>
-              <dt className={classes.handle_name}>ツーリング</dt>
-              <dd className={classes.data_count}>
-                <span className={classes.number}>{touringTimes}</span>
-                <span className={classes.unit}>回</span>
-              </dd>
-            </dl>
-            <dl className={classes.data_item}>
-              <dt className={classes.handle_name}>総走行距離</dt>
-              <dd className={classes.data_count}>
-                <span className={classes.number}>{totalDistance}</span>
-                <span className={classes.unit}>km</span>
-              </dd>
-            </dl>
-            <dl className={classes.data_item}>
-              <dt className={classes.handle_name}>週ペース</dt>
-              <dd className={classes.data_count}>
-                <span className={classes.number}>{monthlyPace}</span>
-                <span className={classes.unit}>回</span>
-              </dd>
-            </dl>
-          </div>
+        <div className={classes.title}>{month}月のツーリング</div>
+        <div className={classes.content}>
+          <ReportData
+            touringTimes={touringTimes}
+            totalDistance={totalDistance}
+            monthlyPace={monthlyPace}
+          />
         </div>
         <div className={classes.lank}>
           ランキング

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ReportData from "../reports/report-data";
 
 import classes from "./report.module.css";
 
@@ -21,29 +22,11 @@ function Report(props) {
             <div className={classes.title}>今月のツーリング</div>
             <div className={classes.guide}>レポート ＞</div>
           </div>
-          <div className={classes.data}>
-            <dl className={classes.data_item}>
-              <dt className={classes.handle_name}>ツー</dt>
-              <dd className={classes.data_count}>
-                <span className={classes.number}>{touringTimes}</span>
-                <span className={classes.unit}>回</span>
-              </dd>
-            </dl>
-            <dl className={classes.data_item}>
-              <dt className={classes.handle_name}>走行距離</dt>
-              <dd className={classes.data_count}>
-                <span className={classes.number}>{totalDistance}</span>
-                <span className={classes.unit}>km</span>
-              </dd>
-            </dl>
-            <dl className={classes.data_item}>
-              <dt className={classes.handle_name}>週ペース</dt>
-              <dd className={classes.data_count}>
-                <span className={classes.number}>{monthlyPace}</span>
-                <span className={classes.unit}>回</span>
-              </dd>
-            </dl>
-          </div>
+          <ReportData
+            touringTimes={touringTimes}
+            totalDistance={totalDistance}
+            monthlyPace={monthlyPace}
+          />
         </div>
       </div>
     </Link>
