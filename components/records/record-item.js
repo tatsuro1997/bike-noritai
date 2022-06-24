@@ -51,12 +51,15 @@ function RecordItem(props) {
         <li className={classes.item}>
           <div className={classes.user_contents}>
             <Link href={userLink}>
-              <Image
-                src={"/images/no_image.webp"}
-                alt={"プロフィール画像"}
-                width={40}
-                height={40}
-              />
+              {/* WarmingがでないようにFragmentで囲っている（Linkが効かないので変更の必要あり） */}
+              <>
+                <Image
+                  src={"/images/no_image.webp"}
+                  alt={"プロフィール画像"}
+                  width={40}
+                  height={40}
+                />
+              </>
             </Link>
             <div className={classes.user_content}>
               <Link href={userLink}>

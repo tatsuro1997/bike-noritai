@@ -27,11 +27,14 @@ async function handler(req, res) {
       return;
     }
 
+    const now = new Date();
+
     const newComment = {
       uid,
       name,
       text,
       spot_id,
+      created_at: now,
     };
 
     let result;

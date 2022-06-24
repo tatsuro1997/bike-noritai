@@ -43,11 +43,16 @@
   width: 80%;
   margin: 0 auto;
   display: flex;
+  justify-content: space-between;
 }
 
 .profileHeader_content img {
   border-radius: 50%;
   overflow: hidden;
+}
+
+.profileHeader_content_left{
+  display: flex;
 }
 
 .name {
@@ -91,6 +96,10 @@
 }
 
 @media (max-width: 768px) {
+  .profileHeader_content {
+    flex-direction: column;
+  }
+
   .name {
     font-size: 1.5rem;
   }

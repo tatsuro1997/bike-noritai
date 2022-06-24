@@ -1,0 +1,72 @@
+.data {
+  display: flex;
+  gap: 1rem;
+}
+
+.data_item {
+  display: flex;
+  margin-bottom: 0;
+}
+
+.handle_name {
+  font-size: 0.5rem;
+  font-weight: 800;
+}
+
+.data_count {
+  margin-left: 0.3rem;
+}
+
+.data_count .number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 0.3rem;
+}
+
+.data_count .unit {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.report_data {
+  margin-left: 0.3rem;
+}
+
+.report_data .number {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-right: 0.3rem;
+}
+
+.report_data .unit {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .data_item {
+    flex-direction: column;
+  }
+
+  .data_count .number {
+    font-size: 1rem;
+  }
+
+  .data_count .unit {
+    font-size: 0.7rem;
+  }
+
+  .report_data {
+    display: flex;
+  }
+
+  .report_data .number {
+    font-size: 2rem;
+  }
+
+  .report_data .unit {
+    font-size: 0.8rem;
+    font-weight: 400;
+    padding-top: 1rem;
+  }
+}

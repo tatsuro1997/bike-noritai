@@ -65,6 +65,8 @@ async function handler(req, res) {
       return;
     }
 
+    const now = new Date();
+
     try {
       await insertDocument(client, "spots", {
         name: spotName,
@@ -80,6 +82,7 @@ async function handler(req, res) {
         description: spotDescription,
         lat: spotLat,
         lng: spotLng,
+        created_at: now,
       });
       client.close();
     } catch (error) {

@@ -3,8 +3,17 @@ import ProfileHeader from "./profile-header";
 import classes from "./user-profile.module.css";
 
 function UserProfile(props) {
-  const { id, name, area, prefecture, experience, bike_name, url, created_at } =
-    props;
+  const {
+    id,
+    name,
+    area,
+    prefecture,
+    experience,
+    bike_name,
+    url,
+    created_at,
+    thisMonthRecords,
+  } = props;
 
   return (
     <div className={classes.wrapper}>
@@ -17,6 +26,7 @@ function UserProfile(props) {
         bike_name={bike_name}
         url={url}
         created_at={created_at}
+        thisMonthRecords={thisMonthRecords}
       />
     </div>
   );
