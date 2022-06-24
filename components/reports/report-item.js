@@ -1,5 +1,6 @@
 import Link from "next/link";
 import RankList from "./rank-list";
+import ReportButtom from "./report-buttom";
 import ReportData from "./report-data";
 
 import classes from "./report-item.module.css";
@@ -31,14 +32,15 @@ function ReportItem(props) {
             monthlyPace={monthlyPace}
           />
         </div>
-        <div className={classes.lank}>
-          ランキング
+        <hr />
+        <div className={classes.lank_list}>
           <RankList monthRecords={monthRecords} />
         </div>
-        <div className={classes.average}>平均走行距離{averageDistance}km</div>
-        <div className={classes.average}>
-          平均走行時間{averageRunningTime}時間
-        </div>
+        <hr />
+        <ReportButtom
+          averageDistance={averageDistance}
+          averageRunningTime={averageRunningTime}
+        />
       </div>
     </li>
   );

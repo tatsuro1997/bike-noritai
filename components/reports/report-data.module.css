@@ -19,20 +19,54 @@
 
 .data_count .number {
   font-size: 1.5rem;
-  font-weight: 2000;
+  font-weight: bold;
+  margin-right: 0.3rem;
 }
 
 .data_count .unit {
   font-size: 1rem;
-  font-weight: 1000;
+  font-weight: 600;
+}
+
+.report_data {
+  margin-left: 0.3rem;
+}
+
+.report_data .number {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-right: 0.3rem;
+}
+
+.report_data .unit {
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 @media (max-width: 768px) {
+  .data_item {
+    flex-direction: column;
+  }
+
   .data_count .number {
     font-size: 1rem;
   }
 
   .data_count .unit {
     font-size: 0.7rem;
+  }
+
+  .report_data {
+    display: flex;
+  }
+
+  .report_data .number {
+    font-size: 2rem;
+  }
+
+  .report_data .unit {
+    font-size: 0.8rem;
+    font-weight: 400;
+    padding-top: 1rem;
   }
 }

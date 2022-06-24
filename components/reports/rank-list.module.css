@@ -1,0 +1,5 @@
+.list {
+  padding: 0;
+  font-weight: 600;
+  counter-reset: count 0;
+}

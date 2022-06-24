@@ -17,10 +17,8 @@ function RankItem(props) {
 
   return (
     <li className={classes.item}>
-      <div>
-        <div>{title}</div>
-        <div>{distance}km</div>
-      </div>
+      <div>{title}</div>
+      <div>{distance}km</div>
     </li>
   );
 }
