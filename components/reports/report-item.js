@@ -16,8 +16,8 @@ function ReportItem(props) {
     return sum + Number(record.running_time);
   }, 0);
   const monthlyPace = touringTimes / 4;
-  const averageDistance = totalDistance / touringTimes;
-  const averageRunningTime = totalRunningTime / touringTimes;
+  const averageDistance = Math.floor((totalDistance / touringTimes) * 100) / 100;
+  const averageRunningTime = Math.floor((totalRunningTime / touringTimes) * 100) / 100;
 
   const month = new Date(monthRecords[0].date).getMonth() + 1;
 
