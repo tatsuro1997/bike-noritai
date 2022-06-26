@@ -8,10 +8,22 @@ import geoJson from "/japan.geo.json";
 function ClickableMap() {
   const router = useRouter();
   const mapRef = useRef(null);
-  
+
   useEffect(() => {
-    const w = 550;
-    const h = 500;
+    let windowWidth = window.innerWidth;
+    let windowSm = 768;
+    let w;
+    let h;
+
+    if (windowWidth <= windowSm) {
+      //横幅768px以下（スマホ）に適用させるJavaScriptを記述
+      w = 350;
+      h = 500;
+    } else {
+      //横幅768px以上（PC、タブレット）に適用させるJavaScriptを記述
+      w = 550;
+      h = 500;
+    }
     // 地図の投影図法を設定する．
     const projection = d3
       .geoMercator()
