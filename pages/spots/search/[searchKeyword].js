@@ -32,7 +32,7 @@ function FilteredSpotsPage() {
     return (
       <>
         {pageHeadData}
-        <p className="center">Loading...</p>;
+        <p className="center">Loading...</p>
       </>
     );
   }

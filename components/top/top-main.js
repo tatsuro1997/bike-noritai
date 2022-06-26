@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
+import ClickableMap from "../map/clickable-map";
 
 import SpotsSearch from "../spots/spots-search";
 
@@ -21,12 +22,13 @@ function TopMain() {
         </div>
         <div className={classes.contents}>
           <h2>今から走りに行きたいスポットが見つかる検索サイト</h2>
-          <Image
+          {/* <Image
             src={"/images/no_image.webp"}
             alt={"ロゴ"}
             width={550}
             height={300}
-          />
+          /> */}
+          <ClickableMap />
           <SpotsSearch />
         </div>
       </div>
