@@ -7,15 +7,16 @@ function RankList(props) {
   const { monthRecords } = props;
 
   const sortedMonthRecord = monthRecords.sort((a, b) => b.distance - a.distance);
+  const slicedMonthRecord = sortedMonthRecord.slice(0, 5);
 
     return (
       <ol className={classes.list}>
         <div className={classes.rank}>
           <TophyIcon /> TOP5
         </div>
-        {sortedMonthRecord.length === 0 && <p> - </p>}
-        {sortedMonthRecord.length >= 1 &&
-          sortedMonthRecord.map((record) => (
+        {slicedMonthRecord.length === 0 && <p> - </p>}
+        {slicedMonthRecord.length >= 1 &&
+          slicedMonthRecord.map((record) => (
             <LankItem
               key={record._id}
               id={record._id}
