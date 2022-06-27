@@ -1,11 +1,12 @@
 import Head from "next/head";
 
 import { getAllSpots } from "../helpers/spot-api-util";
-import SpotList from "../components/spots/spot-list";
 import SpotRegistration from "../components/spots/spot-registration";
 import TopMain from "../components/top/top-main";
+import LatestSpots from "../components/spots/latest-spots";
 
-function HomePage(props) {
+function HomePage({ spots }) {
+
   return (
     <div>
       <Head>
@@ -17,7 +18,7 @@ function HomePage(props) {
       </Head>
       <TopMain />
       {/* <SpotRegistration /> */}
-      <SpotList items={props.spots} />
+      <LatestSpots spots={spots} />
     </div>
   );
 }
