@@ -1,0 +1,23 @@
+import Link from "next/link";
+
+import classes from "./prefecture-item.module.css";
+
+function PrefectureItem({ area, prefectures }) {
+  return (
+    <li className={classes.list}>
+      <div className={classes.area}>{area}</div>
+      <ul className={classes.prefecture_ul}>
+        {prefectures &&
+          prefectures.map((prefecture) => (
+            <li key={1} className={classes.prefecture_li}>
+              <Link href={`/spots/search/${prefecture}`}>
+                <a>{prefecture}のスポット</a>
+              </Link>
+            </li>
+          ))}
+      </ul>
+    </li>
+  );
+}
+
+export default PrefectureItem;

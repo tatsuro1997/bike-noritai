@@ -1,0 +1,32 @@
+.list {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+.area {
+  font-weight: bold;
+  width: 7rem;
+  display: block;
+  font-size: 1rem;
+}
+
+.prefecture_ul {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.prefecture_li {
+  /* border-bottom: solid black; */
+  font-size: 0.8rem;
+}
+
+.prefecture_li a {
+  border-bottom: solid black;
+}
+
+@media (max-width: 768px) {
+  .list {
+    flex-direction: column;
+  }
+}

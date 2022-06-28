@@ -5,6 +5,7 @@ import { getAllRecords } from "../helpers/record-api-util";
 import TopMain from "../components/top/top-main";
 import LatestRecords from "../components/records/latest-records";
 import LatestSpots from "../components/spots/latest-spots";
+import PrefectureContent from "../components/prefectures/prefecture-content";
 
 function HomePage({ records, spots }) {
 
@@ -20,6 +21,7 @@ function HomePage({ records, spots }) {
       <TopMain />
       <LatestRecords records={records} />
       <LatestSpots spots={spots} />
+      <PrefectureContent />
     </div>
   );
 }
