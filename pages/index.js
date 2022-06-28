@@ -1,11 +1,12 @@
 import Head from "next/head";
 
 import { getAllSpots } from "../helpers/spot-api-util";
-import SpotRegistration from "../components/spots/spot-registration";
+import { getAllRecords } from "../helpers/record-api-util";
 import TopMain from "../components/top/top-main";
+import LatestRecords from "../components/records/latest-records";
 import LatestSpots from "../components/spots/latest-spots";
 
-function HomePage({ spots }) {
+function HomePage({ records, spots }) {
 
   return (
     <div>
@@ -17,18 +18,20 @@ function HomePage({ spots }) {
         />
       </Head>
       <TopMain />
-      {/* <SpotRegistration /> */}
+      <LatestRecords records={records} />
       <LatestSpots spots={spots} />
     </div>
   );
 }
 
 export async function getStaticProps() {
-  const featuredSpots = await getAllSpots();
+  const records = await getAllRecords();
+  const spots = await getAllSpots();
 
   return {
     props: {
-      spots: featuredSpots,
+      records: records,
+      spots: spots,
     },
     revalidate: 1800,
   };
