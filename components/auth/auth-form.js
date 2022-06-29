@@ -23,6 +23,7 @@ async function createUser(email, password, uid) {
 }
 
 function AuthForm() {
+  const [error, setError] = useState();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const [users, setUsers] = useState([]);
@@ -56,18 +57,30 @@ function AuthForm() {
         password: enteredPassword,
       });
 
+      if (result.error) {
+        const errorMessage = (
+          <div style={{ color: "#f78249", fontWeight: "bold" }}>
+            入力された値が間違っています
+          </div>
+        );
+        setError(errorMessage);
+      }
+
       if (!result.error) {
         router.replace("/");
       }
     } else {
       try {
-        const result = await createUser(
-          enteredEmail,
-          enteredPassword,
-          uid
-        );
+        const result = await createUser(enteredEmail, enteredPassword, uid);
+        router.replace("/");
       } catch (error) {
         console.log(error);
+        const errorMessage = (
+          <div style={{ color: "#f78249", fontWeight: "bold" }}>
+            既にそのメールアドレスは使われているか、入力された値が間違っています
+          </div>
+        );
+        setError(errorMessage);
       }
     }
   }
@@ -89,6 +102,7 @@ function AuthForm() {
             ref={passwordInputRef}
           />
         </div>
+        {error}
         <div className={classes.actions}>
           <button>{isLogin ? "Login" : "Create Account"}</button>
           <button
