@@ -9,7 +9,7 @@ function PrefectureItem({ area, prefectures }) {
       <ul className={classes.prefecture_ul}>
         {prefectures &&
           prefectures.map((prefecture) => (
-            <li key={1} className={classes.prefecture_li}>
+            <li key={Math.random()} className={classes.prefecture_li}>
               <Link href={`/spots/search/${prefecture}`}>
                 <a>{prefecture}のスポット</a>
               </Link>
