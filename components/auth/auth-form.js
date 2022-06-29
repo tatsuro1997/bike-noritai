@@ -74,6 +74,12 @@ function AuthForm() {
         const result = await createUser(enteredEmail, enteredPassword, uid);
       } catch (error) {
         console.log(error);
+        const errorMessage = (
+          <div style={{ color: "#f78249", fontWeight: "bold" }}>
+            既にそのメールアドレスは使われているか、入力された値が間違っています
+          </div>
+        );
+        setError(errorMessage);
       }
     }
   }
