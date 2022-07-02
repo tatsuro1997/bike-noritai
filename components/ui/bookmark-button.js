@@ -24,10 +24,7 @@ function BookmarkButton(props) {
         setIsBookmarked(false);
       }
     } catch {
-      res.status(500).json({
-        message: "Could not find Bookmark!",
-      });
-      return;
+      console.log("Could not find Bookmark!");
     }
   }
 

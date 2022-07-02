@@ -6,7 +6,6 @@ function ReportData(props) {
   const router = useRouter();
   const route = router.asPath;
 
-  console.log(route.slice(-6));
   let switchClass;
   if (route.slice(-6) === 'report') {
     switchClass = classes.report_data;
