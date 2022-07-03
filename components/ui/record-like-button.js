@@ -37,9 +37,11 @@ function RecordLikeButton(props) {
     });
   }, []);
 
-  // useEffect(() => {
-  //   setCountLike(getRecordLikeCount(recordId));
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      setCountLike(await getRecordLikeCount(recordId));
+    })();
+  }, []);
 
   async function bookmarkHandler() {
     setIsLiked((prevState) => !prevState);
@@ -77,14 +79,14 @@ function RecordLikeButton(props) {
     recordLikeButton = (
       <div className={classes.is_liked} onClick={bookmarkHandler}>
         <HeartFullIcon />
-        {/* <p>{countLike}</p> */}
+        <p>{countLike}</p>
       </div>
     );
   } else {
     recordLikeButton = (
       <div className={classes.is_not_liked} onClick={bookmarkHandler}>
         <HeartIcon />
-        {/* <p>{countLike}</p> */}
+        <p>{countLike}</p>
       </div>
     );
   }

@@ -1,42 +1,30 @@
-.is_liked {
+.is_liked,
+.is_not_liked {
   display: flex;
   height: 2rem;
-  width: 1.5rem;
+  width: 2rem;
   font-weight: bold;
   margin-top: 0.5rem;
+}
+
+.is_liked svg,
+.is_not_liked svg {
+  margin-top: 1rem;
+  margin-right: 0.3rem;
+}
+
+.is_liked svg {
+  color: #f00;
 }
 
 .is_liked:hover svg {
   color: #f55;
 }
 
-.is_liked p {
-  margin: auto 0.3rem;
-}
-
-.is_liked svg {
-  margin-top: 0.3rem;
-  margin-right: 0.3rem;
-  color: #f00;
-}
-
-.is_not_liked {
-  display: flex;
-  height: 2rem;
-  width: 1.5rem;
-  font-weight: bold;
-  margin-top: 0.5rem;
+.is_liked:hover p {
+  color: #ccc;
 }
 
 .is_not_liked:hover {
   color: #ccc;
-}
-
-.is_not_liked p {
-  margin: auto 0.3rem;
-}
-
-.is_not_liked svg {
-  margin-top: 0.3rem;
-  margin-right: 0.3rem;
 }
