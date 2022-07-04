@@ -43,7 +43,8 @@ function RecordLikeButton(props) {
     })();
   }, []);
 
-  async function bookmarkHandler() {
+  async function bookmarkHandler(e) {
+    e.preventDefault()
     setIsLiked((prevState) => !prevState);
 
     if (isLiked) {
