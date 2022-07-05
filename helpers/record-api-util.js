@@ -26,3 +26,8 @@ export async function getRecordsByMonth(uid, month) {
     (record) => new Date(record.date).getMonth() + 1 === month
   );
 }
+
+export async function getThreeRecordsBySpotId(spotId) {
+  const allRecords = await getAllRecords();
+  return allRecords.filter((record) => record.spot_id === spotId).slice(0, 3);
+}
