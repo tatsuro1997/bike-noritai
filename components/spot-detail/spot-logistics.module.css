@@ -34,11 +34,6 @@
   width: 100%;
 }
 
-.buttons {
-  display: flex;
-  justify-content: flex-end;
-}
-
 .list {
   flex: 3;
   display: flex;
@@ -74,10 +69,5 @@
   .image img {
     width: 50rem!important;
     height: 10rem;
-  }
-
-  .buttons {
-    margin-top: 1rem;
-    margin-right: 0.5rem;
   }
 }

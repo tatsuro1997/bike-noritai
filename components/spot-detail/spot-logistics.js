@@ -1,13 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import AddressIcon from "../icons/address-icon";
 import HouseIcon from "../icons/house-icon";
 import LogisticsItem from "./logistics-item";
 import classes from "./spot-logistics.module.css";
-import BookmarkButton from "../ui/bookmark-button";
 import Map from "../map/map";
-import RecordButton from "../ui/record-button";
 import RecordList from "../records/record-list";
+import BookmarkAndRecordButton from "../ui/bookmark-record-button";
 
 function SpotLogistics(props) {
   const {
@@ -28,6 +28,8 @@ function SpotLogistics(props) {
     lng,
     records,
   } = props;
+
+  const exploreLink = `/spots/${id}/records`
 
   return (
     <>
@@ -64,10 +66,7 @@ function SpotLogistics(props) {
             </div>
           </div>
           <div className={classes.main}>
-            <div className={classes.buttons}>
-              <BookmarkButton spotId={id} count={count} />
-              <RecordButton spotId={id} />
-            </div>
+            <BookmarkAndRecordButton spotId={id} count={count} />
             <ul className={classes.list}>
               <LogisticsItem icon={HouseIcon}>
                 <p>{type}</p>
@@ -92,6 +91,9 @@ function SpotLogistics(props) {
 
         <div className={classes.logistics_contents}>
           <RecordList items={records} />
+          <Link href={exploreLink}>
+            <a>記録をもっとみる ＞</a>
+          </Link>
         </div>
       </section>
     </>
