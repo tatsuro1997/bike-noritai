@@ -1,0 +1,11 @@
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .buttons {
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+  }
+}

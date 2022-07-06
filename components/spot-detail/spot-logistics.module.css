@@ -34,11 +34,6 @@
   width: 100%;
 }
 
-.buttons {
-  display: flex;
-  justify-content: flex-end;
-}
-
 .list {
   flex: 3;
   display: flex;
@@ -52,6 +47,12 @@
 
 .logistics address {
   white-space: pre;
+}
+
+.other_link a{
+  display: flex;
+  justify-content: flex-end;
+  font-weight: 600;
 }
 
 @media (max-width: 768px) {
@@ -74,10 +75,5 @@
   .image img {
     width: 50rem!important;
     height: 10rem;
-  }
-
-  .buttons {
-    margin-top: 1rem;
-    margin-right: 0.5rem;
   }
 }

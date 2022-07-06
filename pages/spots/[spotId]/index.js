@@ -5,7 +5,7 @@ import SpotSummary from "../../../components/spot-detail/spot-summary";
 import Comments from "../../../components/input/comments";
 import { getSpotById, getFeaturedSpots, getCommentsBySpotId } from "../../../helpers/spot-api-util";
 import { getBookmarkCount } from "../../../helpers/bookmark-api-util";
-import { getRecordsBySpotId } from "../../../helpers/record-api-util";
+import { getThreeRecordsBySpotId } from "../../../helpers/record-api-util";
 
 function SpotDetailPage(props) {
   const spot = props.selectedSpot;
@@ -62,14 +62,14 @@ export async function getStaticProps(context) {
 
   const comments = await getCommentsBySpotId(spotId);
 
-  const records = await getRecordsBySpotId(spotId);
+  const threeRecords = await getThreeRecordsBySpotId(spotId);
 
   return {
     props: {
       selectedSpot: spot,
       countedSpot: spotCount,
       selectedComments: comments,
-      selectedRecords: records,
+      selectedRecords: threeRecords,
     },
     revalidate: 30,
   };

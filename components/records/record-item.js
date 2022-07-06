@@ -1,11 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { getRecordLikeById } from "../../helpers/record-like-api-util";
 
 import BikeIcon from "../icons/bike";
 import CloudSunIcon from "../icons/cloud-sun";
 import StopWatchIcon from "../icons/spot-watch";
 import ThermometerIcon from "../icons/thermometer";
+import RecordLikeButton from "../ui/record-like-button";
 
 import classes from "./record-item.module.css";
 
@@ -25,6 +27,7 @@ function RecordItem(props) {
 
   const [title, setTitle] = useState("");
   const [userName, setUserName] = useState("");
+  const [count, setCount] = useState()
 
   useEffect(() => {
     fetch("/api/users/" + uid)
@@ -95,6 +98,7 @@ function RecordItem(props) {
             <div className={classes.description}>
               <span>{description}</span>
             </div>
+            <RecordLikeButton recordId={id} />
           </div>
         </li>
       </a>

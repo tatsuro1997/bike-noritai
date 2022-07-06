@@ -1,0 +1,35 @@
+.is_liked,
+.is_not_liked {
+  display: flex;
+  height: 2rem;
+  width: 2rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.is_liked svg,
+.is_not_liked svg {
+  margin-top: 0.1rem;
+  margin-right: 0 0.3rem 0 0;
+}
+
+.is_liked svg {
+  color: #f00;
+}
+
+.is_liked p,
+.is_not_liked p {
+  margin: 0 0 0 0.3rem;
+}
+
+.is_liked:hover svg {
+  color: #f55;
+}
+
+.is_liked:hover p {
+  color: #ccc;
+}
+
+.is_not_liked:hover {
+  color: #ccc;
+}
