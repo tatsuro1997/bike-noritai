@@ -49,6 +49,12 @@
   white-space: pre;
 }
 
+.other_link a{
+  display: flex;
+  justify-content: flex-end;
+  font-weight: 600;
+}
+
 @media (max-width: 768px) {
   .logistics {
     padding: 0;

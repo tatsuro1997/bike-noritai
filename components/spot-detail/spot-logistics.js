@@ -91,9 +91,11 @@ function SpotLogistics(props) {
 
         <div className={classes.logistics_contents}>
           <RecordList items={records} />
-          <Link href={exploreLink}>
-            <a>記録をもっとみる ＞</a>
-          </Link>
+          <div className={classes.other_link}>
+            <Link href={exploreLink}>
+              <a>記録をもっとみる ＞</a>
+            </Link>
+          </div>
         </div>
       </section>
     </>
