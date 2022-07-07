@@ -1,0 +1,13 @@
+.li {
+  margin-right: 2rem;
+  padding: 0 1rem;
+  height: 2rem;
+}
+
+.li:hover {
+  border-bottom: 2px solid #007A00;
+}
+
+.li a {
+  font-weight: bold;
+}
