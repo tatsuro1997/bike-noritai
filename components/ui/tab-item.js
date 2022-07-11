@@ -14,29 +14,36 @@ function TabItem({ user }) {
   const lastPath = splitPath.slice(-1)[0]
   console.log(lastPath);
 
+  let selectStyle;
+  let selectStyleReport;
+
   if (lastPath === "[userId]"){
-     console.log("true");
-   }
+    selectStyle = classes.select_tab
+  }
+
+  if (lastPath === "report") {
+    selectStyleReport = classes.select_tab;
+  }
 
   return (
     <>
-      <li className={classes.li}>
+      <li className={`${classes.li} ${selectStyle}`}>
         <Link href={`/users/${user._id}`}>
           <a>ツー</a>
         </Link>
       </li>
-      <li className={classes.li}>
+      <li className={`${classes.li} ${selectStyleReport}`}>
         <Link href={`/users/${user.uid}/report`}>
           <a>レポート</a>
         </Link>
       </li>
       <li className={classes.li}>
-        <Link href="">
+        <Link href="#">
           <a>イキタイ</a>
         </Link>
       </li>
       <li className={classes.li}>
-        <Link href="">
+        <Link href="#">
           <a>登録スポ</a>
         </Link>
       </li>
