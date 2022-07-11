@@ -2,7 +2,7 @@ import Head from "next/head";
 
 import UserProfile from "../../../components/profile/user-profile";
 import RecordList from "../../../components/records/record-list";
-import TabList from "../../../components/ui/tab-list";
+import TabList from "../../../components/tab/tab-list";
 import { getRecordsByUid, getRecordsByMonth } from "../../../helpers/record-api-util";
 import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
 

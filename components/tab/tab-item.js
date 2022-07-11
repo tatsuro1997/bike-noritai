@@ -4,15 +4,10 @@ import { useRouter } from "next/router";
 import classes from "./tab-item.module.css"
 
 function TabItem({ user }) {
-  console.log(user);
   const router = useRouter();
-  console.log(router.path);
-  console.log(router.pathname);
 
   const splitPath = router.pathname.split("/")
-  console.log(splitPath);
   const lastPath = splitPath.slice(-1)[0]
-  console.log(lastPath);
 
   let selectStyle;
   let selectStyleReport;
@@ -28,7 +23,7 @@ function TabItem({ user }) {
   return (
     <>
       <li className={`${classes.li} ${selectStyle}`}>
-        <Link href={`/users/${user._id}`}>
+        <Link href={`/users/${user.uid}`}>
           <a>ツー</a>
         </Link>
       </li>
