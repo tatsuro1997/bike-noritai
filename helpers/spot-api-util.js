@@ -20,6 +20,11 @@ export async function getSpotById(id) {
   return allSpots.find((spot) => spot._id === id);
 }
 
+export async function getSpotByUid(Uid) {
+  const allSpots = await getAllSpots();
+  return allSpots.filter((spot) => spot.user_id === Number(Uid));
+}
+
 export async function getFilteredSpots(dateFilter) {
   const { year, month } = dateFilter;
 

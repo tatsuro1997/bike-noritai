@@ -1,20 +1,21 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import classes from "./tab-item.module.css"
+import classes from "./tab-item.module.css";
 
 function TabItem({ user }) {
   const router = useRouter();
 
-  const splitPath = router.pathname.split("/")
-  const lastPath = splitPath.slice(-1)[0]
+  const splitPath = router.pathname.split("/");
+  const lastPath = splitPath.slice(-1)[0];
 
   let selectStyle;
   let selectStyleReport;
-  let selectStyleBookmark;;
+  let selectStyleBookmark;
+  let selectStyleRegisteredSpot;
 
-  if (lastPath === "[userId]"){
-    selectStyle = classes.select_tab
+  if (lastPath === "[userId]") {
+    selectStyle = classes.select_tab;
   }
 
   if (lastPath === "report") {
@@ -23,6 +24,10 @@ function TabItem({ user }) {
 
   if (lastPath === "bookmark") {
     selectStyleBookmark = classes.select_tab;
+  }
+
+  if (lastPath === "registered_spots") {
+    selectStyleRegisteredSpot = classes.select_tab;
   }
 
   return (
@@ -42,8 +47,8 @@ function TabItem({ user }) {
           <a>イキタイ</a>
         </Link>
       </li>
-      <li className={classes.li}>
-        <Link href="#">
+      <li className={`${classes.li} ${selectStyleRegisteredSpot}`}>
+        <Link href={`/users/${user.uid}/registered_spots`}>
           <a>登録スポ</a>
         </Link>
       </li>
@@ -51,4 +56,4 @@ function TabItem({ user }) {
   );
 }
 
-export default TabItem
+export default TabItem;
