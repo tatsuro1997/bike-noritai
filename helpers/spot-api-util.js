@@ -22,7 +22,7 @@ export async function getSpotById(id) {
 
 export async function getSpotByUid(Uid) {
   const allSpots = await getAllSpots();
-  return allSpots.find((spot) => spot.user_id === Uid);
+  return allSpots.filter((spot) => spot.user_id === Number(Uid));
 }
 
 export async function getFilteredSpots(dateFilter) {

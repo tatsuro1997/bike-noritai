@@ -1,6 +1,6 @@
-import RegisteredSpotItem from "./regitsered_spot-item";
+import RegisteredSpotItem from "./registered_spot-item";
 
-import classes from "./bookmark-list.module.css";
+import classes from "./registered_spot-list.module.css";
 
 function RegisteredSpotList({ spots }) {
   return (

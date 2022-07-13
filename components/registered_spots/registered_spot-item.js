@@ -5,7 +5,7 @@ import AddressIcon from "../icons/address-icon";
 import DateIcon from "../icons/date-icon";
 import HouseIcon from "../icons/house-icon";
 
-import classes from "./bookmark-item.module.css";
+import classes from "./registered_spot-item.module.css";
 
 function RegisteredSpotItem({ spot }) {
   const exploreLink = `/spots/${spot._id}`;

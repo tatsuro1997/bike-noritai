@@ -12,6 +12,7 @@ function TabItem({ user }) {
   let selectStyle;
   let selectStyleReport;
   let selectStyleBookmark;
+  let selectStyleRegisteredSpot;
 
   if (lastPath === "[userId]") {
     selectStyle = classes.select_tab;
@@ -23,6 +24,10 @@ function TabItem({ user }) {
 
   if (lastPath === "bookmark") {
     selectStyleBookmark = classes.select_tab;
+  }
+
+  if (lastPath === "registered_spots") {
+    selectStyleRegisteredSpot = classes.select_tab;
   }
 
   return (
@@ -42,8 +47,8 @@ function TabItem({ user }) {
           <a>イキタイ</a>
         </Link>
       </li>
-      <li className={classes.li}>
-        <Link href="#">
+      <li className={`${classes.li} ${selectStyleRegisteredSpot}`}>
+        <Link href={`/users/${user.uid}/registered_spots`}>
           <a>登録スポ</a>
         </Link>
       </li>
