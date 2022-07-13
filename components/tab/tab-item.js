@@ -1,20 +1,20 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import classes from "./tab-item.module.css"
+import classes from "./tab-item.module.css";
 
 function TabItem({ user }) {
   const router = useRouter();
 
-  const splitPath = router.pathname.split("/")
-  const lastPath = splitPath.slice(-1)[0]
+  const splitPath = router.pathname.split("/");
+  const lastPath = splitPath.slice(-1)[0];
 
   let selectStyle;
   let selectStyleReport;
-  let selectStyleBookmark;;
+  let selectStyleBookmark;
 
-  if (lastPath === "[userId]"){
-    selectStyle = classes.select_tab
+  if (lastPath === "[userId]") {
+    selectStyle = classes.select_tab;
   }
 
   if (lastPath === "report") {
@@ -51,4 +51,4 @@ function TabItem({ user }) {
   );
 }
 
-export default TabItem
+export default TabItem;

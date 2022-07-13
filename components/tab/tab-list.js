@@ -1,13 +1,13 @@
-import TabItem from "./tab-item"
+import TabItem from "./tab-item";
 
-import classes from "./tab-list.module.css"
+import classes from "./tab-list.module.css";
 
-function TabList({user}) {
+function TabList({ user }) {
   return (
     <ul className={classes.ul}>
       <TabItem user={user} />
     </ul>
-  )
+  );
 }
 
-export default TabList
+export default TabList;
