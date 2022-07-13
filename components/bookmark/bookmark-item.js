@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getSpotById } from "../../helpers/spot-api-util";
 
 import AddressIcon from "../icons/address-icon";
 import DateIcon from "../icons/date-icon";
