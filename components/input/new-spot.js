@@ -1,6 +1,7 @@
 import Image from "next/image";
 import GoogleMapReact from "google-map-react";
 import { useRef, useState, useContext } from "react";
+import { useSession } from "next-auth/react";
 
 import NotificationContext from "../../store/notification-context";
 
@@ -21,6 +22,7 @@ function NewSpot() {
   const parkingInputRef = useRef();
   const descriptionInputRef = useRef();
   const notificationCtx = useContext(NotificationContext);
+  const { data: session } = useSession();
 
   const [image, setImage] = useState(null);
   const [createObjectURL, setCreateObjectURL] = useState(null);
@@ -117,6 +119,12 @@ function NewSpot() {
       );
     }
 
+    let userId;
+
+    if (session) {
+      userId = session.user.id;
+    }
+
     notificationCtx.showNotification({
       title: "投稿中...",
       message: "投稿中です。",
@@ -139,6 +147,7 @@ function NewSpot() {
         description: enteredDescription,
         lat: lat,
         lng: lng,
+        userId: userId,
       }),
       headers: {
         "Content-Type": "application/json",

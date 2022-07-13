@@ -37,6 +37,7 @@ async function handler(req, res) {
     const spotDescription = req.body.description;
     const spotLat = req.body.lat;
     const spotLng = req.body.lng;
+    const userId = req.body.userId;
 
     if (
       !spotName ||
@@ -83,6 +84,7 @@ async function handler(req, res) {
         lat: spotLat,
         lng: spotLng,
         created_at: now,
+        user_id: userId,
       });
       client.close();
     } catch (error) {
