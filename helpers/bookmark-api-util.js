@@ -20,6 +20,13 @@ export async function getBookmarkById(userId, spotId) {
   });
 }
 
+export async function getBookmarkByUserId(userId) {
+  const allBookmarks = await getAllBookmarks();
+  return allBookmarks.filter((bookmark) => {
+    return bookmark.user_id === userId;
+  });
+}
+
 export async function getBookmarkCount(spotId) {
   const allBookmarks = await getAllBookmarks();
   return allBookmarks.filter((bookmark) => {
