@@ -1,8 +1,12 @@
 .control {
   display: inline-block;
   width: 80%;
-  margin: 0 auto;
+  margin-top: 5rem;
   text-align: right;
+}
+
+.control svg {
+  margin-right: 0.3rem;
 }
 
 .link{

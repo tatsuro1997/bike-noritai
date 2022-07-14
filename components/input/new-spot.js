@@ -2,6 +2,7 @@ import Image from "next/image";
 import GoogleMapReact from "google-map-react";
 import { useRef, useState, useContext } from "react";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 import NotificationContext from "../../store/notification-context";
 
@@ -23,6 +24,7 @@ function NewSpot() {
   const descriptionInputRef = useRef();
   const notificationCtx = useContext(NotificationContext);
   const { data: session } = useSession();
+  const router = useRouter();
 
   const [image, setImage] = useState(null);
   const [createObjectURL, setCreateObjectURL] = useState(null);
@@ -168,6 +170,7 @@ function NewSpot() {
           message: "新たに投稿していただきありがとうございます！",
           status: "success",
         });
+        router.push("/spots")
       })
       .catch((error) => {
         notificationCtx.showNotification({
@@ -184,7 +187,7 @@ function NewSpot() {
     <form className={classes.form} onSubmit={sendSpotHandler}>
       <div className={classes.row}>
         <div className={classes.control}>
-          <label htmlFor="name">スポット名</label>
+          <label htmlFor="name">スポット名*</label>
           <input type="text" id="name" ref={nameInputRef} />
         </div>
       </div>
@@ -203,19 +206,19 @@ function NewSpot() {
         </div>
       </div>
       <div className={classes.control}>
-        <label htmlFor="type">スポットタイプ</label>
+        <label htmlFor="type">スポットタイプ*</label>
         <input type="text" id="type" ref={typeInputRef} />
       </div>
       <div className={classes.control}>
-        <label htmlFor="prefecture">都道府県</label>
+        <label htmlFor="prefecture">都道府県*</label>
         <input type="text" id="prefecture" ref={prefectureInputRef} />
       </div>
       <div className={classes.control}>
-        <label htmlFor="address1">住所1</label>
+        <label htmlFor="address1">住所1*</label>
         <input type="text" id="address1" ref={address1InputRef} />
       </div>
       <div className={classes.control}>
-        <label htmlFor="address2">住所2</label>
+        <label htmlFor="address2">住所2*</label>
         <input type="text" id="address2" ref={address2InputRef} />
       </div>
       <div style={{ height: "300px", width: "300px" }}>
