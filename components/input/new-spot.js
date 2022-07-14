@@ -188,7 +188,12 @@ function NewSpot() {
       <div className={classes.row}>
         <div className={classes.control}>
           <label htmlFor="name">スポット名*</label>
-          <input type="text" id="name" ref={nameInputRef} />
+          <input
+            type="text"
+            id="name"
+            ref={nameInputRef}
+            placeholder="東京タワー"
+          />
         </div>
       </div>
       {createObjectURL && (
@@ -207,19 +212,39 @@ function NewSpot() {
       </div>
       <div className={classes.control}>
         <label htmlFor="type">スポットタイプ*</label>
-        <input type="text" id="type" ref={typeInputRef} />
+        <input
+          type="text"
+          id="type"
+          ref={typeInputRef}
+          placeholder="観光, カフェ, ライディング"
+        />
       </div>
       <div className={classes.control}>
         <label htmlFor="prefecture">都道府県*</label>
-        <input type="text" id="prefecture" ref={prefectureInputRef} />
+        <input
+          type="text"
+          id="prefecture"
+          ref={prefectureInputRef}
+          placeholder="東京都"
+        />
       </div>
       <div className={classes.control}>
         <label htmlFor="address1">住所1*</label>
-        <input type="text" id="address1" ref={address1InputRef} />
+        <input
+          type="text"
+          id="address1"
+          ref={address1InputRef}
+          placeholder="港区"
+        />
       </div>
       <div className={classes.control}>
         <label htmlFor="address2">住所2*</label>
-        <input type="text" id="address2" ref={address2InputRef} />
+        <input
+          type="text"
+          id="address2"
+          ref={address2InputRef}
+          placeholder="芝公園４丁目２−８"
+        />
       </div>
       <div style={{ height: "300px", width: "300px" }}>
         <GoogleMapReact
