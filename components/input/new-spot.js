@@ -10,6 +10,7 @@ import classes from "./new-spot.module.css";
 
 function NewSpot() {
   const [isInvalid, setIsInvalid] = useState(false);
+  const [isInvalidAddress, setIsInvalidAddress] = useState(false);
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
   const nameInputRef = useRef();
@@ -63,25 +64,15 @@ function NewSpot() {
     });
   };
 
-  async function sendSpotHandler(event) {
+  async function mapHandler(event) {
     event.preventDefault();
+    setIsInvalidAddress(false);
 
-    const enteredName = nameInputRef.current.value;
-    const enteredType = typeInputRef.current.value;
     const enteredPrefecture = prefectureInputRef.current.value;
     const enteredAddress1 = address1InputRef.current.value;
     const enteredAddress2 = address2InputRef.current.value;
-    const enteredHp = hpInputRef.current.value;
-    const enteredOpenTime = openTimeInputRef.current.value;
-    const enteredOffDay = offDayInputRef.current.value;
-    const enteredParking = parkingInputRef.current.value;
-    const enteredDescription = descriptionInputRef.current.value;
 
     if (
-      !enteredName ||
-      enteredName.trim() === "" ||
-      !enteredType ||
-      enteredType.trim() === "" ||
       !enteredPrefecture ||
       enteredPrefecture.trim() === "" ||
       !enteredAddress1 ||
@@ -89,7 +80,7 @@ function NewSpot() {
       !enteredAddress2 ||
       enteredAddress2.trim() === ""
     ) {
-      setIsInvalid(true);
+      setIsInvalidAddress(true);
       return;
     }
 
@@ -119,6 +110,38 @@ function NewSpot() {
           }
         }
       );
+    }
+  }
+
+  async function sendSpotHandler(event) {
+    event.preventDefault();
+    setIsInvalid(false);
+
+    const enteredName = nameInputRef.current.value;
+    const enteredType = typeInputRef.current.value;
+    const enteredPrefecture = prefectureInputRef.current.value;
+    const enteredAddress1 = address1InputRef.current.value;
+    const enteredAddress2 = address2InputRef.current.value;
+    const enteredHp = hpInputRef.current.value;
+    const enteredOpenTime = openTimeInputRef.current.value;
+    const enteredOffDay = offDayInputRef.current.value;
+    const enteredParking = parkingInputRef.current.value;
+    const enteredDescription = descriptionInputRef.current.value;
+
+    if (
+      !enteredName ||
+      enteredName.trim() === "" ||
+      !enteredType ||
+      enteredType.trim() === "" ||
+      !enteredPrefecture ||
+      enteredPrefecture.trim() === "" ||
+      !enteredAddress1 ||
+      enteredAddress1.trim() === "" ||
+      !enteredAddress2 ||
+      enteredAddress2.trim() === ""
+    ) {
+      setIsInvalid(true);
+      return;
     }
 
     let userId;
@@ -170,7 +193,7 @@ function NewSpot() {
           message: "新たに投稿していただきありがとうございます！",
           status: "success",
         });
-        router.push("/spots")
+        router.push("/spots");
       })
       .catch((error) => {
         notificationCtx.showNotification({
@@ -188,7 +211,12 @@ function NewSpot() {
       <div className={classes.row}>
         <div className={classes.control}>
           <label htmlFor="name">スポット名*</label>
-          <input type="text" id="name" ref={nameInputRef} />
+          <input
+            type="text"
+            id="name"
+            ref={nameInputRef}
+            placeholder="東京タワー"
+          />
         </div>
       </div>
       {createObjectURL && (
@@ -207,21 +235,47 @@ function NewSpot() {
       </div>
       <div className={classes.control}>
         <label htmlFor="type">スポットタイプ*</label>
-        <input type="text" id="type" ref={typeInputRef} />
+        <input
+          type="text"
+          id="type"
+          ref={typeInputRef}
+          placeholder="観光, カフェ, ライディング"
+        />
       </div>
       <div className={classes.control}>
         <label htmlFor="prefecture">都道府県*</label>
-        <input type="text" id="prefecture" ref={prefectureInputRef} />
+        <input
+          type="text"
+          id="prefecture"
+          ref={prefectureInputRef}
+          placeholder="東京都"
+        />
       </div>
       <div className={classes.control}>
         <label htmlFor="address1">住所1*</label>
-        <input type="text" id="address1" ref={address1InputRef} />
+        <input
+          type="text"
+          id="address1"
+          ref={address1InputRef}
+          placeholder="港区"
+        />
       </div>
       <div className={classes.control}>
         <label htmlFor="address2">住所2*</label>
-        <input type="text" id="address2" ref={address2InputRef} />
+        <input
+          type="text"
+          id="address2"
+          ref={address2InputRef}
+          placeholder="芝公園４丁目２−８"
+        />
       </div>
-      <div style={{ height: "300px", width: "300px" }}>
+      {isInvalidAddress && (
+        <p className={classes.error}>※ 正しい住所を入力してください。</p>
+      )}
+      <div className={classes.control}>
+        <button onClick={mapHandler}>スポット表示</button>
+      </div>
+      <div style={{ height: "300px", width: "auto" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY }}
           defaultCenter={defaultLatLng}
