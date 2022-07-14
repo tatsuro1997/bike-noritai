@@ -10,6 +10,7 @@ import classes from "./new-spot.module.css";
 
 function NewSpot() {
   const [isInvalid, setIsInvalid] = useState(false);
+  const [isInvalidAddress, setIsInvalidAddress] = useState(false);
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
   const nameInputRef = useRef();
@@ -63,25 +64,15 @@ function NewSpot() {
     });
   };
 
-  async function sendSpotHandler(event) {
+  async function mapHandler(event) {
     event.preventDefault();
+    setIsInvalidAddress(false);
 
-    const enteredName = nameInputRef.current.value;
-    const enteredType = typeInputRef.current.value;
     const enteredPrefecture = prefectureInputRef.current.value;
     const enteredAddress1 = address1InputRef.current.value;
     const enteredAddress2 = address2InputRef.current.value;
-    const enteredHp = hpInputRef.current.value;
-    const enteredOpenTime = openTimeInputRef.current.value;
-    const enteredOffDay = offDayInputRef.current.value;
-    const enteredParking = parkingInputRef.current.value;
-    const enteredDescription = descriptionInputRef.current.value;
 
     if (
-      !enteredName ||
-      enteredName.trim() === "" ||
-      !enteredType ||
-      enteredType.trim() === "" ||
       !enteredPrefecture ||
       enteredPrefecture.trim() === "" ||
       !enteredAddress1 ||
@@ -89,7 +80,7 @@ function NewSpot() {
       !enteredAddress2 ||
       enteredAddress2.trim() === ""
     ) {
-      setIsInvalid(true);
+      setIsInvalidAddress(true);
       return;
     }
 
@@ -119,6 +110,38 @@ function NewSpot() {
           }
         }
       );
+    }
+  }
+
+  async function sendSpotHandler(event) {
+    event.preventDefault();
+    setIsInvalid(false);
+
+    const enteredName = nameInputRef.current.value;
+    const enteredType = typeInputRef.current.value;
+    const enteredPrefecture = prefectureInputRef.current.value;
+    const enteredAddress1 = address1InputRef.current.value;
+    const enteredAddress2 = address2InputRef.current.value;
+    const enteredHp = hpInputRef.current.value;
+    const enteredOpenTime = openTimeInputRef.current.value;
+    const enteredOffDay = offDayInputRef.current.value;
+    const enteredParking = parkingInputRef.current.value;
+    const enteredDescription = descriptionInputRef.current.value;
+
+    if (
+      !enteredName ||
+      enteredName.trim() === "" ||
+      !enteredType ||
+      enteredType.trim() === "" ||
+      !enteredPrefecture ||
+      enteredPrefecture.trim() === "" ||
+      !enteredAddress1 ||
+      enteredAddress1.trim() === "" ||
+      !enteredAddress2 ||
+      enteredAddress2.trim() === ""
+    ) {
+      setIsInvalid(true);
+      return;
     }
 
     let userId;
@@ -170,7 +193,7 @@ function NewSpot() {
           message: "新たに投稿していただきありがとうございます！",
           status: "success",
         });
-        router.push("/spots")
+        router.push("/spots");
       })
       .catch((error) => {
         notificationCtx.showNotification({
@@ -246,7 +269,13 @@ function NewSpot() {
           placeholder="芝公園４丁目２−８"
         />
       </div>
-      <div style={{ height: "300px", width: "300px" }}>
+      {isInvalidAddress && (
+        <p className={classes.error}>※ 正しい住所を入力してください。</p>
+      )}
+      <div className={classes.control}>
+        <button onClick={mapHandler}>スポット表示</button>
+      </div>
+      <div style={{ height: "300px", width: "auto" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY }}
           defaultCenter={defaultLatLng}
