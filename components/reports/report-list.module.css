@@ -17,6 +17,12 @@
   gap: 3rem;
 }
 
+.list p {
+  color: black;
+  margin: 0 auto;
+  font-weight: 700;
+}
+
 @media (max-width: 768px) {
   .card {
     width: 90%;
