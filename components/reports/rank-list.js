@@ -1,4 +1,4 @@
-import TophyIcon from "../icons/trophy";
+import TrophyIcon from "../icons/trophy";
 import LankItem from "./rank-item";
 
 import classes from "./rank-list.module.css";
@@ -12,7 +12,7 @@ function RankList(props) {
     return (
       <ol className={classes.list}>
         <div className={classes.rank}>
-          <TophyIcon /> TOP5
+          <TrophyIcon /> TOP5
         </div>
         {slicedMonthRecord.length === 0 && <p> - </p>}
         {slicedMonthRecord.length >= 1 &&

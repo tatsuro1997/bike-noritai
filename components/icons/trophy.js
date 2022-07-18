@@ -1,4 +1,4 @@
-function TophyIcon() {
+function TrophyIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13,4 +13,4 @@ function TophyIcon() {
   );
 }
 
-export default TophyIcon;
+export default TrophyIcon;
