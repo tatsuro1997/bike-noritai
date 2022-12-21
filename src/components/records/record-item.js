@@ -42,7 +42,7 @@ function RecordItem(props) {
       .then((response) => response.json())
       .then((data) => {
         setTitle(data.spot.name);
-      });
+      }).catch((error) => console.log(error));
   }, []);
 
   const exploreLink = `/spots/${spot_id}`;
