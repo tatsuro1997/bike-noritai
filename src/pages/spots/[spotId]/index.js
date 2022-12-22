@@ -1,5 +1,4 @@
 import Head from "next/head";
-
 import SpotLogistics from "../../../components/spot-detail/spot-logistics";
 import SpotSummary from "../../../components/spot-detail/spot-summary";
 import Comments from "../../../components/input/comments";
