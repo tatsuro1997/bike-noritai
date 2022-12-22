@@ -15,9 +15,9 @@ function CreateRecordPage() {
     }
   }, [isReady, query, spotId, setSpotId, setLoading]);
 
-   if (loading) {
-     return <p>読み込み中...</p>;
-   }
+  if (loading) {
+    return <p>読み込み中...</p>;
+  }
 
   return <NewRecord spotId={spotId} />;
 }

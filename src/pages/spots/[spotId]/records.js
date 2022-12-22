@@ -17,13 +17,9 @@ function Records({ spot, count, records }) {
 
 export async function getStaticProps(context) {
   const spotId = context.params.spotId;
-
   const spot = await getSpotById(spotId);
-
   const count = await getBookmarkCount(spotId);
-
   const records = await getRecordsBySpotId(spotId);
-
 
   return {
     props: {

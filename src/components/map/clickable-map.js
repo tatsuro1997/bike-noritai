@@ -77,7 +77,7 @@ function ClickableMap() {
 
         router.push(`spots/search/${preName}`);
       });
-  }, [mapRef]);
+  }, [mapRef, router]);
   return (
     <div>
       <svg ref={mapRef} />

@@ -54,13 +54,9 @@ function SpotDetailPage(props) {
 
 export async function getStaticProps(context) {
   const spotId = context.params.spotId;
-
   const spot = await getSpotById(spotId);
-
   const spotCount = await getBookmarkCount(spotId);
-
   const comments = await getCommentsBySpotId(spotId);
-
   const threeRecords = await getThreeRecordsBySpotId(spotId);
 
   return {

@@ -13,7 +13,7 @@ function RankItem(props) {
       .then((data) => {
         setTitle(data.spot.name);
       });
-  }, []);
+  }, [spotId]);
 
   return (
     <li className={classes.item}>

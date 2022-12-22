@@ -35,7 +35,7 @@ function RecordItem(props) {
       .then((data) => {
         setUserName(data.user.name);
       });
-  }, []);
+  }, [uid]);
 
   useEffect(() => {
     fetch("/api/spots/" + spot_id)
@@ -43,7 +43,7 @@ function RecordItem(props) {
       .then((data) => {
         setTitle(data.spot.name);
       }).catch((error) => console.log(error));
-  }, []);
+  }, [spot_id]);
 
   const exploreLink = `/spots/${spot_id}`;
   const userLink = `/users/${uid}`;

@@ -41,7 +41,7 @@ function RecordLikeButton(props) {
     (async () => {
       setCountLike(await getRecordLikeCount(recordId));
     })();
-  }, []);
+  }, [recordId]);
 
   async function bookmarkHandler(e) {
     e.preventDefault()
