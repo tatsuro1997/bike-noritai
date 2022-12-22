@@ -24,7 +24,7 @@ function FilteredSpotsPage() {
   const pageHeadData = (
     <Head>
       <title>スポット検索</title>
-      <meta name="description" constent={`${searchKeyword}でスポットを検索`} />
+      <meta name="description" content={`${searchKeyword}でスポットを検索`} />
     </Head>
   );
 

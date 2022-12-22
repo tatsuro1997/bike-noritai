@@ -12,7 +12,7 @@ function RegisteredSpots({ user, registered_spots }) {
         <title>バイクノリタイ - 登録スポット</title>
         <meta
           name="description"
-          constent="Find a lot of great spots that allow you to evolve..."
+          content="Find a lot of great spots that allow you to evolve..."
         />
       </Head>
       <TabCard user={user} />

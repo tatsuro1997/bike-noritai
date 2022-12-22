@@ -14,7 +14,7 @@ function AllSpotsPage(props) {
         <title>バイクノリタイ - スポット一覧</title>
         <meta
           name="description"
-          constent="Find a lot of great spots that allow you to evolve..."
+          content="Find a lot of great spots that allow you to evolve..."
         />
       </Head>
       <SpotRegistration />

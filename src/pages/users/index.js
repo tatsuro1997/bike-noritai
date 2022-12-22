@@ -23,7 +23,7 @@ function UserPage() {
         <title>バイクノリタイ - ユーザー一覧</title>
         <meta
           name="description"
-          constent="Find a lot of great spots that allow you to evolve..."
+          content="Find a lot of great spots that allow you to evolve..."
         />
       </Head>
       <h1>User Page</h1>

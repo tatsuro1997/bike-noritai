@@ -15,7 +15,7 @@ function HomePage({ records, spots }) {
         <title>バイクノリタイ</title>
         <meta
           name="description"
-          constent="バイカー向けスポット検索サイト「バイクノリタイ」は全国〇〇箇所のスポットを掲載中。条件検索からあなたにピッタリのスポットが見つかります！"
+          content="バイカー向けスポット検索サイト「バイクノリタイ」は全国〇〇箇所のスポットを掲載中。条件検索からあなたにピッタリのスポットが見つかります！"
         />
       </Head>
       <TopMain />

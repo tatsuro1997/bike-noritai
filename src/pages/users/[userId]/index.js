@@ -34,7 +34,7 @@ function UserDetailPage(props) {
         <title>〇〇さんのマイページ</title>
         <meta
           name="description"
-          constent="〇〇さんのマイページ。イキタイスポットを見つけましょう！"
+          content="〇〇さんのマイページ。イキタイスポットを見つけましょう！"
         />
       </Head>
       <UserProfile

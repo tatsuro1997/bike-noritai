@@ -25,7 +25,7 @@ function SpotDetailPage(props) {
     <>
       <Head>
         <title>{spot.name}</title>
-        <meta name="description" constent={spot.description} />
+        <meta name="description" content={spot.description} />
       </Head>
       <SpotSummary name={spot.name} />
       <SpotLogistics

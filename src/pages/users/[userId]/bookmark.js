@@ -12,7 +12,7 @@ function Bookmark({ user, bookmarks }) {
         <title>バイクノリタイ - イキタイリスト</title>
         <meta
           name="description"
-          constent="Find a lot of great spots that allow you to evolve..."
+          content="Find a lot of great spots that allow you to evolve..."
         />
       </Head>
       <TabCard user={user} />
