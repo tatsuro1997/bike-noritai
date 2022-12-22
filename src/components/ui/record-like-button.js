@@ -12,8 +12,7 @@ function RecordLikeButton(props) {
   const router = useRouter();
   const [isLiked, setIsLiked] = useState(false);
   const [countLike, setCountLike] = useState(count);
-  // エラーがでるので一旦コメント
-  // const { data: session } = useSession();
+  const { data: session } = useSession();
 
   async function getRecordData(uid) {
     try {

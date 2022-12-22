@@ -25,30 +25,28 @@ function TopMainNavigation() {
   }
 
   return (
-    <>
-      <header className={classes.header} >
-        <div className={classes.logo}>
-          <Link href="/">バイクノリタイ</Link>
-        </div>
-        <div className={classes.navigations}>
-          <nav className={classes.navigation}>
-            {session && (
-              <Image
-                src={"/images/no_image.webp"}
-                alt={"プロフィール画像"}
-                width={30}
-                height={30}
-                onClick={nemuToggleHandler}
-              />
-            )}
-            {!session && !loading && (
-              <Link href="/auth">
-                <a>ログイン</a>
-              </Link>
-            )}
-          </nav>
-        </div>
-      </header>
+    <header className={classes.header}>
+      <div className={classes.logo}>
+        <Link href="/">バイクノリタイ</Link>
+      </div>
+      <div className={classes.navigations}>
+        <nav className={classes.navigation}>
+          {session && (
+            <Image
+              src={"/images/no_image.webp"}
+              alt={"プロフィール画像"}
+              width={30}
+              height={30}
+              onClick={nemuToggleHandler}
+            />
+          )}
+          {!session && !loading && (
+            <Link href="/auth">
+              <a>ログイン</a>
+            </Link>
+          )}
+        </nav>
+      </div>
       {isShowMenu && session && (
         <div className={classes.menu_content} onClick={nemuToggleHandler}>
           <div className={classes.menu_nav}>
@@ -82,7 +80,7 @@ function TopMainNavigation() {
           </div>
         </div>
       )}
-    </>
+    </header>
   );
 }
 

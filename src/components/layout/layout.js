@@ -10,7 +10,6 @@ import TopMainNavigation from "./top-main-navigation";
 function Layout(props) {
   const router = useRouter();
   const notificationCtx = useContext(NotificationContext);
-
   const activeNotification = notificationCtx.notification;
 
   let navigation;

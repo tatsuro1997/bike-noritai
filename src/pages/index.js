@@ -10,7 +10,7 @@ import PrefectureContent from "../components/prefectures/prefecture-content";
 function HomePage({ records, spots }) {
 
   return (
-    <div>
+    <>
       <Head>
         <title>バイクノリタイ</title>
         <meta
@@ -22,7 +22,7 @@ function HomePage({ records, spots }) {
       <LatestRecords records={records} />
       <LatestSpots spots={spots} />
       <PrefectureContent />
-    </div>
+    </>
   );
 }
 
