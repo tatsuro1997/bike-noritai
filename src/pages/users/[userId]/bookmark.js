@@ -23,9 +23,7 @@ function Bookmark({ user, bookmarks }) {
 
 export async function getStaticProps(context) {
   const userId = context.params.userId;
-
   const user = await getUserById(userId);
-
   const bookmarks = await getBookmarkByUserId(userId)
 
   return {

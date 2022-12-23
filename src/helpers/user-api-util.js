@@ -3,12 +3,15 @@ export const getAllUsers = async() => {
 
   try {
     const response = await fetch(url);
-    const { users } = await response.json();
+    if (response.status === 200) {
+      const { users } = await response.json();
 
-    return users;
-  } catch (error) {
+      return users;
+    } else {
+      throw new Error("ユーザーデータの取得に失敗しました。");
+    }
+  } catch(error) {
     console.log(error);
-    return;
   }
 }
 

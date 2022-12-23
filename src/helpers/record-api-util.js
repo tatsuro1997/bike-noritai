@@ -3,12 +3,15 @@ export const getAllRecords = async() => {
 
   try {
     const response = await fetch(url);
-    const { records } = await response.json();
+    if (response.status === 200) {
+      const { records } = await response.json();
 
-    return records;
-  } catch (error) {
+      return records;
+    } else {
+      throw new Error("記録データの取得に失敗しました。");
+    }
+  } catch(error) {
     console.log(error);
-    return;
   }
 }
 

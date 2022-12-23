@@ -1,33 +1,35 @@
-export async function getAllBookmarks() {
-  let bookmarks;
+export const getAllBookmarks = async() => {
+  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/bookmarks/`;
 
-  await fetch("http://localhost:3000/api/bookmarks/")
-    .then((response) => response.json())
-    .then((data) => {
-      bookmarks = data.bookmarks;
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  try {
+    const response = await fetch(url);
+    if (response.status === 200) {
+      const { bookmarks } = await response.json();
 
-  return bookmarks;
+      return bookmarks;
+    } else {
+      throw new Error("ブックマークデータの取得に失敗しました。");
+    }
+  } catch(error) {
+    console.log(error);
+  }
 }
 
-export async function getBookmarkById(userId, spotId) {
+export const getBookmarkById = async(userId, spotId) => {
   const allBookmarks = await getAllBookmarks();
   return allBookmarks.filter((bookmark) => {
     return bookmark.user_id === userId && bookmark.spot_id === spotId;
   });
 }
 
-export async function getBookmarkByUserId(userId) {
+export const getBookmarkByUserId = async(userId) => {
   const allBookmarks = await getAllBookmarks();
   return allBookmarks.filter((bookmark) => {
     return bookmark.user_id === userId;
   });
 }
 
-export async function getBookmarkCount(spotId) {
+export const getBookmarkCount = async(spotId) => {
   const allBookmarks = await getAllBookmarks();
   return allBookmarks.filter((bookmark) => {
     return bookmark.spot_id === spotId;

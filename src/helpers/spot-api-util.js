@@ -1,14 +1,18 @@
 export const getAllSpots = async() => {
-  let spots;
   const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/spots/`;
 
-  await fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      spots = data.spots;
-    });
+  try {
+    const response = await fetch(url);
+    if (response.status === 200) {
+      const { spots } = await response.json();
 
-  return spots;
+      return spots;
+    } else {
+      throw new Error("スポットデータの取得に失敗しました。");
+    }
+  } catch(error) {
+    console.log(error);
+  }
 }
 
 export const getFeaturedSpots = async() => {

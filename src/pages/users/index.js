@@ -1,21 +1,8 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
-
 import UserList from "../../components/users/user-list";
+import { getAllUsers } from "../../helpers/user-api-util";
 
-function UserPage() {
-  const [users, setUsers] = useState([]);
-  const [isFeatchingUsers, setIsFeatchingUsers] = useState(false);
-
-  useEffect(() => {
-    setIsFeatchingUsers(true);
-    fetch("/api/users")
-      .then((response) => response.json())
-      .then((data) => {
-        setUsers(data.users);
-        setIsFeatchingUsers(false);
-      });
-  }, []);
+function UserPage({ users }) {
 
   return (
     <>
@@ -28,10 +15,21 @@ function UserPage() {
       </Head>
       <h1>User Page</h1>
       <h2>管理者のみアクセスできる様にする</h2>
-      {isFeatchingUsers && <p>Loading...</p>}
-      {!isFeatchingUsers && <UserList items={users} />}
+      {!users && <p>Loading...</p>}
+      {users && <UserList items={users} />}
     </>
   );
+}
+
+export async function getStaticProps() {
+  const users = await getAllUsers();
+
+  return {
+    props: {
+      users,
+    },
+    revalidate: 60,
+  };
 }
 
 export default UserPage;
