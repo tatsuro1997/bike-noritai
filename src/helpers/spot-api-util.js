@@ -1,7 +1,8 @@
-export async function getAllSpots() {
+export const getAllSpots = async() => {
   let spots;
+  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/spots/`;
 
-  await fetch("http://localhost:3000/api/spots/")
+  await fetch(url)
     .then((response) => response.json())
     .then((data) => {
       spots = data.spots;
@@ -10,22 +11,22 @@ export async function getAllSpots() {
   return spots;
 }
 
-export async function getFeaturedSpots() {
+export const getFeaturedSpots = async() => {
   const allSpots = await getAllSpots();
   return allSpots.filter((spot) => spot.isFeatured);
 }
 
-export async function getSpotById(id) {
+export const getSpotById = async(id) => {
   const allSpots = await getAllSpots();
   return allSpots.find((spot) => spot._id === id);
 }
 
-export async function getSpotByUid(Uid) {
+export const getSpotByUid = async(Uid) => {
   const allSpots = await getAllSpots();
   return allSpots.filter((spot) => spot.user_id === Number(Uid));
 }
 
-export async function getFilteredSpots(dateFilter) {
+export const getFilteredSpots = async(dateFilter) => {
   const { year, month } = dateFilter;
 
   const allSpots = await getAllSpots();
@@ -38,7 +39,7 @@ export async function getFilteredSpots(dateFilter) {
   return filteredSpots;
 }
 
-export async function getAllComments() {
+export const getAllComments = async() => {
   let comments;
 
   await fetch("http://localhost:3000/api/comments/")
@@ -50,7 +51,7 @@ export async function getAllComments() {
   return comments;
 }
 
-export async function getCommentsBySpotId(spotId) {
+export const getCommentsBySpotId = async(spotId) => {
   const allComments = await getAllComments();
 
   let filteredComments = allComments.filter((comment) => {

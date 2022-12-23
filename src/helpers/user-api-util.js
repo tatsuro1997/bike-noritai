@@ -1,16 +1,18 @@
-export async function getAllUsers() {
-  let users;
+export const getAllUsers = async() => {
+  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/users/`;
 
-  await fetch("http://localhost:3000/api/users/")
-    .then((response) => response.json())
-    .then((data) => {
-      users = data.users;
-    });
+  try {
+    const response = await fetch(url);
+    const { users } = await response.json();
 
-  return users;
+    return users;
+  } catch (error) {
+    console.log(error);
+    return;
+  }
 }
 
-export async function getUserById(id) {
+export const getUserById = async (id) => {
   const allUsers = await getAllUsers();
   return allUsers.find((user) => user.uid === Number(id));
 }

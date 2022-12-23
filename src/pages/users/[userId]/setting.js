@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-
 import ProfileForm from "../../../components/profile/profile-form";
 import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
 
@@ -40,7 +39,6 @@ function UserSetting(props) {
 
 export async function getStaticProps(context) {
   const userId = context.params.userId;
-
   const user = await getUserById(userId);
 
   return {
@@ -53,7 +51,6 @@ export async function getStaticProps(context) {
 
 export async function getStaticPaths() {
   const users = await getAllUsers();
-
   const paths = users.map((user) => ({
     params: { userId: user.uid.toString() },
   }));

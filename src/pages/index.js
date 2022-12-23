@@ -26,7 +26,7 @@ function HomePage({ records, spots }) {
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps = async() => {
   const records = await getAllRecords();
   const spots = await getAllSpots();
 
