@@ -13,8 +13,9 @@ function TopMain() {
         <Image
           src={"/images/bike1.jpg"}
           alt={"背景画像"}
-          layout="fill"
-          objectFit="cover"
+          style={{ objectFit: "cover" }}
+          fill
+          priority
         />
       </div>
       <div className={classes.contents}>

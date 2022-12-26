@@ -15,7 +15,7 @@ export const getAllUsers = async() => {
   }
 }
 
-export const getUserById = async (id) => {
+export const getUserById = async(id) => {
   const allUsers = await getAllUsers();
   return allUsers.find((user) => user.uid === Number(id));
 }

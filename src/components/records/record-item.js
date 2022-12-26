@@ -1,19 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { getRecordLikeById } from "../../helpers/record-like-api-util";
-
+import { getSpotById } from "../../helpers/spot-api-util";
+import { getUserById } from "../../helpers/user-api-util";
 import BikeIcon from "../icons/bike";
 import CloudSunIcon from "../icons/cloud-sun";
 import StopWatchIcon from "../icons/spot-watch";
 import ThermometerIcon from "../icons/thermometer";
 import RecordLikeButton from "../ui/record-like-button";
-
 import classes from "./record-item.module.css";
 
-function RecordItem(props) {
+const RecordItem = ({ record }) => {
   const {
-    id,
+    _id,
     image,
     date,
     weather,
@@ -23,30 +22,24 @@ function RecordItem(props) {
     description,
     spot_id,
     uid,
-  } = props;
+  } = record;
 
   const [title, setTitle] = useState("");
   const [userName, setUserName] = useState("");
-  const [count, setCount] = useState()
-
-  useEffect(() => {
-    fetch("/api/users/" + uid)
-      .then((response) => response.json())
-      .then((data) => {
-        setUserName(data.user.name);
-      });
-  }, [uid]);
-
-  useEffect(() => {
-    fetch("/api/spots/" + spot_id)
-      .then((response) => response.json())
-      .then((data) => {
-        setTitle(data.spot.name);
-      }).catch((error) => console.log(error));
-  }, [spot_id]);
-
   const exploreLink = `/spots/${spot_id}`;
   const userLink = `/users/${uid}`;
+
+  useEffect(() => {
+    getUserById(uid)
+      .then((user) => setUserName(user.name))
+      .catch((error) => console.log(error));
+  }, [uid, setUserName]);
+
+  useEffect(() => {
+    getSpotById(spot_id)
+      .then((spot) => setTitle(spot.name))
+      .catch((error) => console.log(error))
+  }, [spot_id, setTitle])
 
   return (
     <Link href={exploreLink}>
@@ -98,7 +91,7 @@ function RecordItem(props) {
             <div className={classes.description}>
               <span>{description}</span>
             </div>
-            <RecordLikeButton recordId={id} />
+            <RecordLikeButton recordId={_id} />
           </div>
         </li>
       </a>
