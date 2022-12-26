@@ -1,12 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-
 import EditIcon from "../icons/edit-icon";
-
 import classes from "./profile-header.module.css";
 import Report from "./report";
 
-function ProfileHeader(props) {
+const ProfileHeader = ({ props, thisMonthRecords }) => {
   const {
     id,
     name,
@@ -16,7 +14,6 @@ function ProfileHeader(props) {
     bike_name,
     url,
     created_at,
-    thisMonthRecords,
   } = props;
 
   return (
@@ -41,6 +38,7 @@ function ProfileHeader(props) {
             alt={"プロフィール画像"}
             width={100}
             height={100}
+            priority
           />
           <div className={classes.name}>{name}</div>
         </div>
@@ -76,6 +74,6 @@ function ProfileHeader(props) {
       </ul>
     </div>
   );
-}
+};
 
 export default ProfileHeader;
