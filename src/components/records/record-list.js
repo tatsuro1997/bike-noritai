@@ -1,7 +1,7 @@
 import RecordItem from "./record-item";
 import classes from "./record-list.module.css";
 
-const RecordList = ({ items }) => {(
+const RecordList = ({ items }) => (
   <ul className={classes.list}>
     {items.length === 0 && <p>まだ記録はありません。</p>}
     {items.length >= 1 &&
@@ -12,6 +12,6 @@ const RecordList = ({ items }) => {(
         />
       ))}
   </ul>
-)};
+);
 
 export default RecordList;
