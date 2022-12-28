@@ -1,10 +1,9 @@
 import { useState, useRef, useEffect } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
-
 import classes from "./auth-form.module.css";
 
-async function createUser(email, password, uid) {
+const createUser = async(email, password, uid) => {
   const response = await fetch("/api/auth/signup", {
     method: "POST",
     body: JSON.stringify({ email, password, uid }),
@@ -22,7 +21,7 @@ async function createUser(email, password, uid) {
   return data;
 }
 
-function AuthForm() {
+const AuthForm = () => {
   const [error, setError] = useState();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -40,11 +39,9 @@ function AuthForm() {
 
   const uid = users.length + 1;
 
-  function switchAuthModeHandler() {
-    setIsLogin((prevState) => !prevState);
-  }
+  const switchAuthModeHandler = () => setIsLogin((prevState) => !prevState);
 
-  async function submitHandler(event) {
+  const submitHandler = async(event) => {
     event.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;

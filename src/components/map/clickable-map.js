@@ -1,11 +1,10 @@
 import * as d3 from "d3";
 import { useRouter } from "next/router";
 import { useRef, useEffect } from "react";
-
 // GeoJsonファイルを読み込み
 import geoJson from "/japan.geo.json";
 
-function ClickableMap() {
+ const ClickableMap = () => {
   const router = useRouter();
   const mapRef = useRef(null);
 
@@ -78,6 +77,7 @@ function ClickableMap() {
         router.push(`spots/search/${preName}`);
       });
   }, [mapRef, router]);
+
   return (
     <div>
       <svg ref={mapRef} />

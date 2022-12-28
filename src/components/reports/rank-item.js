@@ -1,10 +1,7 @@
-import Link from "next/link";
 import { useEffect, useState } from "react";
-
 import classes from "./rank-item.module.css";
 
-function RankItem(props) {
-  const { id, distance, spotId } = props;
+const RankItem = ({ distance, spotId }) => {
   const [title, setTitle] = useState("");
 
   useEffect(() => {

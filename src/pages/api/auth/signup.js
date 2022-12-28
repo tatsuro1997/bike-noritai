@@ -1,7 +1,7 @@
 import { connectDatabase } from "../../../helpers/db-util";
 import { hashPassword } from "../../../helpers/auth-util";
 
-async function handler(req, res) {
+const handler = async(req, res) => {
   if (req.method !== "POST") {
     return;
   }

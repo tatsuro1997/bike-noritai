@@ -1,17 +1,13 @@
 import Link from "next/link";
 import ReportData from "../reports/report-data";
-
 import classes from "./report.module.css";
 
-function Report(props) {
-  const { thisMonthRecords, uid } = props;
-
+const Report = ({ thisMonthRecords, uid }) => {
   const touringTimes = thisMonthRecords.length;
   const totalDistance = thisMonthRecords.reduce(function (sum, record) {
     return sum + Number(record.distance);
   }, 0);
   const monthlyPace = touringTimes / 4;
-
   const exploreLink = `${uid}/report`;
 
   return (

@@ -1,6 +1,6 @@
 import { connectDatabase, getAllDocuments } from "../../../helpers/db-util";
 
-async function handler(req, res) {
+const handler = async(req, res) => {
   let client;
 
   try {

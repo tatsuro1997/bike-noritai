@@ -3,12 +3,10 @@ import GoogleMapReact from "google-map-react";
 import { useRef, useState, useContext } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-
 import NotificationContext from "../../store/notification-context";
-
 import classes from "./new-spot.module.css";
 
-function NewSpot() {
+const NewSpot = () => {
   const [isInvalid, setIsInvalid] = useState(false);
   const [isInvalidAddress, setIsInvalidAddress] = useState(false);
   const [lat, setLat] = useState(null);
@@ -26,11 +24,9 @@ function NewSpot() {
   const notificationCtx = useContext(NotificationContext);
   const { data: session } = useSession();
   const router = useRouter();
-
   const [image, setImage] = useState(null);
   const [createObjectURL, setCreateObjectURL] = useState(null);
   const [imageName, setImageName] = useState(null);
-
   const [map, setMap] = useState(null);
   const [maps, setMaps] = useState(null);
   const [geocoder, setGeocoder] = useState(null);
@@ -41,13 +37,13 @@ function NewSpot() {
     lng: 139.7744733,
   };
 
-  function handleApiLoaded(obj) {
+  const handleApiLoaded = (obj) => {
     setMap(obj.map);
     setMaps(obj.maps);
     setGeocoder(new obj.maps.Geocoder());
   }
 
-  function previewImageHandler(event) {
+  const previewImageHandler = (event) => {
     const enteredImage = event.target.files[0];
 
     setImage(enteredImage);
@@ -55,7 +51,7 @@ function NewSpot() {
     setImageName(event.target.files[0].name);
   }
 
-  const uploadToPublicFolder = async () => {
+  const uploadToPublicFolder = async() => {
     const body = new FormData();
     body.append("file", image);
     const response = await fetch("/api/upload", {
@@ -64,7 +60,7 @@ function NewSpot() {
     });
   };
 
-  async function mapHandler(event) {
+  const mapHandler = async(event) => {
     event.preventDefault();
     setIsInvalidAddress(false);
 
@@ -113,7 +109,7 @@ function NewSpot() {
     }
   }
 
-  async function sendSpotHandler(event) {
+  const sendSpotHandler = async(event) => {
     event.preventDefault();
     setIsInvalid(false);
 

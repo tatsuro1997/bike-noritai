@@ -1,7 +1,7 @@
 import { getBookmarkById } from "../../helpers/bookmark-api-util";
 import { connectDatabase, insertDocument, removeDocument, getAllDocuments } from "../../helpers/db-util";
 
-async function handler(req, res) {
+const handler = async(req, res) => {
   if (req.method === "GET") {
     let client;
 

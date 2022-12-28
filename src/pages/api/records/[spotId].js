@@ -1,6 +1,6 @@
 import { connectDatabase, insertDocument } from "../../../helpers/db-util";
 
-async function handler(req, res) {
+const handler = async(req, res) => {
   const spotId = req.query.spotId;
 
   if (req.method === "POST") {

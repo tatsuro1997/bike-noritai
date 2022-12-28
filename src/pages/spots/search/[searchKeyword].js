@@ -7,10 +7,9 @@ import ResultsTitle from "../../../components/spots/results-title";
 import ErrorAlert from "../../../components/ui/error-alert";
 import SpotsSearch from "../../../components/spots/spots-search";
 
-function FilteredSpotsPage() {
+const FilteredSpotsPage = () => {
   const [loadedSpots, setLoadedSpots] = useState();
   const router = useRouter();
-
   const searchKeyword = router.query.searchKeyword || " ";
 
   useEffect(() => {

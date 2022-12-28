@@ -2,22 +2,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
 import { useState } from "react";
-
 import classes from "./main-navigation.module.css";
 
-function MainNavigation() {
+const MainNavigation = () => {
   const { data: session, loading } = useSession();
   const [isShowMenu, setIsShowMenu] = useState(false);
+  let exploreLink;
 
-  function logoutHandler() {
-    signOut();
-  }
+  const logoutHandler = () => signOut();
 
-  function nemuToggleHandler() {
+  const nemuToggleHandler = () => {
     setIsShowMenu((prevState) => !prevState);
   }
-
-  let exploreLink;
 
   if (session) {
     const userId = JSON.stringify(session.user.id);

@@ -1,7 +1,7 @@
 import { connectDatabase } from "../../../helpers/db-util";
 import { getSpotById } from "../../../helpers/spot-api-util";
 
-async function handler(req, res) {
+const handler = async(req, res) => {
   const spotId = req.query.spotId;
 
   if (req.method === "GET") {

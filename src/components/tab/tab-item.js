@@ -1,11 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-
 import classes from "./tab-item.module.css";
 
-function TabItem({ user }) {
+const TabItem = ({ user }) => {
   const router = useRouter();
-
   const splitPath = router.pathname.split("/");
   const lastPath = splitPath.slice(-1)[0];
 

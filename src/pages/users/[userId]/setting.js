@@ -2,20 +2,17 @@ import { useRouter } from "next/router";
 import ProfileForm from "../../../components/profile/profile-form";
 import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
 
-function UserSetting(props) {
-  const user = props.selectedUser;
+const UserSetting = ({ selectedUser: user }) => {
   const route = useRouter();
 
-  async function updateProfileHandler(userData) {
-    const response = await fetch("/api/user/change-user-data", {
+  const updateProfileHandler = async(userData) => {
+    await fetch("/api/user/change-user-data", {
       method: "PATCH",
       body: JSON.stringify(userData),
       headers: {
         "Content-Type": "application/json",
       },
     });
-
-    const data = await response.json();
 
     route.back();
   }
@@ -25,19 +22,13 @@ function UserSetting(props) {
       <h1>ユーザー設定</h1>
       <ProfileForm
         onUpdateProfile={updateProfileHandler}
-        id={user.uid}
-        name={user.name}
-        area={user.area}
-        prefecture={user.prefecture}
-        experience={user.experience}
-        bike_name={user.bike_name}
-        url={user.url}
+        user={user}
       />
     </>
   );
 }
 
-export async function getStaticProps(context) {
+export const getStaticProps = async(context) => {
   const userId = context.params.userId;
   const user = await getUserById(userId);
 
@@ -49,7 +40,7 @@ export async function getStaticProps(context) {
   };
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths = async() => {
   const users = await getAllUsers();
   const paths = users.map((user) => ({
     params: { userId: user.uid.toString() },

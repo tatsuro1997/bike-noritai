@@ -1,12 +1,8 @@
 import Link from "next/link";
-
 import RecordIcon from "../icons/record-icon";
-
 import classes from "./record-button.module.css";
 
-function RecordButton(props) {
-  const { spotId } = props;
-
+const RecordButton = ({ spotId }) => {
   const exploreLink = `/spots/${spotId}/create_record`;
 
   return (

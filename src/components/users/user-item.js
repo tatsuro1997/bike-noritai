@@ -1,14 +1,9 @@
-import Image from "next/image";
-
 import HouseIcon from "../icons/house-icon";
 import ArrowRightIcon from "../icons/arrow-right-icon";
 import Button from "../ui/button";
-
 import classes from "./user-item.module.css";
 
-function UserItem(props) {
-  const { email, id } = props;
-
+const UserItem = ({ email, id }) => {
   const exploreLink = `/users/${id}`;
 
   return (

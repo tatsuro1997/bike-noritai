@@ -1,27 +1,24 @@
 import Head from "next/head";
-import UserList from "../../components/users/user-list";
 import { getAllUsers } from "../../helpers/user-api-util";
+import UserList from "../../components/users/user-list";
 
-function UserPage({ users }) {
+const UserPage = ({ users }) => (
+  <>
+    <Head>
+      <title>バイクノリタイ - ユーザー一覧</title>
+      <meta
+        name="description"
+        content="Find a lot of great spots that allow you to evolve..."
+      />
+    </Head>
+    <h1>User Page</h1>
+    <h2>管理者のみアクセスできる様にする</h2>
+    {!users && <p>Loading...</p>}
+    {users && <UserList items={users} />}
+  </>
+);
 
-  return (
-    <>
-      <Head>
-        <title>バイクノリタイ - ユーザー一覧</title>
-        <meta
-          name="description"
-          content="Find a lot of great spots that allow you to evolve..."
-        />
-      </Head>
-      <h1>User Page</h1>
-      <h2>管理者のみアクセスできる様にする</h2>
-      {!users && <p>Loading...</p>}
-      {users && <UserList items={users} />}
-    </>
-  );
-}
-
-export async function getStaticProps() {
+export const getStaticProps = async() => {
   const users = await getAllUsers();
 
   return {

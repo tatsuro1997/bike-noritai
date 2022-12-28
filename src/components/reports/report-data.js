@@ -1,8 +1,7 @@
 import { useRouter } from "next/router";
-
 import classes from "./report-data.module.css";
 
-function ReportData(props) {
+const ReportData = ({ touringTimes, totalDistance, monthlyPace }) => {
   const router = useRouter();
   const route = router.asPath;
 
@@ -13,7 +12,6 @@ function ReportData(props) {
     switchClass = classes.data_count;
   }
 
-  const { touringTimes, totalDistance, monthlyPace } = props;
   return (
     <div className={classes.data}>
       <dl className={classes.data_item}>

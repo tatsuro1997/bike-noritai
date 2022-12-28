@@ -4,28 +4,24 @@ import TabCard from "../../../components/tab/tab-content";
 import { getRecordsByMonth } from "../../../helpers/record-api-util";
 import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
 
-function ReportsPage(props) {
-  const { thisMonthRecords, lastMonthRecords, user } = props;
-
-  return (
-    <>
-      <Head>
-        <title>バイクノリタイ - ツーリングレポート</title>
-        <meta
-          name="description"
-          content="Find a lot of great spots that allow you to evolve..."
-        />
-      </Head>
-      <TabCard user={user} />
-      <ReportList
-        thisMonthRecords={thisMonthRecords}
-        lastMonthRecords={lastMonthRecords}
+const ReportsPage = ({ thisMonthRecords, lastMonthRecords, user }) => (
+  <>
+    <Head>
+      <title>バイクノリタイ - ツーリングレポート</title>
+      <meta
+        name="description"
+        content="Find a lot of great spots that allow you to evolve..."
       />
-    </>
-  );
-}
+    </Head>
+    <TabCard user={user} />
+    <ReportList
+      thisMonthRecords={thisMonthRecords}
+      lastMonthRecords={lastMonthRecords}
+    />
+  </>
+);
 
-export async function getStaticProps(context) {
+export const getStaticProps = async(context) => {
   const userId = context.params.userId;
   const month = new Date().getMonth() + 1;
   const lastMonth = new Date().getMonth();
@@ -44,9 +40,8 @@ export async function getStaticProps(context) {
   };
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths = async() => {
   const users = await getAllUsers();
-
   const paths = users.map((user) => ({
     params: { userId: user.uid.toString() },
   }));

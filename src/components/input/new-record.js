@@ -2,13 +2,10 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useRef, useState, useContext } from "react";
 import { useSession } from "next-auth/react";
-
 import NotificationContext from "../../store/notification-context";
-
 import classes from "./new-record.module.css";
 
-function NewRecord(props) {
-  const { spotId } = props;
+const NewRecord = ({ spotId }) => {
   const [isInvalid, setIsInvalid] = useState(false);
   const dateInputRef = useRef();
   const weatherInputRef = useRef();
@@ -19,22 +16,20 @@ function NewRecord(props) {
   const notificationCtx = useContext(NotificationContext);
   const { data: session } = useSession();
   const router = useRouter();
-
   const [image, setImage] = useState(null);
   const [createObjectURL, setCreateObjectURL] = useState(null);
   const [imageName, setImageName] = useState(null);
+  let userId;
 
   if (!session) {
     router.replace("/auth");
   }
 
-  let userId;
-
   if (session) {
     userId = session.user.id;
   }
 
-  function previewImageHandler(event) {
+  const previewImageHandler = (event) => {
     const enteredImage = event.target.files[0];
 
     setImage(enteredImage);
@@ -42,7 +37,7 @@ function NewRecord(props) {
     setImageName(event.target.files[0].name);
   }
 
-  const uploadToPublicFolder = async () => {
+  const uploadToPublicFolder = async() => {
     const body = new FormData();
     body.append("file", image);
     const response = await fetch("/api/upload", {
@@ -51,9 +46,8 @@ function NewRecord(props) {
     });
   };
 
-  async function sendSpotHandler(event) {
+  const sendSpotHandler = async(event) => {
     event.preventDefault();
-
     const enteredDate = dateInputRef.current.value;
     const enteredWeather = weatherInputRef.current.value;
     const enteredTemperature = temperatureInputRef.current.value;

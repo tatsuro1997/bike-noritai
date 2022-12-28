@@ -1,13 +1,9 @@
-import Link from "next/link";
 import RankList from "./rank-list";
 import ReportButtom from "./report-buttom";
 import ReportData from "./report-data";
-
 import classes from "./report-item.module.css";
 
-function ReportItem(props) {
-  const { id, monthRecords } = props;
-
+const ReportItem = ({ monthRecords }) => {
   const touringTimes = monthRecords.length;
   const totalDistance = monthRecords.reduce(function (sum, record) {
     return sum + Number(record.distance);
@@ -16,9 +12,10 @@ function ReportItem(props) {
     return sum + Number(record.running_time);
   }, 0);
   const monthlyPace = touringTimes / 4;
-  const averageDistance = Math.floor((totalDistance / touringTimes) * 100) / 100;
-  const averageRunningTime = Math.floor((totalRunningTime / touringTimes) * 100) / 100;
-
+  const averageDistance =
+    Math.floor((totalDistance / touringTimes) * 100) / 100;
+  const averageRunningTime =
+    Math.floor((totalRunningTime / touringTimes) * 100) / 100;
   const month = new Date(monthRecords[0].date).getMonth() + 1;
 
   return (
@@ -44,6 +41,6 @@ function ReportItem(props) {
       </div>
     </li>
   );
-}
+};
 
 export default ReportItem;

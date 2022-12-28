@@ -17,6 +17,7 @@ export const getAllBookmarks = async() => {
 
 export const getBookmarkById = async(userId, spotId) => {
   const allBookmarks = await getAllBookmarks();
+
   return allBookmarks.filter((bookmark) => {
     return bookmark.user_id === userId && bookmark.spot_id === spotId;
   });
@@ -24,6 +25,7 @@ export const getBookmarkById = async(userId, spotId) => {
 
 export const getBookmarkByUserId = async(userId) => {
   const allBookmarks = await getAllBookmarks();
+
   return allBookmarks.filter((bookmark) => {
     return bookmark.user_id === userId;
   });
@@ -31,6 +33,7 @@ export const getBookmarkByUserId = async(userId) => {
 
 export const getBookmarkCount = async(spotId) => {
   const allBookmarks = await getAllBookmarks();
+
   return allBookmarks.filter((bookmark) => {
     return bookmark.spot_id === spotId;
   }).length;

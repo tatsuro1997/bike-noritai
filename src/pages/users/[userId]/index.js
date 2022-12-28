@@ -1,15 +1,15 @@
 import Head from "next/head";
-
 import UserProfile from "../../../components/profile/user-profile";
 import RecordList from "../../../components/records/record-list";
 import TabList from "../../../components/tab/tab-list";
 import { getRecordsByUid, getRecordsByMonth } from "../../../helpers/record-api-util";
 import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
 
-function UserDetailPage(props) {
-  const user = props.selectedUser;
-  const records = props.records;
-  const thisMonthRecords = props.thisMonthRecords;
+const UserDetailPage = ({
+    selectedUser: user,
+    records,
+    thisMonthRecords
+  }) => {
 
   if (!user) {
     return (
@@ -54,7 +54,7 @@ function UserDetailPage(props) {
   );
 }
 
-export async function getStaticProps(context) {
+export const getStaticProps = async(context) => {
   const userId = context.params.userId;
   const month = new Date().getMonth() + 1;
 
@@ -74,7 +74,7 @@ export async function getStaticProps(context) {
   };
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths = async() => {
   const users = await getAllUsers();
 
   const paths = users.map((user) => ({

@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import NewRecord from "../../../components/input/new-record";
 
-function CreateRecordPage() {
+const CreateRecordPage = () => {
   const router = useRouter();
   const { query, isReady } = router;
   const [spotId, setSpotId] = useState();

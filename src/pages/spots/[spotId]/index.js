@@ -6,10 +6,11 @@ import { getSpotById, getFeaturedSpots, getCommentsBySpotId } from "../../../hel
 import { getBookmarkCount } from "../../../helpers/bookmark-api-util";
 import { getThreeRecordsBySpotId } from "../../../helpers/record-api-util";
 
-function SpotDetailPage(props) {
-  const spot = props.selectedSpot;
-  const comments = props.selectedComments;
-  const records = props.selectedRecords;
+const SpotDetailPage = ({
+    selectedSpot: spot,
+    selectedComments: comments,
+    selectedRecords: records
+  }) => {
 
   if (!spot) {
     return (
@@ -26,17 +27,13 @@ function SpotDetailPage(props) {
         <meta name="description" content={spot.description} />
       </Head>
       <SpotSummary name={spot.name} />
-      <SpotLogistics
-        key={spot._id}
-        spot={spot}
-        records={records}
-      />
+      <SpotLogistics key={spot._id} spot={spot} records={records} />
       <Comments spotId={spot._id} comments={comments} />
     </>
   );
-}
+};
 
-export async function getStaticProps(context) {
+export const getStaticProps = async(context) => {
   const spotId = context.params.spotId;
   const spot = await getSpotById(spotId);
   const spotCount = await getBookmarkCount(spotId);
@@ -54,7 +51,7 @@ export async function getStaticProps(context) {
   };
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths = async() => {
   const spots = await getFeaturedSpots();
 
   const paths = spots.map((spot) => ({ params: { spotId: spot.id } }));

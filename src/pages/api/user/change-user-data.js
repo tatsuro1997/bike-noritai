@@ -1,8 +1,7 @@
 import { getSession } from "next-auth/react";
-
 import { connectDatabase } from "../../../helpers/db-util";
 
-async function handler(req, res) {
+const handler = async(req, res) => {
   if (req.method !== "PATCH") {
     return;
   }

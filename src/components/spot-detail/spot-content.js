@@ -1,11 +1,5 @@
 import classes from './spot-content.module.css';
 
-function SpotContent(props) {
-  return (
-    <section className={classes.content}>
-      {props.children}
-    </section>
-  );
-}
+const SpotContent = ({ children }) => <section className={classes.content}>{children}</section>;
 
 export default SpotContent;

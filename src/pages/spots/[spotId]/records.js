@@ -5,17 +5,15 @@ import { getBookmarkCount } from "../../../helpers/bookmark-api-util";
 import { getRecordsBySpotId } from "../../../helpers/record-api-util";
 import { getSpotById, getFeaturedSpots } from "../../../helpers/spot-api-util";
 
-function Records({ spot, count, records }) {
-  return (
-    <>
-      <SpotSummary name={spot.name} />
-      <DetailHead spotId={spot.id} count={count} />
-      <RecordList items={records} />
-    </>
-  );
-}
+const Records = ({ spot, count, records }) => (
+  <>
+    <SpotSummary name={spot.name} />
+    <DetailHead spotId={spot.id} count={count} />
+    <RecordList items={records} />
+  </>
+);
 
-export async function getStaticProps(context) {
+export const getStaticProps = async(context) => {
   const spotId = context.params.spotId;
   const spot = await getSpotById(spotId);
   const count = await getBookmarkCount(spotId);
@@ -31,9 +29,8 @@ export async function getStaticProps(context) {
   };
 }
 
-export async function getStaticPaths() {
+export const getStaticPaths = async() => {
   const spots = await getFeaturedSpots();
-
   const paths = spots.map((spot) => ({ params: { spotId: spot.id } }));
 
   return {

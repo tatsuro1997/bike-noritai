@@ -17,16 +17,19 @@ export const getAllRecords = async() => {
 
 export const getRecordsByUid = async(uid) => {
   const allRecords = await getAllRecords();
+
   return allRecords.filter((record) => record.uid === Number(uid));
 }
 
 export const getRecordsBySpotId = async(spotId) => {
   const allRecords = await getAllRecords();
+
   return allRecords.filter((record) => record.spot_id === spotId);
 }
 
 export const getRecordsByMonth = async(uid, month) => {
   const filteredRecords = await getRecordsByUid(uid);
+
   return filteredRecords.filter(
     (record) => new Date(record.date).getMonth() + 1 === month
   );
@@ -34,5 +37,6 @@ export const getRecordsByMonth = async(uid, month) => {
 
 export const getThreeRecordsBySpotId = async(spotId) => {
   const allRecords = await getAllRecords();
+
   return allRecords.filter((record) => record.spot_id === spotId).slice(0, 3);
 }

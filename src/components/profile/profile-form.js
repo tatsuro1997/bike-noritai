@@ -1,10 +1,8 @@
 import { useRef } from "react";
-
 import classes from "./profile-form.module.css";
 
-function ProfileForm(props) {
-  const { name, experience, url, area, prefecture, bike_name } = props;
-
+const ProfileForm = ({ user, onUpdateProfile }) => {
+  const { name, experience, url, area, prefecture, bike_name } = user;
   const nameRef = useRef();
   const experienceRef = useRef();
   const urlRef = useRef();
@@ -12,7 +10,7 @@ function ProfileForm(props) {
   const prefectureRef = useRef();
   const bikeNameRef = useRef();
 
-  function submitHanlder(event) {
+  const submitHanlder = (event) => {
     event.preventDefault();
 
     const enteredName = nameRef.current.value;
@@ -22,7 +20,7 @@ function ProfileForm(props) {
     const enteredPrefecture = prefectureRef.current.value;
     const enteredBikeName = bikeNameRef.current.value;
 
-    props.onUpdateProfile({
+    onUpdateProfile({
       name: enteredName,
       experience: enteredExperience,
       url: enteredUrl,
@@ -36,12 +34,7 @@ function ProfileForm(props) {
     <form className={classes.form} onSubmit={submitHanlder}>
       <div className={classes.control}>
         <label htmlFor="name">名前</label>
-        <input
-          type="text"
-          id="name"
-          ref={nameRef}
-          defaultValue={name}
-        />
+        <input type="text" id="name" ref={nameRef} defaultValue={name} />
       </div>
       <div className={classes.control}>
         <label htmlFor="new-experience">バイク歴</label>
@@ -83,6 +76,6 @@ function ProfileForm(props) {
       </div>
     </form>
   );
-}
+};
 
 export default ProfileForm;

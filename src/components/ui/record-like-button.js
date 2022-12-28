@@ -1,20 +1,18 @@
 import { useState, useEffect } from "react";
 import { useSession, getSession } from "next-auth/react";
 import { useRouter } from "next/router";
-
 import HeartIcon from "../icons/heart";
 import HeartFullIcon from "../icons/heart-full";
 import classes from "./record-like-button.module.css";
 import { getRecordLikeById, getRecordLikeCount } from "../../helpers/record-like-api-util";
 
-function RecordLikeButton(props) {
-  const { recordId, count } = props;
+const RecordLikeButton = ({ recordId, count }) => {
   const router = useRouter();
   const [isLiked, setIsLiked] = useState(false);
   const [countLike, setCountLike] = useState(count);
   const { data: session } = useSession();
 
-  async function getRecordData(uid) {
+  const getRecordData = async(uid) => {
     try {
       const likeData = await getRecordLikeById(uid, recordId);
       if (likeData.length !== 0) {
@@ -35,7 +33,7 @@ function RecordLikeButton(props) {
         getRecordData(uid);
       }
     });
-  }, []);
+  }, [session]);
 
   useEffect(() => {
     (async () => {
@@ -43,7 +41,7 @@ function RecordLikeButton(props) {
     })();
   }, [recordId]);
 
-  async function bookmarkHandler(e) {
+  const bookmarkHandler = async(e) => {
     e.preventDefault()
     setIsLiked((prevState) => !prevState);
 

@@ -1,31 +1,27 @@
 import { useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-
 import classes from "./new-comment.module.css";
 
-function NewComment(props) {
+const NewComment = (props) => {
   const [isInvalid, setIsInvalid] = useState(false);
   const { data: session } = useSession();
   const router = useRouter();
+  let userId;
+  let userName;
+  let commentInputRef = useRef();
 
   if (!session) {
     router.replace("/auth");
   }
-
-  let userId;
-  let userName;
 
   if (session) {
     userId = session.user.id;
     userName = session.user.name;
   }
 
-  const commentInputRef = useRef();
-
-  function sendCommentHandler(event) {
+  const sendCommentHandler = (event) => {
     event.preventDefault();
-
     const enteredComment = commentInputRef.current.value;
 
     if (
@@ -44,6 +40,8 @@ function NewComment(props) {
       name: userName,
       text: enteredComment,
     });
+
+    commentInputRef.current.value = "";
   }
 
   return (

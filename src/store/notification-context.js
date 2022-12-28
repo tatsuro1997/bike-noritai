@@ -6,7 +6,7 @@ const NotificationContext = createContext({
   hideNotification: function () {},
 });
 
-export function NotificationContextProvider(props) {
+export const NotificationContextProvider = ({ children }) => {
   const [activeNotification, setActiveNotification] = useState();
 
   useEffect(() => {
@@ -25,13 +25,9 @@ export function NotificationContextProvider(props) {
     }
   }, [activeNotification]);
 
-  function showNotificationHandler(notificationData) {
+  const showNotificationHandler = (notificationData) =>
     setActiveNotification(notificationData);
-  }
-
-  function hideNotificationHandler() {
-    setActiveNotification(null);
-  }
+  const hideNotificationHandler = () => setActiveNotification(null);
 
   const context = {
     notification: activeNotification,
@@ -41,9 +37,9 @@ export function NotificationContextProvider(props) {
 
   return (
     <NotificationContext.Provider value={context}>
-      {props.children}
+      {children}
     </NotificationContext.Provider>
   );
-}
+};
 
 export default NotificationContext;

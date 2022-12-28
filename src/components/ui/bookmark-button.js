@@ -1,21 +1,18 @@
 import { useState, useEffect } from "react";
 import { useSession, getSession } from "next-auth/react";
 import { useRouter } from "next/router";
-
 import { getBookmarkById } from "../../helpers/bookmark-api-util";
 import BookmarkIcon from "../icons/bookmark-icon";
 import BookmarkedIcon from "../icons/bookmarked-icon";
-
 import classes from "./bookmark-button.module.css";
 
-function BookmarkButton(props) {
-  const { spotId, count } = props;
+const BookmarkButton = ({ spotId, count }) => {
   const router = useRouter();
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [countBookmark, setCountBookmark] = useState(count);
   const { data: session } = useSession();
 
-  async function getBookmarkData(uid) {
+  const getBookmarkData = async(uid) => {
     try {
       const bookmarkData = await getBookmarkById(uid, spotId);
       if (bookmarkData.length !== 0) {
@@ -37,7 +34,7 @@ function BookmarkButton(props) {
     });
   }, []);
 
-  async function bookmarkHandler() {
+  const bookmarkHandler = async() => {
     setIsBookmarked((prevState) => !prevState);
 
     if (isBookmarked) {

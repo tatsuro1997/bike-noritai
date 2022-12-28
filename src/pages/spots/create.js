@@ -1,11 +1,5 @@
 import NewSpot from "../../components/input/new-spot";
 
-function CreateSpotPage() {
-  return (
-    <>
-      <NewSpot />
-    </>
-  );
-}
+const CreateSpotPage = () => <NewSpot />;
 
 export default CreateSpotPage;

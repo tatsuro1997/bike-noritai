@@ -1,15 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-
 import AddressIcon from "../icons/address-icon";
 import DateIcon from "../icons/date-icon";
 import HouseIcon from "../icons/house-icon";
-
 import classes from "./spot-item.module.css";
 
-function SpotItem(props) {
-  const { id, image, name, type, prefecture, address1, open_time } = props;
-
+const SpotItem = ({ id, image, name, type, prefecture, address1, open_time }) => {
   const exploreLink = `/spots/${id}`;
 
   return (

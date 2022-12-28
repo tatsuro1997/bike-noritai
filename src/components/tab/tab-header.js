@@ -1,11 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-
 import EditIcon from "../icons/edit-icon";
 import TabList from "./tab-list";
 import classes from "./tab-header.module.css";
 
-function TabHeader({ user }) {
+const TabHeader = ({ user }) => {
   const humanReadableDate = new Date(user.created_at).toLocaleDateString(
     "ko-KR",
     {

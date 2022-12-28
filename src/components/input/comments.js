@@ -1,29 +1,23 @@
 import { useState, useContext } from "react";
 import { useRouter } from "next/router";
-
 import CommentList from "./comment-list";
 import NewComment from "./new-comment";
 import NotificationContext from "../../store/notification-context";
-
 import classes from "./comments.module.css";
 
-function Comments(props) {
-  const { spotId, comments } = props;
+const Comments = ({ spotId, comments }) => {
   const router = useRouter();
-
   const notificationCtx = useContext(NotificationContext);
-
   const [showComments, setShowComments] = useState(false);
 
-  function toggleCommentsHandler() {
+  const toggleCommentsHandler = () => {
     setShowComments((prevStatus) => !prevStatus);
   }
 
-  function addCommentHandler(commentData) {
-    const { uid } = commentData;
+  const addCommentHandler = (commentData) => {
     notificationCtx.showNotification({
-      title: "Sending coments...",
-      message: "Your comment is currently being stored into a database.",
+      title: "コメント送信中...",
+      message: "保存中です...",
       status: "pending",
     });
 
@@ -43,13 +37,15 @@ function Comments(props) {
           throw new Error(data.message || "Something went wrong!");
         });
       })
-      .then((data) => {
+      .then(() => {
         notificationCtx.showNotification({
-          title: "Success!",
-          message: "Your comment was saved!",
+          title: "コメントに成功しました!",
+          message: "コメントを保存しました!",
           status: "success",
         });
-        router.replace(`/users/${uid}`)
+        console.log(commentData);
+        commentData.text = '';
+        router.replace(`/spots/${spotId}`);
       })
       .catch((error) => {
         notificationCtx.showNotification({

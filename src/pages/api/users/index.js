@@ -1,6 +1,6 @@
 import { connectDatabase, insertDocument, getAllDocuments } from "../../../helpers/db-util";
 
-async function handler(req, res) {
+const handler = async(req, res) => {
   if (req.method === "GET") {
     let client;
 
