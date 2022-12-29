@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-export const connectDatabase = MongoClient.connect(process.env.DB_URL);
+export const connectDatabase = () => MongoClient.connect(process.env.DB_URL);
 
 export const insertDocument = async(client, collection, document) => {
   const db = client.db();
