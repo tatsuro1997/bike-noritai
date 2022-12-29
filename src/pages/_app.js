@@ -6,9 +6,9 @@ import "../styles/globals.css";
 const MyApp = ({ Component, pageProps }) => (
   <SessionProvider session={pageProps.session}>
     <NotificationContextProvider>
-      <Layout>
+      {/* <Layout> */}
         <Component {...pageProps} />
-      </Layout>
+      {/* </Layout> */}
     </NotificationContextProvider>
   </SessionProvider>
 );
