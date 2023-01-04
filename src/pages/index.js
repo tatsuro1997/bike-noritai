@@ -15,24 +15,24 @@ const HomePage = ({ records, spots }) => (
         content="バイカー向けスポット検索サイト「バイクノリタイ」は全国〇〇箇所のスポットを掲載中。条件検索からあなたにピッタリのスポットが見つかります！"
       />
     </Head>
-    <TopMain />
-    <LatestRecords records={records} />
-    <LatestSpots spots={spots} />
-    <PrefectureContent />
+    {/* <TopMain /> */}
+    {/* <LatestRecords records={records} />
+    <LatestSpots spots={spots} /> */}
+    {/* <PrefectureContent /> */}
   </>
 );
 
-export const getStaticProps = async () => {
-  const records = await getAllRecords();
-  const spots = await getAllSpots();
+// export const getStaticProps = async () => {
+//   const records = await getAllRecords();
+//   const spots = await getAllSpots();
 
-  return {
-    props: {
-      records: records,
-      spots: spots,
-    },
-    revalidate: 1800,
-  };
-};
+//   return {
+//     props: {
+//       records: records,
+//       spots: spots,
+//     },
+//     revalidate: 1800,
+//   };
+// };
 
 export default HomePage;
