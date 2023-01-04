@@ -1,4 +1,4 @@
-export const getAllUsers = async() => {
+export const getAllUsers = async () => {
   const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/users/`;
 
   try {
@@ -10,13 +10,13 @@ export const getAllUsers = async() => {
     } else {
       throw new Error("ユーザーデータの取得に失敗しました。");
     }
-  } catch(error) {
+  } catch (error) {
     console.log(error);
   }
-}
+};
 
-export const getUserById = async(id) => {
+export const getUserById = async (id) => {
   const allUsers = await getAllUsers();
 
   return allUsers.find((user) => user.uid === Number(id));
-}
+};

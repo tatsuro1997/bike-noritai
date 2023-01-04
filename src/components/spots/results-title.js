@@ -1,5 +1,5 @@
-import SpotsSearch from './spots-search';
-import classes from './results-title.module.css';
+import SpotsSearch from "./spots-search";
+import classes from "./results-title.module.css";
 
 const ResultsTitle = ({ searchKeyword }) => (
   <section className={classes.title}>

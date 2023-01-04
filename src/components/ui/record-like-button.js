@@ -4,7 +4,10 @@ import { useRouter } from "next/router";
 import HeartIcon from "../icons/heart";
 import HeartFullIcon from "../icons/heart-full";
 import classes from "./record-like-button.module.css";
-import { getRecordLikeById, getRecordLikeCount } from "../../helpers/record-like-api-util";
+import {
+  getRecordLikeById,
+  getRecordLikeCount,
+} from "../../helpers/record-like-api-util";
 
 const RecordLikeButton = ({ recordId, count }) => {
   const router = useRouter();
@@ -12,7 +15,7 @@ const RecordLikeButton = ({ recordId, count }) => {
   const [countLike, setCountLike] = useState(count);
   const { data: session } = useSession();
 
-  const getRecordData = async(uid) => {
+  const getRecordData = async (uid) => {
     try {
       const likeData = await getRecordLikeById(uid, recordId);
       if (likeData.length !== 0) {
@@ -24,7 +27,7 @@ const RecordLikeButton = ({ recordId, count }) => {
       console.log("Could not find RecordLike!");
       return;
     }
-  }
+  };
 
   useEffect(() => {
     getSession().then((session) => {
@@ -41,8 +44,8 @@ const RecordLikeButton = ({ recordId, count }) => {
     })();
   }, [recordId]);
 
-  const bookmarkHandler = async(e) => {
-    e.preventDefault()
+  const bookmarkHandler = async (e) => {
+    e.preventDefault();
     setIsLiked((prevState) => !prevState);
 
     if (isLiked) {
@@ -70,7 +73,7 @@ const RecordLikeButton = ({ recordId, count }) => {
           console.log(error);
         });
     }
-  }
+  };
 
   let recordLikeButton;
 
@@ -91,6 +94,6 @@ const RecordLikeButton = ({ recordId, count }) => {
   }
 
   return <>{recordLikeButton}</>;
-}
+};
 
 export default RecordLikeButton;

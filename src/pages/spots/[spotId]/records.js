@@ -1,4 +1,4 @@
-import RecordList from "../../../components/records/record-list"
+import RecordList from "../../../components/records/record-list";
 import DetailHead from "../../../components/spot-detail/detail-head";
 import SpotSummary from "../../../components/spot-detail/spot-summary";
 import { getBookmarkCount } from "../../../helpers/bookmark-api-util";
@@ -13,7 +13,7 @@ const Records = ({ spot, bookmarkCount, records }) => (
   </>
 );
 
-export const getStaticProps = async(context) => {
+export const getStaticProps = async (context) => {
   const spotId = context.params.spotId;
   const spot = await getSpotById(spotId);
   const bookmarkCount = await getBookmarkCount(spotId);
@@ -29,9 +29,9 @@ export const getStaticProps = async(context) => {
     },
     revalidate: 30,
   };
-}
+};
 
-export const getStaticPaths = async() => {
+export const getStaticPaths = async () => {
   const spots = await getFeaturedSpots();
   const paths = spots.map((spot) => ({ params: { spotId: spot.id } }));
 
@@ -39,6 +39,6 @@ export const getStaticPaths = async() => {
     paths: paths,
     fallback: "blocking",
   };
-}
+};
 
-export default Records
+export default Records;

@@ -1,4 +1,4 @@
-import { SessionProvider } from "next-auth/react"
+import { SessionProvider } from "next-auth/react";
 import Layout from "../components/layout/layout";
 import { NotificationContextProvider } from "../store/notification-context";
 import "../styles/globals.css";

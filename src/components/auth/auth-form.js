@@ -3,7 +3,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import classes from "./auth-form.module.css";
 
-const createUser = async(email, password, uid) => {
+const createUser = async (email, password, uid) => {
   const response = await fetch("/api/auth/signup", {
     method: "POST",
     body: JSON.stringify({ email, password, uid }),
@@ -19,7 +19,7 @@ const createUser = async(email, password, uid) => {
   }
 
   return data;
-}
+};
 
 const AuthForm = () => {
   const [error, setError] = useState();
@@ -41,7 +41,7 @@ const AuthForm = () => {
 
   const switchAuthModeHandler = () => setIsLogin((prevState) => !prevState);
 
-  const submitHandler = async(event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;
@@ -85,7 +85,7 @@ const AuthForm = () => {
         setError(errorMessage);
       }
     }
-  }
+  };
 
   return (
     <section className={classes.auth}>
@@ -121,6 +121,6 @@ const AuthForm = () => {
       </form>
     </section>
   );
-}
+};
 
 export default AuthForm;

@@ -18,10 +18,10 @@ const RegisteredSpots = ({ user, registered_spots }) => (
   </>
 );
 
-export const getStaticProps = async(context) => {
+export const getStaticProps = async (context) => {
   const userId = context.params.userId;
   const user = await getUserById(userId);
-  const registered_spots = await getSpotByUid(userId)
+  const registered_spots = await getSpotByUid(userId);
 
   return {
     props: {
@@ -30,9 +30,9 @@ export const getStaticProps = async(context) => {
     },
     revalidate: 30,
   };
-}
+};
 
-export const getStaticPaths = async() => {
+export const getStaticPaths = async () => {
   const users = await getAllUsers();
   const paths = users.map((user) => ({
     params: { userId: user.uid.toString() },
@@ -42,6 +42,6 @@ export const getStaticPaths = async() => {
     paths: paths,
     fallback: "blocking",
   };
-}
+};
 
 export default RegisteredSpots;

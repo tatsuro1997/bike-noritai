@@ -18,7 +18,7 @@ const UserPage = ({ users }) => (
   </>
 );
 
-export const getStaticProps = async() => {
+export const getStaticProps = async () => {
   const users = await getAllUsers();
 
   return {
@@ -27,6 +27,6 @@ export const getStaticProps = async() => {
     },
     revalidate: 60,
   };
-}
+};
 
 export default UserPage;

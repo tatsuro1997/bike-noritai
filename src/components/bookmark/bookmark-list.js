@@ -13,6 +13,6 @@ const BookmarkList = ({ bookmarks }) => {
       ))}
     </ul>
   );
-}
+};
 
 export default BookmarkList;

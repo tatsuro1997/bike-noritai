@@ -20,6 +20,6 @@ const CreateRecordPage = () => {
   }
 
   return <NewRecord spotId={spotId} />;
-}
+};
 
 export default CreateRecordPage;

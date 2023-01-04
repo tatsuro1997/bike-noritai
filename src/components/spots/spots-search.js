@@ -20,7 +20,7 @@ const SpotsSearch = () => {
     }
 
     router.push(fullPath);
-  }
+  };
 
   return (
     <form className={classes.form} onSubmit={submitHandler}>
@@ -36,6 +36,6 @@ const SpotsSearch = () => {
       </div>
     </form>
   );
-}
+};
 
 export default SpotsSearch;

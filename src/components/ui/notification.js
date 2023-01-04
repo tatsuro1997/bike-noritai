@@ -27,6 +27,6 @@ const Notification = ({ title, message, status }) => {
       <p>{message}</p>
     </div>
   );
-}
+};
 
 export default Notification;

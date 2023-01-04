@@ -19,7 +19,7 @@ const AllSpotsPage = ({ spots }) => (
   </>
 );
 
-export const getStaticProps = async() => {
+export const getStaticProps = async () => {
   const spots = await getAllSpots();
 
   return {
@@ -28,6 +28,6 @@ export const getStaticProps = async() => {
     },
     revalidate: 60,
   };
-}
+};
 
 export default AllSpotsPage;

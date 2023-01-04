@@ -83,6 +83,6 @@ const FilteredSpotsPage = () => {
       <SpotList items={filteredSpots} />
     </>
   );
-}
+};
 
 export default FilteredSpotsPage;

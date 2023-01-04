@@ -2,15 +2,13 @@ import Head from "next/head";
 import UserProfile from "../../../components/profile/user-profile";
 import RecordList from "../../../components/records/record-list";
 import TabList from "../../../components/tab/tab-list";
-import { getRecordsByUid, getRecordsByMonth } from "../../../helpers/record-api-util";
+import {
+  getRecordsByUid,
+  getRecordsByMonth,
+} from "../../../helpers/record-api-util";
 import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
 
-const UserDetailPage = ({
-    selectedUser: user,
-    records,
-    thisMonthRecords
-  }) => {
-
+const UserDetailPage = ({ selectedUser: user, records, thisMonthRecords }) => {
   if (!user) {
     return (
       <div className="center">
@@ -53,9 +51,9 @@ const UserDetailPage = ({
       <RecordList items={records} />
     </>
   );
-}
+};
 
-export const getStaticProps = async(context) => {
+export const getStaticProps = async (context) => {
   const userId = context.params.userId;
   const month = new Date().getMonth() + 1;
 
@@ -73,9 +71,9 @@ export const getStaticProps = async(context) => {
     },
     revalidate: 30,
   };
-}
+};
 
-export const getStaticPaths = async() => {
+export const getStaticPaths = async () => {
   const users = await getAllUsers();
 
   const paths = users.map((user) => ({
@@ -86,6 +84,6 @@ export const getStaticPaths = async() => {
     paths: paths,
     fallback: "blocking",
   };
-}
+};
 
 export default UserDetailPage;

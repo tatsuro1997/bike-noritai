@@ -13,18 +13,18 @@ export const getAllRecordLikes = async () => {
   } catch (error) {
     console.log(error);
   }
-}
+};
 
-export const getRecordLikeById = async(userId, recordId) => {
+export const getRecordLikeById = async (userId, recordId) => {
   const allRecordLikes = await getAllRecordLikes();
   return allRecordLikes.filter((like) => {
     return like.user_id === userId && like.record_id === recordId;
   });
-}
+};
 
-export const getRecordLikeCount = async(recordId) => {
+export const getRecordLikeCount = async (recordId) => {
   const allRecordLikes = await getAllRecordLikes();
   return allRecordLikes.filter((like) => {
     return like.record_id === recordId;
   }).length;
-}
+};

@@ -11,6 +11,6 @@ const RecordButton = ({ spotId }) => {
       <Link href={exploreLink}>記録する</Link>
     </button>
   );
-}
+};
 
 export default RecordButton;

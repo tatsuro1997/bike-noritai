@@ -11,16 +11,16 @@ const TopMainNavigation = () => {
   const [user, setUser] = useState();
   useEffect(() => {
     if (session) {
-      setUser(session.user)
+      setUser(session.user);
     }
-  }, [session, setUser])
+  }, [session, setUser]);
 
   let exploreLink;
   const logoutHandler = () => signOut();
 
   const nemuToggleHandler = () => {
     setIsShowMenu((prevState) => !prevState);
-  }
+  };
 
   if (session) {
     const userId = JSON.stringify(session.user.id);
@@ -88,6 +88,6 @@ const TopMainNavigation = () => {
       )}
     </header>
   );
-}
+};
 
 export default TopMainNavigation;

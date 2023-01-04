@@ -5,16 +5,8 @@ import classes from "./profile-header.module.css";
 import Report from "./report";
 
 const ProfileHeader = ({ props, thisMonthRecords }) => {
-  const {
-    id,
-    name,
-    area,
-    prefecture,
-    experience,
-    bike_name,
-    url,
-    created_at,
-  } = props;
+  const { id, name, area, prefecture, experience, bike_name, url, created_at } =
+    props;
 
   return (
     <div className={classes.card}>

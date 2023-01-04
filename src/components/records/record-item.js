@@ -38,8 +38,8 @@ const RecordItem = ({ record }) => {
   useEffect(() => {
     getSpotById(spot_id)
       .then((spot) => setTitle(spot.name))
-      .catch((error) => console.log(error))
-  }, [spot_id, setTitle])
+      .catch((error) => console.log(error));
+  }, [spot_id, setTitle]);
 
   return (
     <Link href={exploreLink}>
@@ -97,6 +97,6 @@ const RecordItem = ({ record }) => {
       </a>
     </Link>
   );
-}
+};
 
 export default RecordItem;

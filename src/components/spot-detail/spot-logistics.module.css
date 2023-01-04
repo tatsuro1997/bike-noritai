@@ -49,7 +49,7 @@
   white-space: pre;
 }
 
-.other_link a{
+.other_link a {
   display: flex;
   justify-content: flex-end;
   font-weight: 600;
@@ -73,7 +73,7 @@
   }
 
   .image img {
-    width: 50rem!important;
+    width: 50rem !important;
     height: 10rem;
   }
 }

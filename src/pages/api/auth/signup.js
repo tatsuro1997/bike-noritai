@@ -1,7 +1,7 @@
 import { connectDatabase } from "../../../helpers/db-util";
 import { hashPassword } from "../../../helpers/auth-util";
 
-const handler = async(req, res) => {
+const handler = async (req, res) => {
   if (req.method !== "POST") {
     return;
   }
@@ -48,6 +48,6 @@ const handler = async(req, res) => {
   res.status(201).json({
     message: "Create user!",
   });
-}
+};
 
 export default handler;

@@ -1,7 +1,7 @@
 import { connectDatabase } from "../../../helpers/db-util";
 import { getUserById } from "../../../helpers/user-api-util";
 
-const handler = async(req, res) => {
+const handler = async (req, res) => {
   const uid = req.query.uid;
 
   if (req.method === "GET") {
@@ -25,6 +25,6 @@ const handler = async(req, res) => {
 
     client.close();
   }
-}
+};
 
 export default handler;

@@ -22,7 +22,7 @@ const HomePage = ({ records, spots }) => (
   </>
 );
 
-export const getStaticProps = async() => {
+export const getStaticProps = async () => {
   const records = await getAllRecords();
   const spots = await getAllSpots();
 
@@ -33,6 +33,6 @@ export const getStaticProps = async() => {
     },
     revalidate: 1800,
   };
-}
+};
 
 export default HomePage;

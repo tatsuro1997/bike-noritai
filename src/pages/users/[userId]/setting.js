@@ -5,7 +5,7 @@ import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
 const UserSetting = ({ selectedUser: user }) => {
   const route = useRouter();
 
-  const updateProfileHandler = async(userData) => {
+  const updateProfileHandler = async (userData) => {
     await fetch("/api/user/change-user-data", {
       method: "PATCH",
       body: JSON.stringify(userData),
@@ -15,20 +15,17 @@ const UserSetting = ({ selectedUser: user }) => {
     });
 
     route.back();
-  }
+  };
 
   return (
     <>
       <h1>ユーザー設定</h1>
-      <ProfileForm
-        onUpdateProfile={updateProfileHandler}
-        user={user}
-      />
+      <ProfileForm onUpdateProfile={updateProfileHandler} user={user} />
     </>
   );
-}
+};
 
-export const getStaticProps = async(context) => {
+export const getStaticProps = async (context) => {
   const userId = context.params.userId;
   const user = await getUserById(userId);
 
@@ -38,9 +35,9 @@ export const getStaticProps = async(context) => {
     },
     revalidate: 30,
   };
-}
+};
 
-export const getStaticPaths = async() => {
+export const getStaticPaths = async () => {
   const users = await getAllUsers();
   const paths = users.map((user) => ({
     params: { userId: user.uid.toString() },
@@ -50,6 +47,6 @@ export const getStaticPaths = async() => {
     paths: paths,
     fallback: "blocking",
   };
-}
+};
 
 export default UserSetting;
