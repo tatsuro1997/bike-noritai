@@ -1,9 +1,9 @@
 import BookmarkAndRecordButton from "../ui/bookmark-record-button"
 import classes from "./detail-head.module.css"
 
-const DetailHead = ({ spotId, count }) => (
+const DetailHead = ({ spotId, bookmarkCount }) => (
   <div className={classes.head}>
-    <BookmarkAndRecordButton spotId={spotId} count={count} />
+    <BookmarkAndRecordButton spotId={spotId} bookmarkCount={bookmarkCount} />
   </div>
 );
 

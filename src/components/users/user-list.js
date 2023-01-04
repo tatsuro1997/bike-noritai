@@ -6,7 +6,7 @@ const UserList = ({ items }) => (
     {items.map((user) => (
       <UserItem
         key={user._id}
-        id={user._id}
+        id={user.uid}
         email={user.email}
       // image={user.image}
       />

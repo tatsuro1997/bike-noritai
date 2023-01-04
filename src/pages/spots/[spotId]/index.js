@@ -7,11 +7,11 @@ import { getBookmarkCount } from "../../../helpers/bookmark-api-util";
 import { getThreeRecordsBySpotId } from "../../../helpers/record-api-util";
 
 const SpotDetailPage = ({
-    selectedSpot: spot,
-    selectedComments: comments,
-    selectedRecords: records
-  }) => {
-
+  selectedSpot: spot,
+  countedSpot: bookmarkCount,
+  selectedComments: comments,
+  selectedRecords: records,
+}) => {
   if (!spot) {
     return (
       <div className="center">
@@ -27,7 +27,12 @@ const SpotDetailPage = ({
         <meta name="description" content={spot.description} />
       </Head>
       <SpotSummary name={spot.name} />
-      <SpotLogistics key={spot._id} spot={spot} records={records} />
+      <SpotLogistics
+        key={spot._id}
+        spot={spot}
+        records={records}
+        bookmarkCount={bookmarkCount}
+      />
       <Comments spotId={spot._id} comments={comments} />
     </>
   );

@@ -31,10 +31,11 @@ const UserDetailPage = ({
   return (
     <>
       <Head>
-        <title>〇〇さんのマイページ</title>
+        {user && <title>{user.name}さんのマイページ</title>}
+        {!user && <title>バイクノリタイ - マイページ</title>}
         <meta
           name="description"
-          content="〇〇さんのマイページ。イキタイスポットを見つけましょう！"
+          content="バイクノリタイ - マイページ。イキタイスポットを見つけましょう！"
         />
       </Head>
       <UserProfile

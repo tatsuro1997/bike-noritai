@@ -1,14 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import classes from "./top-main-navigation.module.css";
 
 const TopMainNavigation = () => {
   const { data: session, loading } = useSession();
   const [isShowMenu, setIsShowMenu] = useState(false);
-  let exploreLink;
+  const [user, setUser] = useState();
+  useEffect(() => {
+    if (session) {
+      setUser(session.user)
+    }
+  }, [session, setUser])
 
+  let exploreLink;
   const logoutHandler = () => signOut();
 
   const nemuToggleHandler = () => {
@@ -50,9 +56,12 @@ const TopMainNavigation = () => {
               {session && exploreLink && (
                 <li>
                   <Link href={exploreLink}>
-                    <a>{session.user.name}</a>
+                    <a>
+                      {user.name && user.name}
+                      {!user.name && `${user.id}さん`}
+                      <span>マイページを表示</span>
+                    </a>
                   </Link>
-                  <span>マイページを表示</span>
                 </li>
               )}
             </ul>

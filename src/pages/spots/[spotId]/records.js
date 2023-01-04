@@ -5,10 +5,10 @@ import { getBookmarkCount } from "../../../helpers/bookmark-api-util";
 import { getRecordsBySpotId } from "../../../helpers/record-api-util";
 import { getSpotById, getFeaturedSpots } from "../../../helpers/spot-api-util";
 
-const Records = ({ spot, count, records }) => (
+const Records = ({ spot, bookmarkCount, records }) => (
   <>
     <SpotSummary name={spot.name} />
-    <DetailHead spotId={spot.id} count={count} />
+    <DetailHead spotId={spot.id} bookmarkCount={bookmarkCount} />
     <RecordList items={records} />
   </>
 );
@@ -16,13 +16,15 @@ const Records = ({ spot, count, records }) => (
 export const getStaticProps = async(context) => {
   const spotId = context.params.spotId;
   const spot = await getSpotById(spotId);
-  const count = await getBookmarkCount(spotId);
+  const bookmarkCount = await getBookmarkCount(spotId);
   const records = await getRecordsBySpotId(spotId);
+
+  console.log(bookmarkCount);
 
   return {
     props: {
       spot,
-      count,
+      bookmarkCount,
       records,
     },
     revalidate: 30,
