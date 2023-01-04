@@ -1,5 +1,5 @@
-import { connectDatabase } from "../../../helpers/db-util";
-import { getUserById } from "../../../helpers/user-api-util";
+import { connectDatabase } from "@/helpers/db-util";
+import { getUserById } from "@/helpers/user-api-util";
 
 const handler = async (req, res) => {
   const uid = req.query.uid;

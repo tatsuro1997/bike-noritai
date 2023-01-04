@@ -3,7 +3,7 @@ import GoogleMapReact from "google-map-react";
 import { useRef, useState, useContext } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import NotificationContext from "../../store/notification-context";
+import NotificationContext from "@/store/notification-context";
 import classes from "./new-spot.module.css";
 
 const NewSpot = () => {

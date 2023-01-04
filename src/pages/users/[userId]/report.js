@@ -1,8 +1,8 @@
 import Head from "next/head";
-import ReportList from "../../../components/reports/report-list";
-import TabCard from "../../../components/tab/tab-content";
-import { getRecordsByMonth } from "../../../helpers/record-api-util";
-import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
+import ReportList from "@/components/reports/report-list";
+import TabCard from "@/components/tab/tab-content";
+import { getRecordsByMonth } from "@/helpers/record-api-util";
+import { getAllUsers, getUserById } from "@/helpers/user-api-util";
 
 const ReportsPage = ({ thisMonthRecords, lastMonthRecords, user }) => (
   <>

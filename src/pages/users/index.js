@@ -1,6 +1,6 @@
 import Head from "next/head";
-import { getAllUsers } from "../../helpers/user-api-util";
-import UserList from "../../components/users/user-list";
+import { getAllUsers } from "@/helpers/user-api-util";
+import UserList from "@/components/users/user-list";
 
 const UserPage = ({ users }) => (
   <>

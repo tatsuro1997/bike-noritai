@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useContext } from "react";
-import NotificationContext from "../../store/notification-context";
+import NotificationContext from "@/store/notification-context";
 import Notification from "../ui/notification";
 import Footer from "./footer";
 import MainNavigation from "./main-navigation";

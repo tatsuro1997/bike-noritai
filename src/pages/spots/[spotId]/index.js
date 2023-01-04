@@ -1,14 +1,14 @@
 import Head from "next/head";
-import SpotLogistics from "../../../components/spot-detail/spot-logistics";
-import SpotSummary from "../../../components/spot-detail/spot-summary";
-import Comments from "../../../components/input/comments";
+import SpotLogistics from "@/components/spot-detail/spot-logistics";
+import SpotSummary from "@/components/spot-detail/spot-summary";
+import Comments from "@/components/input/comments";
 import {
   getSpotById,
   getFeaturedSpots,
   getCommentsBySpotId,
-} from "../../../helpers/spot-api-util";
-import { getBookmarkCount } from "../../../helpers/bookmark-api-util";
-import { getThreeRecordsBySpotId } from "../../../helpers/record-api-util";
+} from "@/helpers/spot-api-util";
+import { getBookmarkCount } from "@/helpers/bookmark-api-util";
+import { getThreeRecordsBySpotId } from "@/helpers/record-api-util";
 
 const SpotDetailPage = ({
   selectedSpot: spot,

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
-import ProfileForm from "../../../components/profile/profile-form";
-import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
+import ProfileForm from "@/components/profile/profile-form";
+import { getAllUsers, getUserById } from "@/helpers/user-api-util";
 
 const UserSetting = ({ selectedUser: user }) => {
   const route = useRouter();

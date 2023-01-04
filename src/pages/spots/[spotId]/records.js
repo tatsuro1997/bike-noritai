@@ -1,9 +1,9 @@
-import RecordList from "../../../components/records/record-list";
-import DetailHead from "../../../components/spot-detail/detail-head";
-import SpotSummary from "../../../components/spot-detail/spot-summary";
-import { getBookmarkCount } from "../../../helpers/bookmark-api-util";
-import { getRecordsBySpotId } from "../../../helpers/record-api-util";
-import { getSpotById, getFeaturedSpots } from "../../../helpers/spot-api-util";
+import RecordList from "@/components/records/record-list";
+import DetailHead from "@/components/spot-detail/detail-head";
+import SpotSummary from "@/components/spot-detail/spot-summary";
+import { getBookmarkCount } from "@/helpers/bookmark-api-util";
+import { getRecordsBySpotId } from "@/helpers/record-api-util";
+import { getSpotById, getFeaturedSpots } from "@/helpers/spot-api-util";
 
 const Records = ({ spot, bookmarkCount, records }) => (
   <>

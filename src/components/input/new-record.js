@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useRef, useState, useContext } from "react";
 import { useSession } from "next-auth/react";
-import NotificationContext from "../../store/notification-context";
+import NotificationContext from "@/store/notification-context";
 import classes from "./new-record.module.css";
 
 const NewRecord = ({ spotId }) => {

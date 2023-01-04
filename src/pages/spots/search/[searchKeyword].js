@@ -1,11 +1,10 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-
-import SpotList from "../../../components/spots/spot-list";
-import ResultsTitle from "../../../components/spots/results-title";
-import ErrorAlert from "../../../components/ui/error-alert";
-import SpotsSearch from "../../../components/spots/spots-search";
+import SpotList from "@/components/spots/spot-list";
+import ResultsTitle from "@/components/spots/results-title";
+import ErrorAlert from "@/components/ui/error-alert";
+import SpotsSearch from "@/components/spots/spots-search";
 
 const FilteredSpotsPage = () => {
   const [loadedSpots, setLoadedSpots] = useState();

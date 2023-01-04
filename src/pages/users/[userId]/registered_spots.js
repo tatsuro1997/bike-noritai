@@ -1,8 +1,8 @@
 import Head from "next/head";
-import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
-import TabCard from "../../../components/tab/tab-content";
-import RegisteredSpotList from "../../../components/registered_spots/registered_spot-list";
-import { getSpotByUid } from "../../../helpers/spot-api-util";
+import { getAllUsers, getUserById } from "@/helpers/user-api-util";
+import TabCard from "@/components/tab/tab-content";
+import RegisteredSpotList from "@/components/registered_spots/registered_spot-list";
+import { getSpotByUid } from "@/helpers/spot-api-util";
 
 const RegisteredSpots = ({ user, registered_spots }) => (
   <>

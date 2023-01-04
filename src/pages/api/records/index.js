@@ -1,4 +1,4 @@
-import { getAllDocuments, connectDatabase } from "../../../helpers/db-util";
+import { getAllDocuments, connectDatabase } from "@/helpers/db-util";
 
 const handler = async (req, res) => {
   if (req.method === "GET") {

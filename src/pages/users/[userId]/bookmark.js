@@ -1,8 +1,8 @@
 import Head from "next/head";
-import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
-import { getBookmarkByUserId } from "../../../helpers/bookmark-api-util";
-import TabCard from "../../../components/tab/tab-content";
-import BookmarkList from "../../../components/bookmark/bookmark-list";
+import { getAllUsers, getUserById } from "@/helpers/user-api-util";
+import { getBookmarkByUserId } from "@/helpers/bookmark-api-util";
+import TabCard from "@/components/tab/tab-content";
+import BookmarkList from "@/components/bookmark/bookmark-list";
 
 const Bookmark = ({ user, bookmarks }) => (
   <>

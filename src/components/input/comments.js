@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import CommentList from "./comment-list";
 import NewComment from "./new-comment";
-import NotificationContext from "../../store/notification-context";
+import NotificationContext from "@/store/notification-context";
 import classes from "./comments.module.css";
 
 const Comments = ({ spotId, comments }) => {

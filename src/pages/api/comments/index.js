@@ -1,4 +1,4 @@
-import { connectDatabase, getAllDocuments } from "../../../helpers/db-util";
+import { connectDatabase, getAllDocuments } from "@/helpers/db-util";
 
 const handler = async (req, res) => {
   let client;

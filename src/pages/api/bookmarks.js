@@ -1,10 +1,10 @@
-import { getBookmarkById } from "../../helpers/bookmark-api-util";
+import { getBookmarkById } from "@/helpers/bookmark-api-util";
 import {
   connectDatabase,
   insertDocument,
   removeDocument,
   getAllDocuments,
-} from "../../helpers/db-util";
+} from "@/helpers/db-util";
 
 const handler = async (req, res) => {
   if (req.method === "GET") {

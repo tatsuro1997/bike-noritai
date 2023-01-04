@@ -1,5 +1,5 @@
-import { connectDatabase } from "../../../helpers/db-util";
-import { getSpotById } from "../../../helpers/spot-api-util";
+import { connectDatabase } from "@/helpers/db-util";
+import { getSpotById } from "@/helpers/spot-api-util";
 
 const handler = async (req, res) => {
   const spotId = req.query.spotId;

@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { getSpotById } from "../../helpers/spot-api-util";
-import { getUserById } from "../../helpers/user-api-util";
+import { getSpotById } from "@/helpers/spot-api-util";
+import { getUserById } from "@/helpers/user-api-util";
 import BikeIcon from "../icons/bike";
 import CloudSunIcon from "../icons/cloud-sun";
 import StopWatchIcon from "../icons/spot-watch";

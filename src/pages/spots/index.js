@@ -1,8 +1,8 @@
 import Head from "next/head";
-import SpotList from "../../components/spots/spot-list";
-import SpotRegistration from "../../components/spots/spot-registration";
-import SpotsSearch from "../../components/spots/spots-search";
-import { getAllSpots } from "../../helpers/spot-api-util";
+import SpotList from "@/components/spots/spot-list";
+import SpotRegistration from "@/components/spots/spot-registration";
+import SpotsSearch from "@/components/spots/spots-search";
+import { getAllSpots } from "@/helpers/spot-api-util";
 
 const AllSpotsPage = ({ spots }) => (
   <>
