@@ -43,7 +43,6 @@ const Comments = ({ spotId, comments }) => {
           message: "コメントを保存しました!",
           status: "success",
         });
-        console.log(commentData);
         commentData.text = '';
         router.replace(`/spots/${spotId}`);
       })

@@ -101,8 +101,6 @@ const NewSpot = () => {
             );
             setLat(results[0].geometry.location.lat());
             setLng(results[0].geometry.location.lng());
-            console.log(results[0].geometry.location.lat());
-            console.log(results[0].geometry.location.lng());
           }
         }
       );
