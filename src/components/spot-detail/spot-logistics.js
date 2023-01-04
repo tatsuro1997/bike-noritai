@@ -10,7 +10,7 @@ import BookmarkAndRecordButton from "../ui/bookmark-record-button";
 
 const SpotLogistics = ({ spot, records }) => {
   const {
-    id,
+    _id,
     name,
     type,
     prefecture,
@@ -26,7 +26,8 @@ const SpotLogistics = ({ spot, records }) => {
     lat,
     lng,
   } = spot;
-  const exploreLink = `/spots/${id}/records`
+  console.log(_id);
+  const exploreLink = `/spots/${_id}/records`
 
   return (
     <section className={classes.logistics}>
@@ -63,7 +64,7 @@ const SpotLogistics = ({ spot, records }) => {
           </div>
         </div>
         <div className={classes.main}>
-          <BookmarkAndRecordButton spotId={id} count={count} />
+          <BookmarkAndRecordButton spotId={_id} count={count} />
           <ul className={classes.list}>
             <LogisticsItem icon={HouseIcon}>
               <p>{type}</p>
