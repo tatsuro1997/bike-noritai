@@ -1,5 +1,5 @@
 import RecordList from "./record-list";
-import classes from './latest-records.module.css';
+import classes from "./latest-records.module.css";
 
 const LatestRecords = ({ records }) => {
   const slicedRecords = records.slice(0, 3);
@@ -10,6 +10,6 @@ const LatestRecords = ({ records }) => {
       <RecordList items={slicedRecords || records} />
     </>
   );
-}
+};
 
 export default LatestRecords;

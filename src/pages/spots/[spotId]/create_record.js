@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import NewRecord from "../../../components/input/new-record";
+import NewRecord from "@/components/input/new-record";
 
 const CreateRecordPage = () => {
   const router = useRouter();
@@ -20,6 +20,6 @@ const CreateRecordPage = () => {
   }
 
   return <NewRecord spotId={spotId} />;
-}
+};
 
 export default CreateRecordPage;

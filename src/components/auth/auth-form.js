@@ -3,7 +3,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import classes from "./auth-form.module.css";
 
-const createUser = async(email, password, uid) => {
+const createUser = async (email, password, uid) => {
   const response = await fetch("/api/auth/signup", {
     method: "POST",
     body: JSON.stringify({ email, password, uid }),
@@ -19,7 +19,7 @@ const createUser = async(email, password, uid) => {
   }
 
   return data;
-}
+};
 
 const AuthForm = () => {
   const [error, setError] = useState();
@@ -41,7 +41,7 @@ const AuthForm = () => {
 
   const switchAuthModeHandler = () => setIsLogin((prevState) => !prevState);
 
-  const submitHandler = async(event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
     const enteredEmail = emailInputRef.current.value;
@@ -68,7 +68,12 @@ const AuthForm = () => {
       }
     } else {
       try {
-        const result = await createUser(enteredEmail, enteredPassword, uid);
+        await createUser(enteredEmail, enteredPassword, uid);
+        await signIn("credentials", {
+          redirect: false,
+          email: enteredEmail,
+          password: enteredPassword,
+        });
         router.replace("/");
       } catch (error) {
         console.log(error);
@@ -80,11 +85,11 @@ const AuthForm = () => {
         setError(errorMessage);
       }
     }
-  }
+  };
 
   return (
     <section className={classes.auth}>
-      <h1>{isLogin ? "Login" : "Sign Up"}</h1>
+      <h1>{isLogin ? "ログイン" : "ようこそ、バイクノリタイへ"}</h1>
       <form onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="email">メールアドレス</label>
@@ -101,13 +106,13 @@ const AuthForm = () => {
         </div>
         {error}
         <div className={classes.actions}>
-          <button>{isLogin ? "Login" : "Create Account"}</button>
+          <button>{isLogin ? "ログイン" : "新規登録"}</button>
           <button
             type="button"
             className={classes.toggle}
             onClick={switchAuthModeHandler}
           >
-            {isLogin ? "Create new account" : "Login with existing account"}
+            {isLogin ? "新規登録へ" : "ログインへ"}
           </button>
         </div>
         <div className={classes.control}>
@@ -116,6 +121,6 @@ const AuthForm = () => {
       </form>
     </section>
   );
-}
+};
 
 export default AuthForm;

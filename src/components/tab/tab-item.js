@@ -52,6 +52,6 @@ const TabItem = ({ user }) => {
       </li>
     </>
   );
-}
+};
 
 export default TabItem;

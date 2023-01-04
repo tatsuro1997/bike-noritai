@@ -49,6 +49,6 @@ const RegisteredSpotItem = ({ spot }) => {
       </a>
     </Link>
   );
-}
+};
 
 export default RegisteredSpotItem;

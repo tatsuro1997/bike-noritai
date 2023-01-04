@@ -26,11 +26,11 @@
 
 @media (min-width: 768px) {
   .item {
-  font-size: 1.5rem;
+    font-size: 1.5rem;
   }
 
   .icon svg {
-  width: 2rem;
-  height: 2rem;
-}
+    width: 2rem;
+    height: 2rem;
+  }
 }

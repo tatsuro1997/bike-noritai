@@ -1,4 +1,4 @@
-import classes from './spot-summary.module.css';
+import classes from "./spot-summary.module.css";
 
 const SpotSummary = ({ name }) => (
   <section className={classes.summary}>

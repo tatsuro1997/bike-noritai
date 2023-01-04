@@ -1,7 +1,12 @@
-import { getRecordLikeById } from "../../helpers/record-like-api-util";
-import { connectDatabase, insertDocument, removeDocument, getAllDocuments } from "../../helpers/db-util";
+import { getRecordLikeById } from "@/helpers/record-like-api-util";
+import {
+  connectDatabase,
+  insertDocument,
+  removeDocument,
+  getAllDocuments,
+} from "@/helpers/db-util";
 
-const handler = async(req, res) => {
+const handler = async (req, res) => {
   if (req.method === "GET") {
     let client;
 
@@ -15,7 +20,9 @@ const handler = async(req, res) => {
     }
 
     try {
-      const recordLikes = await getAllDocuments(client, "record_likes", { _id: -1 });
+      const recordLikes = await getAllDocuments(client, "record_likes", {
+        _id: -1,
+      });
       res.status(200).json({ recordLikes: recordLikes });
     } catch (error) {
       res.status(500).json({ message: "Getting recordLikes failed." });
@@ -89,6 +96,6 @@ const handler = async(req, res) => {
       res.status(201).json({ message: "記録にイイネしました!" });
     }
   }
-}
+};
 
 export default handler;

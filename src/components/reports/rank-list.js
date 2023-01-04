@@ -3,7 +3,9 @@ import LankItem from "./rank-item";
 import classes from "./rank-list.module.css";
 
 const RankList = ({ monthRecords }) => {
-  const sortedMonthRecord = monthRecords.sort((a, b) => b.distance - a.distance);
+  const sortedMonthRecord = monthRecords.sort(
+    (a, b) => b.distance - a.distance
+  );
   const slicedMonthRecord = sortedMonthRecord.slice(0, 5);
 
   return (
@@ -23,6 +25,6 @@ const RankList = ({ monthRecords }) => {
         ))}
     </ol>
   );
-}
+};
 
 export default RankList;

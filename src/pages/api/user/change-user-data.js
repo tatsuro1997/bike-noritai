@@ -1,7 +1,7 @@
 import { getSession } from "next-auth/react";
-import { connectDatabase } from "../../../helpers/db-util";
+import { connectDatabase } from "@/helpers/db-util";
 
-const handler = async(req, res) => {
+const handler = async (req, res) => {
   if (req.method !== "PATCH") {
     return;
   }
@@ -55,6 +55,6 @@ const handler = async(req, res) => {
 
   client.close();
   res.status(200).json({ message: "User Info updated!" });
-}
+};
 
 export default handler;

@@ -64,6 +64,6 @@ const BookmarkItem = ({ spotId }) => {
       )}
     </>
   );
-}
+};
 
 export default BookmarkItem;

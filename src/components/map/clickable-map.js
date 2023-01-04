@@ -4,7 +4,7 @@ import { useRef, useEffect } from "react";
 // GeoJsonファイルを読み込み
 import geoJson from "/japan.geo.json";
 
- const ClickableMap = () => {
+const ClickableMap = () => {
   const router = useRouter();
   const mapRef = useRef(null);
 
@@ -83,6 +83,6 @@ import geoJson from "/japan.geo.json";
       <svg ref={mapRef} />
     </div>
   );
-}
+};
 
 export default ClickableMap;

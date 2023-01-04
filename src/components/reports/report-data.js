@@ -6,7 +6,7 @@ const ReportData = ({ touringTimes, totalDistance, monthlyPace }) => {
   const route = router.asPath;
 
   let switchClass;
-  if (route.slice(-6) === 'report') {
+  if (route.slice(-6) === "report") {
     switchClass = classes.report_data;
   } else {
     switchClass = classes.data_count;
@@ -37,6 +37,6 @@ const ReportData = ({ touringTimes, totalDistance, monthlyPace }) => {
       </dl>
     </div>
   );
-}
+};
 
 export default ReportData;

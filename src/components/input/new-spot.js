@@ -3,7 +3,7 @@ import GoogleMapReact from "google-map-react";
 import { useRef, useState, useContext } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import NotificationContext from "../../store/notification-context";
+import NotificationContext from "@/store/notification-context";
 import classes from "./new-spot.module.css";
 
 const NewSpot = () => {
@@ -41,7 +41,7 @@ const NewSpot = () => {
     setMap(obj.map);
     setMaps(obj.maps);
     setGeocoder(new obj.maps.Geocoder());
-  }
+  };
 
   const previewImageHandler = (event) => {
     const enteredImage = event.target.files[0];
@@ -49,9 +49,9 @@ const NewSpot = () => {
     setImage(enteredImage);
     setCreateObjectURL(URL.createObjectURL(enteredImage));
     setImageName(event.target.files[0].name);
-  }
+  };
 
-  const uploadToPublicFolder = async() => {
+  const uploadToPublicFolder = async () => {
     const body = new FormData();
     body.append("file", image);
     const response = await fetch("/api/upload", {
@@ -60,7 +60,7 @@ const NewSpot = () => {
     });
   };
 
-  const mapHandler = async(event) => {
+  const mapHandler = async (event) => {
     event.preventDefault();
     setIsInvalidAddress(false);
 
@@ -101,15 +101,13 @@ const NewSpot = () => {
             );
             setLat(results[0].geometry.location.lat());
             setLng(results[0].geometry.location.lng());
-            console.log(results[0].geometry.location.lat());
-            console.log(results[0].geometry.location.lng());
           }
         }
       );
     }
-  }
+  };
 
-  const sendSpotHandler = async(event) => {
+  const sendSpotHandler = async (event) => {
     event.preventDefault();
     setIsInvalid(false);
 
@@ -200,7 +198,7 @@ const NewSpot = () => {
       });
 
     uploadToPublicFolder();
-  }
+  };
 
   return (
     <form className={classes.form} onSubmit={sendSpotHandler}>
@@ -309,6 +307,6 @@ const NewSpot = () => {
       <button>スポットを保存</button>
     </form>
   );
-}
+};
 
 export default NewSpot;
