@@ -27,6 +27,6 @@ const Report = ({ thisMonthRecords, uid }) => {
       </div>
     </Link>
   );
-}
+};
 
 export default Report;

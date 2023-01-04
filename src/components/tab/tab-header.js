@@ -23,7 +23,7 @@ const TabHeader = ({ user }) => {
             <div className={classes.icon}>
               <EditIcon />
             </div>
-            <Link href={`/users/${user.id}/setting`}>
+            <Link href={`/users/${user.uid}/setting`}>
               <a>設定</a>
             </Link>
           </div>
@@ -44,6 +44,6 @@ const TabHeader = ({ user }) => {
       <TabList user={user} />
     </div>
   );
-}
+};
 
 export default TabHeader;

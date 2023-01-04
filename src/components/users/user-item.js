@@ -14,7 +14,7 @@ const UserItem = ({ email, id }) => {
           <h2>名前</h2>
         </div>
         <div className={classes.address}>
-          <HouseIcon/>
+          <HouseIcon />
           <p>{email}</p>
         </div>
         <div className={classes.actions}>
@@ -28,6 +28,6 @@ const UserItem = ({ email, id }) => {
       </div>
     </li>
   );
-}
+};
 
 export default UserItem;

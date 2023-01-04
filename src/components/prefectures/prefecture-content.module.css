@@ -6,11 +6,11 @@
 .title {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #007A00;
+  color: #007a00;
 }
 
 @media (max-width: 1440px) {
   .wrapper {
-    width :80%
+    width: 80%;
   }
 }

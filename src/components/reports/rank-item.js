@@ -18,6 +18,6 @@ const RankItem = ({ distance, spotId }) => {
       <div>{distance}km</div>
     </li>
   );
-}
+};
 
 export default RankItem;

@@ -1,3 +1,4 @@
+// pathが/以外のときのヘッダー
 import Link from "next/link";
 import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
@@ -13,7 +14,7 @@ const MainNavigation = () => {
 
   const nemuToggleHandler = () => {
     setIsShowMenu((prevState) => !prevState);
-  }
+  };
 
   if (session) {
     const userId = JSON.stringify(session.user.id);
@@ -21,7 +22,7 @@ const MainNavigation = () => {
   }
 
   return (
-    <header className={classes.header} >
+    <header className={classes.header}>
       <div className={classes.logo}>
         <Link href="/">バイクノリタイ</Link>
       </div>
@@ -43,41 +44,41 @@ const MainNavigation = () => {
           )}
         </nav>
       </div>
-    {isShowMenu && session && (
-      <div className={classes.menu_content} onClick={nemuToggleHandler}>
-        <div className={classes.menu_nav}>
-          <ul className={classes.profile}>
-            {session && exploreLink && (
+      {isShowMenu && session && (
+        <div className={classes.menu_content} onClick={nemuToggleHandler}>
+          <div className={classes.menu_nav}>
+            <ul className={classes.profile}>
+              {session && exploreLink && (
+                <li>
+                  <Link href={exploreLink}>
+                    <a>{session.user.name}</a>
+                  </Link>
+                  <span>マイページを表示</span>
+                </li>
+              )}
+            </ul>
+            <ul className={classes.links}>
               <li>
-                <Link href={exploreLink}>
-                  <a>{session.user.name}</a>
+                <Link href="/spots">
+                  <a>スポット一覧</a>
                 </Link>
-                <span>マイページを表示</span>
               </li>
-            )}
-          </ul>
-          <ul className={classes.links}>
-            <li>
-              <Link href="/spots">
-                <a>スポット一覧</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/users">
-                <a>ユーザー一覧</a>
-              </Link>
-            </li>
-          </ul>
-          <ul className={classes.logout}>
-            <li>
-              <a onClick={logoutHandler}>ログアウト</a>
-            </li>
-          </ul>
+              <li>
+                <Link href="/users">
+                  <a>ユーザー一覧</a>
+                </Link>
+              </li>
+            </ul>
+            <ul className={classes.logout}>
+              <li>
+                <a onClick={logoutHandler}>ログアウト</a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    )}
+      )}
     </header>
   );
-}
+};
 
 export default MainNavigation;

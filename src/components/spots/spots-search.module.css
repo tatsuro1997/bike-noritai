@@ -1,7 +1,7 @@
 .form {
   margin: 2rem auto;
   margin-top: 1rem;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   background-color: white;
   border-radius: 6px;
   width: 90%;
@@ -45,8 +45,8 @@
   width: auto;
   font: inherit;
   padding: 0.25rem 0.5rem;
-  background-color: #F56018;
-  border: 1px solid #F56018;
+  background-color: #f56018;
+  border: 1px solid #f56018;
   color: #dafff7;
   border-radius: 0 4px 4px 0;
 }

@@ -1,10 +1,10 @@
 import Head from "next/head";
-import { getAllSpots } from "../helpers/spot-api-util";
-import { getAllRecords } from "../helpers/record-api-util";
-import TopMain from "../components/top/top-main";
-import LatestRecords from "../components/records/latest-records";
-import LatestSpots from "../components/spots/latest-spots";
-import PrefectureContent from "../components/prefectures/prefecture-content";
+import { getAllSpots } from "@/helpers/spot-api-util";
+import { getAllRecords } from "@/helpers/record-api-util";
+import TopMain from "@/components/top/top-main";
+import LatestRecords from "@/components/records/latest-records";
+import LatestSpots from "@/components/spots/latest-spots";
+import PrefectureContent from "@/components/prefectures/prefecture-content";
 
 const HomePage = ({ records, spots }) => (
   <>
@@ -22,17 +22,17 @@ const HomePage = ({ records, spots }) => (
   </>
 );
 
-// export const getStaticProps = async() => {
-//   const records = await getAllRecords();
-//   const spots = await getAllSpots();
+export const getStaticProps = async () => {
+  const records = await getAllRecords();
+  const spots = await getAllSpots();
 
-//   return {
-//     props: {
-//       records: records,
-//       spots: spots,
-//     },
-//     revalidate: 1800,
-//   };
-// }
+  return {
+    props: {
+      records: records,
+      spots: spots,
+    },
+    revalidate: 1800,
+  };
+};
 
 export default HomePage;

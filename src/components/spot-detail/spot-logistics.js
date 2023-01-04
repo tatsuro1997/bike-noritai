@@ -8,9 +8,9 @@ import Map from "../map/map";
 import RecordList from "../records/record-list";
 import BookmarkAndRecordButton from "../ui/bookmark-record-button";
 
-const SpotLogistics = ({ spot, records }) => {
+const SpotLogistics = ({ spot, records, bookmarkCount }) => {
   const {
-    id,
+    _id,
     name,
     type,
     prefecture,
@@ -22,11 +22,10 @@ const SpotLogistics = ({ spot, records }) => {
     off_day,
     description,
     image,
-    count,
     lat,
     lng,
   } = spot;
-  const exploreLink = `/spots/${id}/records`
+  const exploreLink = `/spots/${_id}/records`;
 
   return (
     <section className={classes.logistics}>
@@ -63,15 +62,13 @@ const SpotLogistics = ({ spot, records }) => {
           </div>
         </div>
         <div className={classes.main}>
-          <BookmarkAndRecordButton spotId={id} count={count} />
+          <BookmarkAndRecordButton spotId={_id} bookmarkCount={bookmarkCount} />
           <ul className={classes.list}>
             <LogisticsItem icon={HouseIcon}>
               <p>{type}</p>
             </LogisticsItem>
             <LogisticsItem icon={AddressIcon}>
-              <address>
-                {prefecture + " " + address1 + " " + address2}
-              </address>
+              <address>{prefecture + " " + address1 + " " + address2}</address>
             </LogisticsItem>
             <li>
               <a href={hp_url} target="_blank" rel="noopener noreferrer">
@@ -95,6 +92,6 @@ const SpotLogistics = ({ spot, records }) => {
       </div>
     </section>
   );
-}
+};
 
 export default SpotLogistics;

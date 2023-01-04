@@ -49,10 +49,6 @@
   align-items: baseline;
 }
 
-.header li {
-  margin: 0 1rem;
-}
-
 .header a {
   text-decoration: none;
   color: white;
@@ -109,8 +105,14 @@
 .profile a:hover,
 .profile span:hover,
 .links a:hover,
-.logout li:hover{
+.logout a:hover {
   color: #aaa;
+}
+
+.profile a,
+.links a,
+.logout a {
+  color: black;
 }
 
 .profile span {

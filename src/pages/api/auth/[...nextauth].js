@@ -1,8 +1,7 @@
 import NextAuth from "next-auth";
 import CredentialsProviders from "next-auth/providers/credentials";
-
-import { connectDatabase } from "../../../helpers/db-util";
-import { verifyPassword } from "../../../helpers/auth-util";
+import { connectDatabase } from "@/helpers/db-util";
+import { verifyPassword } from "@/helpers/auth-util";
 
 export default NextAuth({
   session: {
@@ -39,6 +38,7 @@ export default NextAuth({
       },
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async session({ session, user, token }) {
       const client = await connectDatabase();
