@@ -6,13 +6,13 @@ import BookmarkIcon from "../icons/bookmark-icon";
 import BookmarkedIcon from "../icons/bookmarked-icon";
 import classes from "./bookmark-button.module.css";
 
-const BookmarkButton = ({ spotId, count }) => {
+const BookmarkButton = ({ spotId, bookmarkCount }) => {
   const router = useRouter();
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const [countBookmark, setCountBookmark] = useState(count);
+  const [countBookmark, setCountBookmark] = useState(bookmarkCount);
   const { data: session } = useSession();
 
-  const getBookmarkData = async(uid) => {
+  const getBookmarkData = async (uid) => {
     try {
       const bookmarkData = await getBookmarkById(uid, spotId);
       if (bookmarkData.length !== 0) {
@@ -23,7 +23,7 @@ const BookmarkButton = ({ spotId, count }) => {
     } catch {
       console.log("Could not find Bookmark!");
     }
-  }
+  };
 
   useEffect(() => {
     getSession().then((session) => {
@@ -34,7 +34,7 @@ const BookmarkButton = ({ spotId, count }) => {
     });
   }, []);
 
-  const bookmarkHandler = async() => {
+  const bookmarkHandler = async () => {
     setIsBookmarked((prevState) => !prevState);
 
     if (isBookmarked) {
@@ -62,7 +62,7 @@ const BookmarkButton = ({ spotId, count }) => {
           console.log(error);
         });
     }
-  }
+  };
 
   let bookmarkButton;
 
@@ -85,6 +85,6 @@ const BookmarkButton = ({ spotId, count }) => {
   }
 
   return <>{bookmarkButton}</>;
-}
+};
 
 export default BookmarkButton;
