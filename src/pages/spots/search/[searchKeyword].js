@@ -12,11 +12,12 @@ const FilteredSpotsPage = () => {
   const searchKeyword = router.query.searchKeyword || " ";
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/spots/")
+    fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/api/spots/`)
       .then((response) => response.json())
       .then((data) => {
         setLoadedSpots(data.spots);
-      });
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   const pageHeadData = (
