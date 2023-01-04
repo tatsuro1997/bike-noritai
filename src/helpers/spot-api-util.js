@@ -44,15 +44,20 @@ export const getFilteredSpots = async (dateFilter) => {
 };
 
 export const getAllComments = async () => {
-  let comments;
+  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/comments/`;
 
-  await fetch("http://localhost:3000/api/comments/")
-    .then((response) => response.json())
-    .then((data) => {
-      comments = data.comments;
-    });
+  try {
+    const response = await fetch(url);
+    if (response.status === 200) {
+      const { comments } = await response.json();
 
-  return comments;
+      return comments;
+    } else {
+      throw new Error("コメントデータの取得に失敗しました。");
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getCommentsBySpotId = async (spotId) => {
