@@ -1,6 +1,6 @@
-import { connectDatabase, insertDocument } from "../../../helpers/db-util";
+import { connectDatabase, insertDocument } from "@/helpers/db-util";
 
-const handler = async(req, res) => {
+const handler = async (req, res) => {
   const spot_id = req.query.spotId;
 
   let client;
@@ -15,13 +15,7 @@ const handler = async(req, res) => {
   if (req.method === "POST") {
     const { uid, name, text } = req.body;
 
-    if (
-      !uid||
-      !name ||
-      name.trim() === "" ||
-      !text ||
-      text.trim() === ""
-    ) {
+    if (!uid || !name || name.trim() === "" || !text || text.trim() === "") {
       res.status(422).json({ message: "Invalid input." });
       client.close();
       return;
@@ -47,6 +41,6 @@ const handler = async(req, res) => {
       res.status(500).json({ message: "Inserting comment faild!" });
     }
   }
-}
+};
 
 export default handler;

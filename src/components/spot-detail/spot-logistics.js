@@ -25,7 +25,7 @@ const SpotLogistics = ({ spot, records, bookmarkCount }) => {
     lat,
     lng,
   } = spot;
-  const exploreLink = `/spots/${_id}/records`
+  const exploreLink = `/spots/${_id}/records`;
 
   return (
     <section className={classes.logistics}>
@@ -92,6 +92,6 @@ const SpotLogistics = ({ spot, records, bookmarkCount }) => {
       </div>
     </section>
   );
-}
+};
 
 export default SpotLogistics;

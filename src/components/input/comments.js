@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import CommentList from "./comment-list";
 import NewComment from "./new-comment";
-import NotificationContext from "../../store/notification-context";
+import NotificationContext from "@/store/notification-context";
 import classes from "./comments.module.css";
 
 const Comments = ({ spotId, comments }) => {
@@ -12,7 +12,7 @@ const Comments = ({ spotId, comments }) => {
 
   const toggleCommentsHandler = () => {
     setShowComments((prevStatus) => !prevStatus);
-  }
+  };
 
   const addCommentHandler = (commentData) => {
     notificationCtx.showNotification({
@@ -43,7 +43,7 @@ const Comments = ({ spotId, comments }) => {
           message: "コメントを保存しました!",
           status: "success",
         });
-        commentData.text = '';
+        commentData.text = "";
         router.replace(`/spots/${spotId}`);
       })
       .catch((error) => {
@@ -53,7 +53,7 @@ const Comments = ({ spotId, comments }) => {
           status: "error",
         });
       });
-  }
+  };
 
   return (
     <section className={classes.comments}>
@@ -64,6 +64,6 @@ const Comments = ({ spotId, comments }) => {
       {showComments && <CommentList items={comments} />}
     </section>
   );
-}
+};
 
 export default Comments;

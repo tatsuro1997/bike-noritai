@@ -28,7 +28,7 @@ const ProfileForm = ({ user, onUpdateProfile }) => {
       prefecture: enteredPrefecture,
       bike_name: enteredBikeName,
     });
-  }
+  };
 
   return (
     <form className={classes.form} onSubmit={submitHanlder}>

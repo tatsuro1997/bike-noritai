@@ -1,6 +1,10 @@
-import { connectDatabase, insertDocument, getAllDocuments } from "../../../helpers/db-util";
+import {
+  connectDatabase,
+  insertDocument,
+  getAllDocuments,
+} from "@/helpers/db-util";
 
-const handler = async(req, res) => {
+const handler = async (req, res) => {
   if (req.method === "GET") {
     let client;
 
@@ -96,6 +100,6 @@ const handler = async(req, res) => {
 
     res.status(201).json({ message: "スポット投稿完了!" });
   }
-}
+};
 
 export default handler;

@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useRef, useState, useContext } from "react";
 import { useSession } from "next-auth/react";
-import NotificationContext from "../../store/notification-context";
+import NotificationContext from "@/store/notification-context";
 import classes from "./new-record.module.css";
 
 const NewRecord = ({ spotId }) => {
@@ -35,9 +35,9 @@ const NewRecord = ({ spotId }) => {
     setImage(enteredImage);
     setCreateObjectURL(URL.createObjectURL(enteredImage));
     setImageName(event.target.files[0].name);
-  }
+  };
 
-  const uploadToPublicFolder = async() => {
+  const uploadToPublicFolder = async () => {
     const body = new FormData();
     body.append("file", image);
     const response = await fetch("/api/upload", {
@@ -46,7 +46,7 @@ const NewRecord = ({ spotId }) => {
     });
   };
 
-  const sendSpotHandler = async(event) => {
+  const sendSpotHandler = async (event) => {
     event.preventDefault();
     const enteredDate = dateInputRef.current.value;
     const enteredWeather = weatherInputRef.current.value;
@@ -106,7 +106,7 @@ const NewRecord = ({ spotId }) => {
           message: "新たに記録していただきありがとうございます！",
           status: "success",
         });
-        router.replace(`/users/${session.user.id}`)
+        router.replace(`/users/${session.user.id}`);
       })
       .catch((error) => {
         notificationCtx.showNotification({
@@ -117,7 +117,7 @@ const NewRecord = ({ spotId }) => {
       });
 
     uploadToPublicFolder();
-  }
+  };
 
   return (
     <form className={classes.form} onSubmit={sendSpotHandler}>
@@ -203,6 +203,6 @@ const NewRecord = ({ spotId }) => {
       <button>記録する</button>
     </form>
   );
-}
+};
 
 export default NewRecord;

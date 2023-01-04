@@ -1,6 +1,6 @@
-import { connectDatabase, insertDocument } from "../../../helpers/db-util";
+import { connectDatabase, insertDocument } from "@/helpers/db-util";
 
-const handler = async(req, res) => {
+const handler = async (req, res) => {
   const spotId = req.query.spotId;
 
   if (req.method === "POST") {
@@ -10,7 +10,7 @@ const handler = async(req, res) => {
     const recordRunningTime = req.body.running_time;
     const recordDistance = req.body.distance;
     const recordDescription = req.body.description;
-    const userId = req.body.uid
+    const userId = req.body.uid;
 
     if (
       !recordDate ||
@@ -63,6 +63,6 @@ const handler = async(req, res) => {
 
     res.status(201).json({ message: "スポット投稿完了!" });
   }
-}
+};
 
 export default handler;

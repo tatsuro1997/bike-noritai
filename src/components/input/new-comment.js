@@ -42,7 +42,7 @@ const NewComment = (props) => {
     });
 
     commentInputRef.current.value = "";
-  }
+  };
 
   return (
     <form className={classes.form} onSubmit={sendCommentHandler}>
@@ -54,6 +54,6 @@ const NewComment = (props) => {
       <button>コメントする</button>
     </form>
   );
-}
+};
 
 export default NewComment;

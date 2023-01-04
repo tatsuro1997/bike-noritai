@@ -8,7 +8,7 @@ const UserList = ({ items }) => (
         key={user._id}
         id={user.uid}
         email={user.email}
-      // image={user.image}
+        // image={user.image}
       />
     ))}
   </ul>

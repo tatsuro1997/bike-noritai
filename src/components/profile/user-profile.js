@@ -3,10 +3,7 @@ import classes from "./user-profile.module.css";
 
 const UserProfile = (props) => (
   <div className={classes.wrapper}>
-    <ProfileHeader
-      props={props}
-      thisMonthRecords={props.thisMonthRecords}
-    />
+    <ProfileHeader props={props} thisMonthRecords={props.thisMonthRecords} />
   </div>
 );
 

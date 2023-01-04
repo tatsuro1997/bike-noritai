@@ -1,7 +1,7 @@
-import { connectDatabase } from "../../../helpers/db-util";
-import { getSpotById } from "../../../helpers/spot-api-util";
+import { connectDatabase } from "@/helpers/db-util";
+import { getSpotById } from "@/helpers/spot-api-util";
 
-const handler = async(req, res) => {
+const handler = async (req, res) => {
   const spotId = req.query.spotId;
 
   if (req.method === "GET") {
@@ -25,6 +25,6 @@ const handler = async(req, res) => {
 
     client.close();
   }
-}
+};
 
 export default handler;

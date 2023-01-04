@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSession, getSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { getBookmarkById } from "../../helpers/bookmark-api-util";
+import { getBookmarkById } from "@/helpers/bookmark-api-util";
 import BookmarkIcon from "../icons/bookmark-icon";
 import BookmarkedIcon from "../icons/bookmarked-icon";
 import classes from "./bookmark-button.module.css";

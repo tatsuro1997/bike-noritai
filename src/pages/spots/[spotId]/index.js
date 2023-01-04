@@ -1,10 +1,14 @@
 import Head from "next/head";
-import SpotLogistics from "../../../components/spot-detail/spot-logistics";
-import SpotSummary from "../../../components/spot-detail/spot-summary";
-import Comments from "../../../components/input/comments";
-import { getSpotById, getFeaturedSpots, getCommentsBySpotId } from "../../../helpers/spot-api-util";
-import { getBookmarkCount } from "../../../helpers/bookmark-api-util";
-import { getThreeRecordsBySpotId } from "../../../helpers/record-api-util";
+import SpotLogistics from "@/components/spot-detail/spot-logistics";
+import SpotSummary from "@/components/spot-detail/spot-summary";
+import Comments from "@/components/input/comments";
+import {
+  getSpotById,
+  getFeaturedSpots,
+  getCommentsBySpotId,
+} from "@/helpers/spot-api-util";
+import { getBookmarkCount } from "@/helpers/bookmark-api-util";
+import { getThreeRecordsBySpotId } from "@/helpers/record-api-util";
 
 const SpotDetailPage = ({
   selectedSpot: spot,
@@ -38,7 +42,7 @@ const SpotDetailPage = ({
   );
 };
 
-export const getStaticProps = async(context) => {
+export const getStaticProps = async (context) => {
   const spotId = context.params.spotId;
   const spot = await getSpotById(spotId);
   const spotCount = await getBookmarkCount(spotId);
@@ -54,9 +58,9 @@ export const getStaticProps = async(context) => {
     },
     revalidate: 30,
   };
-}
+};
 
-export const getStaticPaths = async() => {
+export const getStaticPaths = async () => {
   const spots = await getFeaturedSpots();
 
   const paths = spots.map((spot) => ({ params: { spotId: spot.id } }));
@@ -65,6 +69,6 @@ export const getStaticPaths = async() => {
     paths: paths,
     fallback: "blocking",
   };
-}
+};
 
 export default SpotDetailPage;

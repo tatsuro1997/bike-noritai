@@ -1,4 +1,4 @@
-import classes from './logistics-item.module.css';
+import classes from "./logistics-item.module.css";
 
 const LogisticsItem = ({ icon: Icon, children }) => (
   <li className={classes.item}>

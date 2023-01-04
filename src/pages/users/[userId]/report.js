@@ -1,8 +1,8 @@
 import Head from "next/head";
-import ReportList from "../../../components/reports/report-list";
-import TabCard from "../../../components/tab/tab-content";
-import { getRecordsByMonth } from "../../../helpers/record-api-util";
-import { getAllUsers, getUserById } from "../../../helpers/user-api-util";
+import ReportList from "@/components/reports/report-list";
+import TabCard from "@/components/tab/tab-content";
+import { getRecordsByMonth } from "@/helpers/record-api-util";
+import { getAllUsers, getUserById } from "@/helpers/user-api-util";
 
 const ReportsPage = ({ thisMonthRecords, lastMonthRecords, user }) => (
   <>
@@ -21,7 +21,7 @@ const ReportsPage = ({ thisMonthRecords, lastMonthRecords, user }) => (
   </>
 );
 
-export const getStaticProps = async(context) => {
+export const getStaticProps = async (context) => {
   const userId = context.params.userId;
   const month = new Date().getMonth() + 1;
   const lastMonth = new Date().getMonth();
@@ -38,9 +38,9 @@ export const getStaticProps = async(context) => {
     },
     revalidate: 60,
   };
-}
+};
 
-export const getStaticPaths = async() => {
+export const getStaticPaths = async () => {
   const users = await getAllUsers();
   const paths = users.map((user) => ({
     params: { userId: user.uid.toString() },
@@ -50,6 +50,6 @@ export const getStaticPaths = async() => {
     paths: paths,
     fallback: "blocking",
   };
-}
+};
 
 export default ReportsPage;

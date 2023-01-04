@@ -29,14 +29,7 @@ const PrefectureList = () => (
     />
     <PrefectureItem
       area={"北陸・甲信越"}
-      prefectures={[
-        "新潟県",
-        "富山県",
-        "福井県",
-        "石川県",
-        "長野県",
-        "山梨県",
-      ]}
+      prefectures={["新潟県", "富山県", "福井県", "石川県", "長野県", "山梨県"]}
     />
     <PrefectureItem
       area={"東海"}

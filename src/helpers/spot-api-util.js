@@ -1,4 +1,4 @@
-export const getAllSpots = async() => {
+export const getAllSpots = async () => {
   const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/spots/`;
 
   try {
@@ -10,27 +10,27 @@ export const getAllSpots = async() => {
     } else {
       throw new Error("スポットデータの取得に失敗しました。");
     }
-  } catch(error) {
+  } catch (error) {
     console.log(error);
   }
-}
+};
 
-export const getFeaturedSpots = async() => {
+export const getFeaturedSpots = async () => {
   const allSpots = await getAllSpots();
   return allSpots.filter((spot) => spot.isFeatured);
-}
+};
 
-export const getSpotById = async(id) => {
+export const getSpotById = async (id) => {
   const allSpots = await getAllSpots();
   return allSpots.find((spot) => spot._id === id);
-}
+};
 
-export const getSpotByUid = async(Uid) => {
+export const getSpotByUid = async (Uid) => {
   const allSpots = await getAllSpots();
   return allSpots.filter((spot) => spot.user_id === Number(Uid));
-}
+};
 
-export const getFilteredSpots = async(dateFilter) => {
+export const getFilteredSpots = async (dateFilter) => {
   const { year, month } = dateFilter;
 
   const allSpots = await getAllSpots();
@@ -41,9 +41,9 @@ export const getFilteredSpots = async(dateFilter) => {
   });
 
   return filteredSpots;
-}
+};
 
-export const getAllComments = async() => {
+export const getAllComments = async () => {
   let comments;
 
   await fetch("http://localhost:3000/api/comments/")
@@ -53,14 +53,14 @@ export const getAllComments = async() => {
     });
 
   return comments;
-}
+};
 
-export const getCommentsBySpotId = async(spotId) => {
+export const getCommentsBySpotId = async (spotId) => {
   const allComments = await getAllComments();
 
   let filteredComments = allComments.filter((comment) => {
     return comment.spot_id === spotId;
-  })
+  });
 
   return filteredComments;
-}
+};

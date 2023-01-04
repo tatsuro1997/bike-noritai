@@ -1,5 +1,5 @@
-import BookmarkAndRecordButton from "../ui/bookmark-record-button"
-import classes from "./detail-head.module.css"
+import BookmarkAndRecordButton from "../ui/bookmark-record-button";
+import classes from "./detail-head.module.css";
 
 const DetailHead = ({ spotId, bookmarkCount }) => (
   <div className={classes.head}>
@@ -7,4 +7,4 @@ const DetailHead = ({ spotId, bookmarkCount }) => (
   </div>
 );
 
-export default DetailHead
+export default DetailHead;

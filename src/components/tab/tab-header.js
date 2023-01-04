@@ -44,6 +44,6 @@ const TabHeader = ({ user }) => {
       <TabList user={user} />
     </div>
   );
-}
+};
 
 export default TabHeader;
