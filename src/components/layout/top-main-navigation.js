@@ -1,3 +1,4 @@
+// pathが/のときのヘッダー
 import Link from "next/link";
 import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
@@ -5,7 +6,7 @@ import { useState, useEffect } from "react";
 import classes from "./top-main-navigation.module.css";
 
 const TopMainNavigation = () => {
-  const { data: session, loading } = useSession();
+  const { data: session, loading, status } = useSession();
   const [isShowMenu, setIsShowMenu] = useState(false);
   const [user, setUser] = useState();
   useEffect(() => {
