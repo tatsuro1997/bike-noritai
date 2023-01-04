@@ -68,7 +68,12 @@ const AuthForm = () => {
       }
     } else {
       try {
-        const result = await createUser(enteredEmail, enteredPassword, uid);
+        await createUser(enteredEmail, enteredPassword, uid);
+        await signIn("credentials", {
+          redirect: false,
+          email: enteredEmail,
+          password: enteredPassword,
+        });
         router.replace("/");
       } catch (error) {
         console.log(error);
@@ -84,7 +89,7 @@ const AuthForm = () => {
 
   return (
     <section className={classes.auth}>
-      <h1>{isLogin ? "Login" : "Sign Up"}</h1>
+      <h1>{isLogin ? "ログイン" : "ようこそ、バイクノリタイへ"}</h1>
       <form onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="email">メールアドレス</label>
@@ -101,13 +106,13 @@ const AuthForm = () => {
         </div>
         {error}
         <div className={classes.actions}>
-          <button>{isLogin ? "Login" : "Create Account"}</button>
+          <button>{isLogin ? "ログイン" : "新規登録"}</button>
           <button
             type="button"
             className={classes.toggle}
             onClick={switchAuthModeHandler}
           >
-            {isLogin ? "Create new account" : "Login with existing account"}
+            {isLogin ? "新規登録へ" : "ログインへ"}
           </button>
         </div>
         <div className={classes.control}>
