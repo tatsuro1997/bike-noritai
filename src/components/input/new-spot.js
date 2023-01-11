@@ -85,7 +85,7 @@ const NewSpot = () => {
       return;
     }
 
-    const address = place ? place.name : addressInputRef.current.value;
+    const address = place ? place.name : addressInputRef.current.value.slice(3);
     console.log(address);
 
     if (!address || address.trim() === ""){
@@ -122,7 +122,7 @@ const NewSpot = () => {
     event.preventDefault();
     setIsInvalid(false);
 
-    const enteredAddress = addressInputRef.current.value;
+    const enteredAddress = addressInputRef.current.value.slice(3);
     const enteredType = typeInputRef.current.value;
     const enteredHp = hpInputRef.current.value;
     const enteredOpenTime = openTimeInputRef.current.value;
