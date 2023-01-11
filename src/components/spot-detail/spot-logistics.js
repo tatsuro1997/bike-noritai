@@ -13,9 +13,7 @@ const SpotLogistics = ({ spot, records, bookmarkCount }) => {
     _id,
     name,
     type,
-    prefecture,
-    address1,
-    address2,
+    address,
     hp_url,
     parking,
     open_time,
@@ -55,9 +53,7 @@ const SpotLogistics = ({ spot, records, bookmarkCount }) => {
             <Map
               lat={lat}
               lng={lng}
-              prefecture={prefecture}
-              address1={address1}
-              address2={address2}
+              address={address}
             />
           </div>
         </div>
@@ -68,7 +64,7 @@ const SpotLogistics = ({ spot, records, bookmarkCount }) => {
               <p>{type}</p>
             </LogisticsItem>
             <LogisticsItem icon={AddressIcon}>
-              <address>{prefecture + " " + address1 + " " + address2}</address>
+              <address>{address}</address>
             </LogisticsItem>
             <li>
               <a href={hp_url} target="_blank" rel="noopener noreferrer">

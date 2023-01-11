@@ -9,8 +9,7 @@ const SpotList = ({ items }) => (
         id={spot._id}
         name={spot.name}
         type={spot.type}
-        prefecture={spot.prefecture}
-        address1={spot.address1}
+        address={spot.address}
         open_time={spot.open_time}
         image={spot.image}
       />

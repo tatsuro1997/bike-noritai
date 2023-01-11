@@ -55,7 +55,7 @@ const BookmarkItem = ({ spotId }) => {
                 </div>
                 <div className={classes.address}>
                   <AddressIcon />
-                  <address>{spot.prefecture + spot.address1}</address>
+                  <address>{spot.address}</address>
                 </div>
               </div>
             </li>

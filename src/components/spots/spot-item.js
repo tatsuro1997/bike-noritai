@@ -10,8 +10,7 @@ const SpotItem = ({
   image,
   name,
   type,
-  prefecture,
-  address1,
+  address,
   open_time,
 }) => {
   const exploreLink = `/spots/${id}`;
@@ -50,7 +49,7 @@ const SpotItem = ({
             </div>
             <div className={classes.address}>
               <AddressIcon />
-              <address>{prefecture + address1}</address>
+              <address>{address}</address>
             </div>
           </div>
         </li>
