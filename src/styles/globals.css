@@ -18,3 +18,13 @@ a {
 ul {
   list-style: none;
 }
+
+// Places Autocomplete Style
+.pac-item,
+.pac-item-query {
+ background-color: #151515;
+ color: #f7f7f7;
+}
+.pac-item:hover {
+ background: #6666;
+}
