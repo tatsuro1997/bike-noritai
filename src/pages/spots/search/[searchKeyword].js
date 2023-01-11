@@ -50,16 +50,12 @@ const FilteredSpotsPage = () => {
 
   const filteredSpots = loadedSpots.filter((spot) => {
     const spotType = spot.type;
-    const spotPrefecture = spot.prefecture;
-    const spotAddress1 = spot.address1;
-    const spotAddress2 = spot.address2;
+    const spotAddress = spot.address;
     const spotDescription = spot.description;
 
     return (
       spotType.includes(searchKeyword) ||
-      spotPrefecture.includes(searchKeyword) ||
-      spotAddress1.includes(searchKeyword) ||
-      spotAddress2.includes(searchKeyword) ||
+      spotAddress.includes(searchKeyword) ||
       spotDescription.includes(searchKeyword)
     );
   });
