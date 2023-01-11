@@ -50,7 +50,7 @@ const NewSpot = () => {
     );
     autoCompleteRef.current.addListener("place_changed", async function () {
       const place = await autoCompleteRef.current.getPlace();
-      console.log(place);
+      // console.log(place);
       setPlace(place);
     });
   }, [autoCompleteRef, addressInputRef, options]);
@@ -86,7 +86,7 @@ const NewSpot = () => {
     }
 
     const address = place ? place.name : addressInputRef.current.value.slice(3);
-    console.log(address);
+    // console.log(address);
 
     if (!address || address.trim() === "") {
       setIsInvalidAddress(true);
