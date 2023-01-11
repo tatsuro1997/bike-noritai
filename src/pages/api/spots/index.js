@@ -31,9 +31,7 @@ const handler = async (req, res) => {
     const spotName = req.body.name;
     const spotImage = req.body.image;
     const spotType = req.body.type;
-    const spotPrefecture = req.body.prefecture;
-    const spotAddress1 = req.body.address1;
-    const spotAddress2 = req.body.address2;
+    const spotAddress = req.body.address;
     const spotHp = req.body.hp_url;
     const spotOpenTime = req.body.open_time;
     const spotOffDay = req.body.off_day;
@@ -48,12 +46,8 @@ const handler = async (req, res) => {
       spotName.trim() === "" ||
       !spotType ||
       spotType.trim() === "" ||
-      !spotPrefecture ||
-      spotPrefecture.trim() === "" ||
-      !spotAddress1 ||
-      spotAddress1.trim() === "" ||
-      !spotAddress2 ||
-      spotAddress2.trim() === ""
+      !spotAddress ||
+      spotAddress.trim() === ""
     ) {
       res.status(422).json({ message: "スポット情報を見直してください" });
       return;
@@ -77,9 +71,7 @@ const handler = async (req, res) => {
         name: spotName,
         image: spotImage,
         type: spotType,
-        prefecture: spotPrefecture,
-        address1: spotAddress1,
-        address2: spotAddress2,
+        address: spotAddress,
         hp_url: spotHp,
         open_time: spotOpenTime,
         off_day: spotOffDay,

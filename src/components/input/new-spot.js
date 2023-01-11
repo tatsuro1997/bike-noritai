@@ -1,6 +1,6 @@
 import Image from "next/image";
 import GoogleMapReact from "google-map-react";
-import { useRef, useState, useContext } from "react";
+import { useRef, useState, useContext, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import NotificationContext from "@/store/notification-context";
@@ -11,16 +11,14 @@ const NewSpot = () => {
   const [isInvalidAddress, setIsInvalidAddress] = useState(false);
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
-  const nameInputRef = useRef();
+  const addressInputRef = useRef();
   const typeInputRef = useRef();
-  const prefectureInputRef = useRef();
-  const address1InputRef = useRef();
-  const address2InputRef = useRef();
   const hpInputRef = useRef();
   const openTimeInputRef = useRef();
   const offDayInputRef = useRef();
   const parkingInputRef = useRef();
   const descriptionInputRef = useRef();
+  const autoCompleteRef = useRef();
   const notificationCtx = useContext(NotificationContext);
   const { data: session } = useSession();
   const router = useRouter();
@@ -31,11 +29,31 @@ const NewSpot = () => {
   const [maps, setMaps] = useState(null);
   const [geocoder, setGeocoder] = useState(null);
   const [marker, setMarker] = useState(null);
+  const [place, setPlace] = useState(null);
 
   const defaultLatLng = {
     lat: 35.7022589,
     lng: 139.7744733,
   };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const options = {
+    componentRestrictions: { country: "jp" },
+    fields: ["address_components", "geometry", "icon", "name"],
+    types: ["establishment"],
+  };
+
+  useEffect(() => {
+    autoCompleteRef.current = new window.google.maps.places.Autocomplete(
+      addressInputRef.current,
+      options
+    );
+    autoCompleteRef.current.addListener("place_changed", async function () {
+      const place = await autoCompleteRef.current.getPlace();
+      console.log(place);
+      setPlace(place);
+    });
+  }, [autoCompleteRef, addressInputRef, options]);
 
   const handleApiLoaded = (obj) => {
     setMap(obj.map);
@@ -60,27 +78,20 @@ const NewSpot = () => {
     });
   };
 
-  const mapHandler = async (event) => {
-    event.preventDefault();
+  const mapHandler = async () => {
     setIsInvalidAddress(false);
 
-    const enteredPrefecture = prefectureInputRef.current.value;
-    const enteredAddress1 = address1InputRef.current.value;
-    const enteredAddress2 = address2InputRef.current.value;
-
-    if (
-      !enteredPrefecture ||
-      enteredPrefecture.trim() === "" ||
-      !enteredAddress1 ||
-      enteredAddress1.trim() === "" ||
-      !enteredAddress2 ||
-      enteredAddress2.trim() === ""
-    ) {
-      setIsInvalidAddress(true);
+    if (!addressInputRef.current.value) {
       return;
     }
 
-    const address = enteredPrefecture + enteredAddress1 + enteredAddress2;
+    const address = place ? place.name : addressInputRef.current.value.slice(3);
+    console.log(address);
+
+    if (!address || address.trim() === "") {
+      setIsInvalidAddress(true);
+      return;
+    }
 
     if (address) {
       geocoder.geocode(
@@ -111,11 +122,8 @@ const NewSpot = () => {
     event.preventDefault();
     setIsInvalid(false);
 
-    const enteredName = nameInputRef.current.value;
+    const enteredAddress = addressInputRef.current.value.slice(3);
     const enteredType = typeInputRef.current.value;
-    const enteredPrefecture = prefectureInputRef.current.value;
-    const enteredAddress1 = address1InputRef.current.value;
-    const enteredAddress2 = address2InputRef.current.value;
     const enteredHp = hpInputRef.current.value;
     const enteredOpenTime = openTimeInputRef.current.value;
     const enteredOffDay = offDayInputRef.current.value;
@@ -123,16 +131,10 @@ const NewSpot = () => {
     const enteredDescription = descriptionInputRef.current.value;
 
     if (
-      !enteredName ||
-      enteredName.trim() === "" ||
+      !enteredAddress ||
+      enteredAddress.trim() === "" ||
       !enteredType ||
-      enteredType.trim() === "" ||
-      !enteredPrefecture ||
-      enteredPrefecture.trim() === "" ||
-      !enteredAddress1 ||
-      enteredAddress1.trim() === "" ||
-      !enteredAddress2 ||
-      enteredAddress2.trim() === ""
+      enteredType.trim() === ""
     ) {
       setIsInvalid(true);
       return;
@@ -153,12 +155,10 @@ const NewSpot = () => {
     await fetch("/api/spots", {
       method: "POST",
       body: JSON.stringify({
-        name: enteredName,
+        name: place.name,
         image: imageName,
         type: enteredType,
-        prefecture: enteredPrefecture,
-        address1: enteredAddress1,
-        address2: enteredAddress2,
+        address: enteredAddress,
         hp_url: enteredHp,
         open_time: enteredOpenTime,
         off_day: enteredOffDay,
@@ -204,12 +204,23 @@ const NewSpot = () => {
     <form className={classes.form} onSubmit={sendSpotHandler}>
       <div className={classes.row}>
         <div className={classes.control}>
-          <label htmlFor="name">スポット名*</label>
+          <label htmlFor="name">スポット名検索*</label>
           <input
             type="text"
             id="name"
-            ref={nameInputRef}
+            ref={addressInputRef}
             placeholder="東京タワー"
+          />
+        </div>
+      </div>
+      <div className={classes.row}>
+        <div className={classes.control}>
+          <label htmlFor="name">スポット名 ※検索すると自動入力</label>
+          <input
+            type="text"
+            id="name"
+            defaultValue={place ? place.name : ""}
+            placeholder="※検索すると自動入力されます"
           />
         </div>
       </div>
@@ -236,38 +247,13 @@ const NewSpot = () => {
           placeholder="観光, カフェ, ライディング"
         />
       </div>
-      <div className={classes.control}>
-        <label htmlFor="prefecture">都道府県*</label>
-        <input
-          type="text"
-          id="prefecture"
-          ref={prefectureInputRef}
-          placeholder="東京都"
-        />
-      </div>
-      <div className={classes.control}>
-        <label htmlFor="address1">住所1*</label>
-        <input
-          type="text"
-          id="address1"
-          ref={address1InputRef}
-          placeholder="港区"
-        />
-      </div>
-      <div className={classes.control}>
-        <label htmlFor="address2">住所2*</label>
-        <input
-          type="text"
-          id="address2"
-          ref={address2InputRef}
-          placeholder="芝公園４丁目２−８"
-        />
-      </div>
       {isInvalidAddress && (
         <p className={classes.error}>※ 正しい住所を入力してください。</p>
       )}
       <div className={classes.control}>
-        <button onClick={mapHandler}>スポット表示</button>
+        <button type="button" onClick={mapHandler}>
+          スポット表示
+        </button>
       </div>
       <div style={{ height: "300px", width: "auto" }}>
         <GoogleMapReact

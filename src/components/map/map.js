@@ -2,7 +2,7 @@ import GoogleMapReact from "google-map-react";
 import Link from "next/link";
 import classes from "./map.module.css";
 
-const Map = ({ lat, lng, prefecture, address1, address2 }) => {
+const Map = ({ lat, lng, address }) => {
   const defaultLatLng = {
     lat: 35.65869380417121,
     lng: 139.74541144047168,
@@ -30,11 +30,7 @@ const Map = ({ lat, lng, prefecture, address1, address2 }) => {
           onGoogleApiLoaded={handleApiLoaded}
         />
       </div>
-      <Link
-        href={`https://www.google.com/maps/search/?api=1&query=${
-          prefecture + address1 + address2
-        }`}
-      >
+      <Link href={`https://www.google.com/maps/search/?api=1&query=${address}`}>
         <a target="_blank" rel="noopener noreferrer">
           google mapでみる
         </a>
