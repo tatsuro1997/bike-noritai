@@ -29,7 +29,7 @@ const NewSpot = () => {
   const [maps, setMaps] = useState(null);
   const [geocoder, setGeocoder] = useState(null);
   const [marker, setMarker] = useState(null);
-  const [place, setPlace] = useState(null)
+  const [place, setPlace] = useState(null);
 
   const defaultLatLng = {
     lat: 35.7022589,
@@ -40,7 +40,7 @@ const NewSpot = () => {
   const options = {
     componentRestrictions: { country: "jp" },
     fields: ["address_components", "geometry", "icon", "name"],
-    types: ["establishment"]
+    types: ["establishment"],
   };
 
   useEffect(() => {
@@ -88,7 +88,7 @@ const NewSpot = () => {
     const address = place ? place.name : addressInputRef.current.value.slice(3);
     console.log(address);
 
-    if (!address || address.trim() === ""){
+    if (!address || address.trim() === "") {
       setIsInvalidAddress(true);
       return;
     }

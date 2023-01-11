@@ -50,11 +50,7 @@ const SpotLogistics = ({ spot, records, bookmarkCount }) => {
           </div>
           {!lat && !lng && <p>まだ地図が登録されていません。</p>}
           <div className={classes.map}>
-            <Map
-              lat={lat}
-              lng={lng}
-              address={address}
-            />
+            <Map lat={lat} lng={lng} address={address} />
           </div>
         </div>
         <div className={classes.main}>

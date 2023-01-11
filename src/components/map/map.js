@@ -30,9 +30,7 @@ const Map = ({ lat, lng, address }) => {
           onGoogleApiLoaded={handleApiLoaded}
         />
       </div>
-      <Link
-        href={`https://www.google.com/maps/search/?api=1&query=${address}`}
-      >
+      <Link href={`https://www.google.com/maps/search/?api=1&query=${address}`}>
         <a target="_blank" rel="noopener noreferrer">
           google mapでみる
         </a>

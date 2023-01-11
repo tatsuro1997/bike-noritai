@@ -5,14 +5,7 @@ import DateIcon from "../icons/date-icon";
 import HouseIcon from "../icons/house-icon";
 import classes from "./spot-item.module.css";
 
-const SpotItem = ({
-  id,
-  image,
-  name,
-  type,
-  address,
-  open_time,
-}) => {
+const SpotItem = ({ id, image, name, type, address, open_time }) => {
   const exploreLink = `/spots/${id}`;
 
   return (
