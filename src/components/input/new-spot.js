@@ -44,7 +44,7 @@ const NewSpot = () => {
   };
 
   useEffect(() => {
-    autoCompleteRef.current = new window.google.maps.places.Autocomplete(
+    autoCompleteRef.current = new google.maps.places.Autocomplete(
       addressInputRef.current,
       options
     );
@@ -257,7 +257,7 @@ const NewSpot = () => {
       </div>
       <div style={{ height: "300px", width: "auto" }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY }}
+          bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY}}
           defaultCenter={defaultLatLng}
           defaultZoom={16}
           onGoogleApiLoaded={handleApiLoaded}
