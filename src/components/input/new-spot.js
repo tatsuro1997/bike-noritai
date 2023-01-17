@@ -1,16 +1,16 @@
 import Image from "next/image";
-import GoogleMapReact from "google-map-react";
-import { useRef, useState, useContext, useEffect } from "react";
+import { useRef, useState, useContext, useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { GoogleMap, Marker } from "@react-google-maps/api"
+import { useGoogleMapLoadScript } from "../hooks/useLoadScript";
 import NotificationContext from "@/store/notification-context";
 import classes from "./new-spot.module.css";
 
 const NewSpot = () => {
   const [isInvalid, setIsInvalid] = useState(false);
   const [isInvalidAddress, setIsInvalidAddress] = useState(false);
-  const [lat, setLat] = useState(null);
-  const [lng, setLng] = useState(null);
+  const mapRef = useRef();
   const addressInputRef = useRef();
   const typeInputRef = useRef();
   const hpInputRef = useRef();
@@ -25,15 +25,14 @@ const NewSpot = () => {
   const [image, setImage] = useState(null);
   const [createObjectURL, setCreateObjectURL] = useState(null);
   const [imageName, setImageName] = useState(null);
-  const [map, setMap] = useState(null);
-  const [maps, setMaps] = useState(null);
-  const [geocoder, setGeocoder] = useState(null);
-  const [marker, setMarker] = useState(null);
   const [place, setPlace] = useState(null);
+  const { loading, error } = useGoogleMapLoadScript;
+  const [center, setCenter] = useState({ lat: 35.7022589,
+    lng: 139.7744733 })
 
-  const defaultLatLng = {
-    lat: 35.7022589,
-    lng: 139.7744733,
+  const containerStyle = {
+    width: "auto",
+    height: "300px",
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -55,11 +54,9 @@ const NewSpot = () => {
     });
   }, [autoCompleteRef, addressInputRef, options]);
 
-  const handleApiLoaded = (obj) => {
-    setMap(obj.map);
-    setMaps(obj.maps);
-    setGeocoder(new obj.maps.Geocoder());
-  };
+  const onMapLoad = useCallback((map) => {
+    mapRef.current = map;
+  }, []);
 
   const previewImageHandler = (event) => {
     const enteredImage = event.target.files[0];
@@ -72,7 +69,7 @@ const NewSpot = () => {
   const uploadToPublicFolder = async () => {
     const body = new FormData();
     body.append("file", image);
-    const response = await fetch("/api/upload", {
+    await fetch("/api/upload", {
       method: "POST",
       body,
     });
@@ -94,24 +91,15 @@ const NewSpot = () => {
     }
 
     if (address) {
+      const geocoder = new google.maps.Geocoder();
       geocoder.geocode(
-        {
-          address,
-        },
+        { address: address },
         (results, status) => {
-          if (status === maps.GeocoderStatus.OK) {
-            map.setCenter(results[0].geometry.location);
-            if (marker) {
-              marker.setMap(null);
-            }
-            setMarker(
-              new maps.Marker({
-                map,
-                position: results[0].geometry.location,
-              })
-            );
-            setLat(results[0].geometry.location.lat());
-            setLng(results[0].geometry.location.lng());
+          if (status === "OK") {
+            setCenter({
+              lat: results[0].geometry.location.lat(),
+              lng: results[0].geometry.location.lng(),
+            });
           }
         }
       );
@@ -119,6 +107,7 @@ const NewSpot = () => {
   };
 
   const sendSpotHandler = async (event) => {
+    let userId;
     event.preventDefault();
     setIsInvalid(false);
 
@@ -139,8 +128,6 @@ const NewSpot = () => {
       setIsInvalid(true);
       return;
     }
-
-    let userId;
 
     if (session) {
       userId = session.user.id;
@@ -164,24 +151,23 @@ const NewSpot = () => {
         off_day: enteredOffDay,
         parking: enteredParking,
         description: enteredDescription,
-        lat: lat,
-        lng: lng,
+        lat: center.lat,
+        lng: center.lng,
         userId: userId,
       }),
       headers: {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => {
+      .then(async (response) => {
         if (response.ok) {
           return response.json();
         }
 
-        return response.json().then((data) => {
-          throw new Error(data.message || "もう一度投稿を確認してください!");
-        });
+        const data = await response.json();
+        throw new Error(data.message || "もう一度投稿を確認してください!");
       })
-      .then((data) => {
+      .then(() => {
         notificationCtx.showNotification({
           title: "投稿完了!",
           message: "新たに投稿していただきありがとうございます！",
@@ -255,14 +241,16 @@ const NewSpot = () => {
           スポット表示
         </button>
       </div>
-      <div style={{ height: "300px", width: "auto" }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY}}
-          defaultCenter={defaultLatLng}
-          defaultZoom={16}
-          onGoogleApiLoaded={handleApiLoaded}
-        />
-      </div>
+      {loading && <p>マップを読み込み中...</p>}
+      {error && <p>マップを読み込みに失敗ました。</p>}
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={15}
+        onLoad={onMapLoad}
+      >
+        <Marker position={center} />
+      </GoogleMap>
       <div className={classes.control}>
         <label htmlFor="hp">HP</label>
         <input type="url" id="hp" ref={hpInputRef} />
