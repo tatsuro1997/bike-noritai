@@ -1,34 +1,24 @@
-import GoogleMapReact from "google-map-react";
+import { GoogleMap, Marker } from "@react-google-maps/api";
+import { useLoadScript } from "@react-google-maps/api";
 import Link from "next/link";
 import classes from "./map.module.css";
 
 const Map = ({ lat, lng, address }) => {
-  const defaultLatLng = {
-    lat: 35.65869380417121,
-    lng: 139.74541144047168,
-  };
-
-  const position = {
-    lat: lat,
-    lng: lng,
-  };
-
-  const handleApiLoaded = ({ map, maps }) => {
-    new maps.Marker({
-      map,
-      position: position || defaultLatLng,
-    });
+  const center = { lat: lat, lng: lng };
+  const { loading, error } = useLoadScript;
+  const containerStyle = {
+    width: "auto",
+    height: "180px",
   };
 
   return (
     <div className={classes.map}>
       <div className={classes.map_size}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY }}
-          defaultCenter={position || defaultLatLng}
-          defaultZoom={16}
-          onGoogleApiLoaded={handleApiLoaded}
-        />
+        {loading && <p>マップを読み込み中...</p>}
+        {error && <p>マップを読み込みに失敗ました。</p>}
+        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={14}>
+          <Marker position={center} />
+        </GoogleMap>
       </div>
       <Link href={`https://www.google.com/maps/search/?api=1&query=${address}`}>
         <a target="_blank" rel="noopener noreferrer">
