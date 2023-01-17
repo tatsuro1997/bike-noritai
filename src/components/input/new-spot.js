@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useRef, useState, useContext, useEffect, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { GoogleMap, Marker } from "@react-google-maps/api"
+import { GoogleMap, Marker } from "@react-google-maps/api";
 import { useGoogleMapLoadScript } from "../hooks/useLoadScript";
 import NotificationContext from "@/store/notification-context";
 import classes from "./new-spot.module.css";
@@ -27,8 +27,7 @@ const NewSpot = () => {
   const [imageName, setImageName] = useState(null);
   const [place, setPlace] = useState(null);
   const { loading, error } = useGoogleMapLoadScript;
-  const [center, setCenter] = useState({ lat: 35.7022589,
-    lng: 139.7744733 })
+  const [center, setCenter] = useState({ lat: 35.7022589, lng: 139.7744733 });
 
   const containerStyle = {
     width: "auto",
@@ -92,17 +91,14 @@ const NewSpot = () => {
 
     if (address) {
       const geocoder = new google.maps.Geocoder();
-      geocoder.geocode(
-        { address: address },
-        (results, status) => {
-          if (status === "OK") {
-            setCenter({
-              lat: results[0].geometry.location.lat(),
-              lng: results[0].geometry.location.lng(),
-            });
-          }
+      geocoder.geocode({ address: address }, (results, status) => {
+        if (status === "OK") {
+          setCenter({
+            lat: results[0].geometry.location.lat(),
+            lng: results[0].geometry.location.lng(),
+          });
         }
-      );
+      });
     }
   };
 

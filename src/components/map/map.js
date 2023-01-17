@@ -16,11 +16,7 @@ const Map = ({ lat, lng, address }) => {
       <div className={classes.map_size}>
         {loading && <p>マップを読み込み中...</p>}
         {error && <p>マップを読み込みに失敗ました。</p>}
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={center}
-          zoom={14}
-        >
+        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={14}>
           <Marker position={center} />
         </GoogleMap>
       </div>
