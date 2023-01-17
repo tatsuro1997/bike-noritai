@@ -10,19 +10,7 @@ const CreateSpotPage = () => (
         name="description"
         content="バイカー向けスポット検索サイト「バイクノリタイ」は全国〇〇箇所のスポットを掲載中。条件検索からあなたにピッタリのスポットが見つかります！"
       />
-      {/* <script
-        src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY}&libraries=places`}
-        async
-      ></script> */}
     </Head>
-    {/* FIXME: 下記のようなScriptの使い方が推奨されている */}
-    <Script
-      id="google"
-      type="text/javascript"
-      src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY}&libraries=places`}
-      async
-      strategy="beforeInteractive"
-    />
     <NewSpot />
   </>
 );
