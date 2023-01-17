@@ -13,13 +13,14 @@ const MyApp = ({ Component, pageProps }) => (
         </Layout>
       </NotificationContextProvider>
     </SessionProvider>
+    {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
     <Script
       id="google"
       type="text/javascript"
       src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY}&libraries=places`}
       async
       strategy="beforeInteractive"
-      />
+    />
   </>
 );
 

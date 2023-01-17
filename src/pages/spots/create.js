@@ -1,6 +1,5 @@
 import Head from "next/head";
 import NewSpot from "@/components/input/new-spot";
-import Script from "next/script";
 
 const CreateSpotPage = () => (
   <>
