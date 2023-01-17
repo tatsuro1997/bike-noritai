@@ -29,7 +29,7 @@ const handler = async (req, res) => {
 
   if (req.method === "POST") {
     const spotName = req.body.name;
-    const spotImage = req.body.image;
+    // const spotImage = req.body.image;
     const spotType = req.body.type;
     const spotAddress = req.body.address;
     const spotHp = req.body.hp_url;
@@ -69,7 +69,7 @@ const handler = async (req, res) => {
     try {
       await insertDocument(client, "spots", {
         name: spotName,
-        image: spotImage,
+        // image: spotImage,
         type: spotType,
         address: spotAddress,
         hp_url: spotHp,
