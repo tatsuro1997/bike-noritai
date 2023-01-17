@@ -53,6 +53,39 @@ const NewSpot = () => {
     });
   }, [autoCompleteRef, addressInputRef, options]);
 
+  useEffect(() => {
+    const mapHandler = async () => {
+      setIsInvalidAddress(false);
+
+      if (!addressInputRef.current.value) {
+        return;
+      }
+
+      const address = place
+        ? place.name
+        : addressInputRef.current.value.slice(3);
+      // console.log(address);
+
+      if (!address || address.trim() === "") {
+        setIsInvalidAddress(true);
+        return;
+      }
+
+      if (address) {
+        const geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ address: address }, (results, status) => {
+          if (status === "OK") {
+            setCenter({
+              lat: results[0].geometry.location.lat(),
+              lng: results[0].geometry.location.lng(),
+            });
+          }
+        });
+      }
+    }
+    mapHandler();
+  }, [place]);
+
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
   }, []);
@@ -72,34 +105,6 @@ const NewSpot = () => {
       method: "POST",
       body,
     });
-  };
-
-  const mapHandler = async () => {
-    setIsInvalidAddress(false);
-
-    if (!addressInputRef.current.value) {
-      return;
-    }
-
-    const address = place ? place.name : addressInputRef.current.value.slice(3);
-    // console.log(address);
-
-    if (!address || address.trim() === "") {
-      setIsInvalidAddress(true);
-      return;
-    }
-
-    if (address) {
-      const geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ address: address }, (results, status) => {
-        if (status === "OK") {
-          setCenter({
-            lat: results[0].geometry.location.lat(),
-            lng: results[0].geometry.location.lng(),
-          });
-        }
-      });
-    }
   };
 
   const sendSpotHandler = async (event) => {
@@ -232,11 +237,6 @@ const NewSpot = () => {
       {isInvalidAddress && (
         <p className={classes.error}>※ 正しい住所を入力してください。</p>
       )}
-      <div className={classes.control}>
-        <button type="button" onClick={mapHandler}>
-          スポット表示
-        </button>
-      </div>
       {loading && <p>マップを読み込み中...</p>}
       {error && <p>マップを読み込みに失敗ました。</p>}
       <GoogleMap
