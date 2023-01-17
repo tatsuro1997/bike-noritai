@@ -144,7 +144,7 @@ const NewSpot = () => {
       method: "POST",
       body: JSON.stringify({
         name: place.name,
-        image: imageName,
+        // image: imageName,
         type: enteredType,
         address: enteredAddress,
         hp_url: enteredHp,
@@ -184,7 +184,7 @@ const NewSpot = () => {
         });
       });
 
-    uploadToPublicFolder();
+    // uploadToPublicFolder();
   };
 
   return (
@@ -219,12 +219,12 @@ const NewSpot = () => {
           height={160}
         />
       )}
-      <div className={classes.row}>
+      {/* <div className={classes.row}>
         <div className={classes.control}>
           <label htmlFor="image">スポット画像</label>
           <input type="file" id="image" onChange={previewImageHandler} />
         </div>
-      </div>
+      </div> */}
       <div className={classes.control}>
         <label htmlFor="type">スポットタイプ*</label>
         <input
