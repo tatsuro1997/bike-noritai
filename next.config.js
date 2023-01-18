@@ -5,7 +5,7 @@ const nextConfig = {
     newNextLinkBehavior: false,
   },
   images: {
-    domains: ['firebasestorage.googleapis.com'],
+    domains: ["firebasestorage.googleapis.com"],
   },
 };
 

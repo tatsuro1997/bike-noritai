@@ -25,7 +25,6 @@ const NewSpot = () => {
   const router = useRouter();
   const [image, setImage] = useState(null);
   const [createObjectURL, setCreateObjectURL] = useState(null);
-  const [imageName, setImageName] = useState(null);
   const [place, setPlace] = useState(null);
   const { loading, error } = useGoogleMapLoadScript;
   const [center, setCenter] = useState({ lat: 35.7022589, lng: 139.7744733 });
@@ -93,15 +92,13 @@ const NewSpot = () => {
 
   const previewImageHandler = (event) => {
     const enteredImage = event.target.files[0];
-
     setImage(enteredImage);
     setCreateObjectURL(URL.createObjectURL(enteredImage));
-    setImageName(event.target.files[0].name);
   };
 
   const uploadToPublicFolder = async () => {
     const result = await postImage(image);
-    console.log(result);
+    return result;
   };
 
   const sendSpotHandler = async (event) => {
@@ -137,11 +134,13 @@ const NewSpot = () => {
       status: "pending",
     });
 
+    const imageUrl = await uploadToPublicFolder();
+
     await fetch("/api/spots", {
       method: "POST",
       body: JSON.stringify({
         name: place.name,
-        image: imageName,
+        image: imageUrl,
         type: enteredType,
         address: enteredAddress,
         hp_url: enteredHp,
@@ -180,8 +179,6 @@ const NewSpot = () => {
           status: "error",
         });
       });
-
-    uploadToPublicFolder();
   };
 
   return (

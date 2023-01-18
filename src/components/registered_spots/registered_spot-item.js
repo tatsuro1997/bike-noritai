@@ -13,12 +13,7 @@ const RegisteredSpotItem = ({ spot }) => {
       <a>
         <li className={classes.item}>
           {spot.image && (
-            <Image
-              src={spot.image}
-              alt={spot.name}
-              width={400}
-              height={250}
-            />
+            <Image src={spot.image} alt={spot.name} width={400} height={250} />
           )}
           {!spot.image && (
             <Image
