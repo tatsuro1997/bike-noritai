@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 import { useGoogleMapLoadScript } from "../hooks/useLoadScript";
 import NotificationContext from "@/store/notification-context";
+import { postImage } from "../../pages/api/upload";
 import classes from "./new-spot.module.css";
 
 const NewSpot = () => {
@@ -82,7 +83,7 @@ const NewSpot = () => {
           }
         });
       }
-    }
+    };
     mapHandler();
   }, [place]);
 
@@ -99,12 +100,8 @@ const NewSpot = () => {
   };
 
   const uploadToPublicFolder = async () => {
-    const body = new FormData();
-    body.append("file", image);
-    await fetch("/api/upload", {
-      method: "POST",
-      body,
-    });
+    const result = await postImage(image);
+    console.log(result);
   };
 
   const sendSpotHandler = async (event) => {
@@ -144,7 +141,7 @@ const NewSpot = () => {
       method: "POST",
       body: JSON.stringify({
         name: place.name,
-        // image: imageName,
+        image: imageName,
         type: enteredType,
         address: enteredAddress,
         hp_url: enteredHp,
@@ -184,7 +181,7 @@ const NewSpot = () => {
         });
       });
 
-    // uploadToPublicFolder();
+    uploadToPublicFolder();
   };
 
   return (
@@ -219,12 +216,12 @@ const NewSpot = () => {
           height={160}
         />
       )}
-      {/* <div className={classes.row}>
+      <div className={classes.row}>
         <div className={classes.control}>
           <label htmlFor="image">スポット画像</label>
           <input type="file" id="image" onChange={previewImageHandler} />
         </div>
-      </div> */}
+      </div>
       <div className={classes.control}>
         <label htmlFor="type">スポットタイプ*</label>
         <input
