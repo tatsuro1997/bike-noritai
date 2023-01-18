@@ -32,7 +32,7 @@ const SpotLogistics = ({ spot, records, bookmarkCount }) => {
           <div className={classes.image}>
             {image && (
               <Image
-                src={`/uploads/spots/${image}`}
+                src={image}
                 alt={name}
                 width={320}
                 height={200}

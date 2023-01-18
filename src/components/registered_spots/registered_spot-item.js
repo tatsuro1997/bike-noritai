@@ -14,7 +14,7 @@ const RegisteredSpotItem = ({ spot }) => {
         <li className={classes.item}>
           {spot.image && (
             <Image
-              src={`/uploads/spots/${spot.image}`}
+              src={spot.image}
               alt={spot.name}
               width={400}
               height={250}

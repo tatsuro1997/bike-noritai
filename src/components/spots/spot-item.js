@@ -14,7 +14,7 @@ const SpotItem = ({ id, image, name, type, address, open_time }) => {
         <li className={classes.item}>
           {image && (
             <Image
-              src={`/uploads/spots/${image}`}
+              src={image}
               alt={name}
               width={400}
               height={250}
