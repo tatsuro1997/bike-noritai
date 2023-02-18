@@ -1,25 +1,24 @@
-import { IncomingForm } from "formidable";
+import { storage } from "@/helpers/firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
-let mv = require("mv");
+//single image file upload
+export const postImage = async (image = null) => {
+  let uploadResult = "";
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+  if (image.name) {
+    const storageRef = ref(storage);
+    const ext = image.name.split(".").pop().toLowerCase();
+    const hashName = Math.random().toString(36).slice(-8);
+    const fullPath = "/images/" + hashName + "." + ext;
+    console.log(fullPath);
+    const uploadRef = ref(storageRef, fullPath);
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default async (req, res) => {
-  const data = await new Promise((resolve, reject) => {
-    const form = new IncomingForm();
-    form.parse(req, (err, fields, files) => {
-      if (err) return reject(err);
-      // console.log('fielfds', fields, 'files', files)
-      // console.log('file', files.file.filepath)
-      let oldPath = files.file.filepath;
-      let newPath = `./public/uploads/spots/${files.file.originalFilename}`;
-      mv(oldPath, newPath, function (err) {});
-      res.status(200).json({ fields, files });
+    // 'file' comes from the Blob or File API
+    await uploadBytes(uploadRef, image).then(async function (result) {
+      await getDownloadURL(uploadRef).then(function (url) {
+        uploadResult = url;
+      });
     });
-  });
+  }
+  return uploadResult;
 };

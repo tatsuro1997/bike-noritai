@@ -12,14 +12,7 @@ const SpotItem = ({ id, image, name, type, address, open_time }) => {
     <Link href={exploreLink}>
       <a>
         <li className={classes.item}>
-          {image && (
-            <Image
-              src={`/uploads/spots/${image}`}
-              alt={name}
-              width={400}
-              height={250}
-            />
-          )}
+          {image && <Image src={image} alt={name} width={400} height={250} />}
           {!image && (
             <Image
               src={"/images/no_image.webp"}
