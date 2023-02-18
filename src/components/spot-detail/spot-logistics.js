@@ -31,13 +31,7 @@ const SpotLogistics = ({ spot, records, bookmarkCount }) => {
         <div className={classes.side_content}>
           <div className={classes.image}>
             {image && (
-              <Image
-                src={`/uploads/spots/${image}`}
-                alt={name}
-                width={320}
-                height={200}
-                priority
-              />
+              <Image src={image} alt={name} width={320} height={200} priority />
             )}
             {!image && (
               <Image
