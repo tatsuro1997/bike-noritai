@@ -1,10 +1,10 @@
 export const getAllSpots = async () => {
-  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/spots/`;
+  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/spots`;
 
   try {
     const response = await fetch(url);
     if (response.status === 200) {
-      const { spots } = await response.json();
+      const spots = await response.json();
 
       return spots;
     } else {

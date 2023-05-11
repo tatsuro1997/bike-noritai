@@ -5,13 +5,8 @@ const SpotList = ({ items }) => (
   <ul className={classes.list}>
     {items.map((spot) => (
       <SpotItem
-        key={spot._id}
-        id={spot._id}
-        name={spot.name}
-        type={spot.type}
-        address={spot.address}
-        open_time={spot.open_time}
-        image={spot.image}
+        key={spot.id}
+        spot={spot}
       />
     ))}
   </ul>
