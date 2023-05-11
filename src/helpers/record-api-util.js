@@ -1,10 +1,10 @@
 export const getAllRecords = async () => {
-  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/records/`;
+  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/records`;
 
   try {
     const response = await fetch(url);
     if (response.status === 200) {
-      const { records } = await response.json();
+      const records = await response.json();
 
       return records;
     } else {
