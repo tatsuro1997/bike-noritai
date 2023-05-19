@@ -4,7 +4,7 @@ export const getAllRecords = async () => {
   try {
     const response = await fetch(url);
     if (response.status === 200) {
-      const records = await response.json();
+      const { records } = await response.json();
 
       return records;
     } else {

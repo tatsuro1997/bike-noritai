@@ -1,12 +1,12 @@
 export const getAllRecordLikes = async () => {
-  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/record-likes/`;
+  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/likes`;
 
   try {
     const response = await fetch(url);
     if (response.status === 200) {
-      const { recordLikes } = await response.json();
+      const { likes } = await response.json();
 
-      return recordLikes;
+      return likes;
     } else {
       throw new Error("お気に入りデータの取得に失敗しました。");
     }

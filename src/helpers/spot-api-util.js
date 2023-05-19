@@ -4,7 +4,7 @@ export const getAllSpots = async () => {
   try {
     const response = await fetch(url);
     if (response.status === 200) {
-      const spots = await response.json();
+      const { spots } = await response.json();
 
       return spots;
     } else {
