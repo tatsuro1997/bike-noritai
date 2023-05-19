@@ -22,7 +22,7 @@ export const getFeaturedSpots = async () => {
 
 export const getSpotById = async (id) => {
   const allSpots = await getAllSpots();
-  return allSpots.find((spot) => spot._id === id);
+  return allSpots.find((spot) => spot.id === id);
 };
 
 export const getSpotByUid = async (Uid) => {

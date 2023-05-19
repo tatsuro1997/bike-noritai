@@ -1,5 +1,5 @@
 export const getAllUsers = async () => {
-  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/users/`;
+  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/users`;
 
   try {
     const response = await fetch(url);
@@ -18,5 +18,5 @@ export const getAllUsers = async () => {
 export const getUserById = async (id) => {
   const allUsers = await getAllUsers();
 
-  return allUsers.find((user) => user.uid === Number(id));
+  return allUsers.find((user) => user.id === Number(id));
 };

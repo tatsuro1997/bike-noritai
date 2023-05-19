@@ -21,19 +21,19 @@ const RecordItem = ({ record }) => {
     distance,
     description,
     spot_id,
-    uid,
+    user_id,
   } = record;
 
   const [title, setTitle] = useState("");
   const [userName, setUserName] = useState("");
   const exploreLink = `/spots/${spot_id}`;
-  const userLink = `/users/${uid}`;
+  const userLink = `/users/${user_id}`;
 
   useEffect(() => {
-    getUserById(uid)
+    getUserById(user_id)
       .then((user) => setUserName(user.name))
       .catch((error) => console.log(error));
-  }, [uid, setUserName]);
+  }, [user_id, setUserName]);
 
   useEffect(() => {
     getSpotById(spot_id)

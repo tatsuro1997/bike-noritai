@@ -7,7 +7,7 @@ const RecordList = ({ items }) => (
     {items.length >= 1 &&
       items.map((record) =>
         <RecordItem
-          key={record._id}
+          key={record.id}
           record={record}
         />
       )
