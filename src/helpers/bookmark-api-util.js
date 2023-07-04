@@ -1,5 +1,22 @@
 export const getAllBookmarks = async () => {
-  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/bookmarks/`;
+  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/bookmarks`;
+
+  try {
+    const response = await fetch(url);
+    if (response.status === 200) {
+      const { bookmarks } = await response.json();
+
+      return bookmarks;
+    } else {
+      throw new Error("ブックマークデータの取得に失敗しました。");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getBookmarksBySpotId = async (spotId) => {
+  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/spots/${spotId}/bookmarks`;
 
   try {
     const response = await fetch(url);
@@ -32,9 +49,7 @@ export const getBookmarkByUserId = async (userId) => {
 };
 
 export const getBookmarkCount = async (spotId) => {
-  const allBookmarks = await getAllBookmarks();
+  const bookmarks = await getBookmarksBySpotId(spotId);
 
-  return allBookmarks.filter((bookmark) => {
-    return bookmark.spot_id === spotId;
-  }).length;
+  return bookmarks.length;
 };
