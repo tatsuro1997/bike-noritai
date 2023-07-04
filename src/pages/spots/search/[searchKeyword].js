@@ -1,25 +1,12 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
 import SpotList from "@/components/spots/spot-list";
 import ResultsTitle from "@/components/spots/results-title";
 import ErrorAlert from "@/components/ui/error-alert";
 import SpotsSearch from "@/components/spots/spots-search";
+import { getSearchedSpots } from "@/helpers/spot-api-util";
+import { prefectures } from "@/helpers/prefecture";
 
-const FilteredSpotsPage = () => {
-  const [loadedSpots, setLoadedSpots] = useState();
-  const router = useRouter();
-  const searchKeyword = router.query.searchKeyword || " ";
-
-  useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/api/spots/`)
-      .then((response) => response.json())
-      .then((data) => {
-        setLoadedSpots(data.spots);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
+const FilteredSpotsPage = ({ searchedSpots, searchKeyword }) => {
   const pageHeadData = (
     <Head>
       <title>スポット検索</title>
@@ -27,7 +14,7 @@ const FilteredSpotsPage = () => {
     </Head>
   );
 
-  if (!loadedSpots) {
+  if (!searchedSpots) {
     return (
       <>
         {pageHeadData}
@@ -48,19 +35,7 @@ const FilteredSpotsPage = () => {
     );
   }
 
-  const filteredSpots = loadedSpots.filter((spot) => {
-    const spotType = spot.type;
-    const spotAddress = spot.address;
-    const spotDescription = spot.description;
-
-    return (
-      spotType.includes(searchKeyword) ||
-      spotAddress.includes(searchKeyword) ||
-      spotDescription.includes(searchKeyword)
-    );
-  });
-
-  if (!filteredSpots || filteredSpots.length === 0) {
+  if (!searchedSpots || searchedSpots.length === 0) {
     return (
       <>
         {pageHeadData}
@@ -76,9 +51,34 @@ const FilteredSpotsPage = () => {
     <>
       {pageHeadData}
       <ResultsTitle searchKeyword={searchKeyword} />
-      <SpotList items={filteredSpots} />
+      <SpotList items={searchedSpots} />
     </>
   );
+};
+
+export const getStaticProps = async ({ params }) => {
+  const searchKeyword = params.searchKeyword;
+  const spot = await getSearchedSpots(searchKeyword);
+
+  return {
+    props: {
+      searchedSpots: spot,
+      searchKeyword,
+    },
+    revalidate: 30,
+  };
+};
+
+export const getStaticPaths = async () => {
+
+  const paths = prefectures.map((prefecture) => ({
+    params: { searchKeyword: prefecture },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
 };
 
 export default FilteredSpotsPage;
