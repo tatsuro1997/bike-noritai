@@ -60,21 +60,3 @@ export const getFilteredSpots = async (dateFilter) => {
 
   return filteredSpots;
 };
-
-export const getSearchedSpots = async (searchKeyword) => {
-  const allSpots = await getAllSpots();
-
-  const filteredSpots = allSpots.filter((spot) => {
-    const spotType = spot.type;
-    const spotAddress = spot.address;
-    const spotDescription = spot.description;
-
-    return (
-      spotType.includes(searchKeyword) ||
-      spotAddress.includes(searchKeyword) ||
-      spotDescription.includes(searchKeyword)
-    );
-  });
-
-  return filteredSpots;
-};
