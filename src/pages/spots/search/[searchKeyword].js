@@ -12,7 +12,7 @@ const FilteredSpotsPage = () => {
   const searchKeyword = router.query.searchKeyword || " ";
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/api/spots/`)
+    fetch(`${process.env.NEXT_PUBLIC_FETCH_URL}/api/spots`)
       .then((response) => response.json())
       .then((data) => {
         setLoadedSpots(data.spots);

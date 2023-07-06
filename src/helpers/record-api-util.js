@@ -1,5 +1,5 @@
 export const getAllRecords = async () => {
-  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/records/`;
+  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/records`;
 
   try {
     const response = await fetch(url);

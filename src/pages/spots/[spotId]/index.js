@@ -5,9 +5,9 @@ import Comments from "@/components/input/comments";
 import {
   getSpotById,
   getFeaturedSpots,
-  getCommentsBySpotId,
 } from "@/helpers/spot-api-util";
 import { getBookmarkCount } from "@/helpers/bookmark-api-util";
+import { getCommentsBySpotId } from "@/helpers/comment-api-util";
 import { getThreeRecordsBySpotId } from "@/helpers/record-api-util";
 
 const SpotDetailPage = ({

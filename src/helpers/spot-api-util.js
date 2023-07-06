@@ -1,5 +1,5 @@
 export const getAllSpots = async () => {
-  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/spots/`;
+  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/spots`;
 
   try {
     const response = await fetch(url);
@@ -15,14 +15,32 @@ export const getAllSpots = async () => {
   }
 };
 
+export const getSpot  = async (id) => {
+  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/spots/${id}`;
+
+  try {
+    const response = await fetch(url);
+    if (response.status === 200) {
+      const { spot } = await response.json();
+
+      return spot;
+    } else {
+      throw new Error("スポットデータの取得に失敗しました。");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getFeaturedSpots = async () => {
   const allSpots = await getAllSpots();
   return allSpots.filter((spot) => spot.isFeatured);
 };
 
 export const getSpotById = async (id) => {
-  const allSpots = await getAllSpots();
-  return allSpots.find((spot) => spot._id === id);
+  const spot = await getSpot(id);
+
+  return spot;
 };
 
 export const getSpotByUid = async (Uid) => {
@@ -41,31 +59,4 @@ export const getFilteredSpots = async (dateFilter) => {
   });
 
   return filteredSpots;
-};
-
-export const getAllComments = async () => {
-  const url = `${process.env.NEXT_PUBLIC_FETCH_URL}/api/comments/`;
-
-  try {
-    const response = await fetch(url);
-    if (response.status === 200) {
-      const { comments } = await response.json();
-
-      return comments;
-    } else {
-      throw new Error("コメントデータの取得に失敗しました。");
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const getCommentsBySpotId = async (spotId) => {
-  const allComments = await getAllComments();
-
-  let filteredComments = allComments.filter((comment) => {
-    return comment.spot_id === spotId;
-  });
-
-  return filteredComments;
 };
