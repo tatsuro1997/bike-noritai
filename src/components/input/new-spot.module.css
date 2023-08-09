@@ -39,6 +39,23 @@
   background-color: #dcfff9;
 }
 
+.checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: white;
+  text-align: left;
+}
+
+.checkbox input {
+  margin-left: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
 .form button {
   text-decoration: none;
   cursor: pointer;
