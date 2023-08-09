@@ -6,7 +6,7 @@ import HouseIcon from "../icons/house-icon";
 import classes from "./spot-item.module.css";
 
 const SpotItem = ({ spot }) => {
-  const exploreLink = `/spots/${spot.id}`;
+  const exploreLink = `/spots/${spot._id}`;
 
   return (
     <Link href={exploreLink}>

@@ -2,12 +2,12 @@ import { storage } from "@/helpers/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 //single image file upload
-export const postImage = async (image = null) => {
+export const postImage = async (image: File | null = null) => {
   let uploadResult = "";
 
-  if (image.name) {
+  if (image) {
     const storageRef = ref(storage);
-    const ext = image.name.split(".").pop().toLowerCase();
+    const ext = image.type.split("/").pop();
     const hashName = Math.random().toString(36).slice(-8);
     const fullPath = "/images/" + hashName + "." + ext;
     console.log(fullPath);
